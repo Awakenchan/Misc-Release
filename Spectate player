@@ -1,3 +1,4 @@
+---credits---ΣαΩκζ#1486/Awaken#6969
 local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
 
 local Window = Rayfield:CreateWindow({
