@@ -1,0 +1,145 @@
+---Starting
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "Awaken#6969",
+    LoadingTitle = "Imgay",
+    LoadingSubtitle = "by Awaken#6969",
+    ConfigurationSaving = {
+        Enabled = true,
+        FolderName = nil,
+        FileName = "GuraHub"
+    },
+})
+local Misc = Window:CreateTab("Misc")
+
+local Section = Misc:CreateSection("Misc")
+
+Misc:CreateInput({
+    Name = "Test Webhook",
+    PlaceholderText = "Enter Webhook",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Text)
+        local webhookcheck = identifyexecutor()
+     
+     local url = (Text)
+     local data = {
+        ["content"] = "@everyone",
+        ["embeds"] = {
+            {
+                ["title"] = "Test Webhook GuraHub Mod Detection System",
+                ["description"] = "TestWebhook"..webhookcheck,
+                ["type"] = "rich",
+                ["color"] = tonumber(0x7269da),
+            }
+        }
+     }
+     local newdata = game:GetService("HttpService"):JSONEncode(data)
+ 
+     local headers = {
+        ["content-type"] = "application/json"
+     }
+     request = http_request or request or HttpPost or syn.request
+     local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+     request(abcdef)
+    end,
+})
+
+
+Misc:CreateInput({
+    Name = "Enter Webhook",
+    PlaceholderText = "Enter Webhook",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Text)
+        url2 = (Text)
+        Rayfield:Notify({
+            Title = "YOLO :",
+            Content = "Your Webhook = :", url2,
+            Duration = 6.5,
+            Image = 10559192727,
+        })
+    end,
+})
+
+Misc:CreateButton({
+    Name = "Mod Detection",
+    CurrentValue = false,
+    Callback = function(value)
+        if url2 == nil then
+            Rayfield:Notify({
+                Title = "Warning :",
+                Content = "Must Enter Webhook",
+                Duration = 6.5,
+                Image = 10559192727,
+            })
+            task.stop()
+        end
+        Rayfield:Notify({
+            Title = "Running :",
+            Content = "Mod Detection System Up Runing",
+            Duration = 6.5,
+            Image = 10559192727,
+        })
+        local webhookcheck = identifyexecutor()
+     
+        local url = url2
+        local data = {
+           ["content"] = "@everyone",
+           ["embeds"] = {
+               {
+                   ["title"] = "Sex:Mod Detection System Active",
+                   ["description"] = "Active | Using Executer: "..webhookcheck,
+                   ["type"] = "rich",
+                   ["color"] = tonumber(0x7269da),
+               }
+           }
+        }
+        local newdata = game:GetService("HttpService"):JSONEncode(data)
+   
+        local headers = {
+           ["content-type"] = "application/json"
+        }
+        request = http_request or request or HttpPost or syn.request
+        local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+        request(abcdef)
+        local function webhook(staffname)
+            local data = {
+                 ["content"] = "@everyone",
+                 ["embeds"] = {{
+                     ["title"] = "Staff Detected!",
+                     ["description"] = "A staff member joined the game you were in.",
+                     ["type"] = "rich",
+                     ["color"] = tonumber(0xffffff),
+                     ["fields"] = {
+                         {
+                             ["name"] = "Staff Name",
+                             ["value"] = staffname,
+                             ["inline"] = true
+                         },
+                     }
+                 }}
+             }
+         local response = (syn and syn.request or http_request or http.request) {
+         url = url2,
+         Method = "POST",
+         Headers = {
+         ["Content-Type"] = "application/json"
+         },
+         Body = game:GetService("HttpService"):JSONEncode(data)
+         }
+         end
+         local function staffcheckloop()
+         for i,v in pairs(game.Players:GetPlayers()) do
+             if v:GetRoleInGroup() == "TherRoleName" or v:GetRoleInGroup() == "TherRoleName" then
+                 webhook(v.Name)
+             end
+         end
+         end
+         staffcheckloop()
+         game.Players.PlayerAdded:Connect(function(player)
+                 if player:GetRoleInGroup() == "TherRoleName" or player:GetRoleInGroup() == "TherRoleName" then
+                 webhook(player)
+             end
+         end)    
+    end,
+})----Ends
