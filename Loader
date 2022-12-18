@@ -83,5 +83,5 @@ elseif game.PlaceId == 9210611498 then
         Key = "yes"
     }   
   })
-    loadstring(game:HttpGet("https://github.com/Awakenchan/Misc-Release/blob/main/Miami%20Flodrida", true))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Miami%20Flodrida", true))()
 end
