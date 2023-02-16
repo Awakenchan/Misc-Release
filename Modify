@@ -147,7 +147,7 @@ do
 			Converted["_ImageLabel"].ImageTransparency = 0.8999999761581421
 			Converted["_ImageLabel"].ScaleType = Enum.ScaleType.Crop
 			Converted["_ImageLabel"].AnchorPoint = Vector2.new(0.5, 0.5)
-			Converted["_ImageLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_ImageLabel"].BackgroundColor3 = Color3.fromRGB(31, 153, 209 )
 			Converted["_ImageLabel"].BackgroundTransparency = 1
 			Converted["_ImageLabel"].Position = UDim2.new(0, 0, 0, 0)
 			Converted["_ImageLabel"].Size = UDim2.new(0, 0, 1, 0)
@@ -224,7 +224,7 @@ do
 		Converted["_Button"].TextColor3 = Color3.fromRGB(0, 0, 0)
 		Converted["_Button"].TextSize = 14
 		Converted["_Button"].AnchorPoint = Vector2.new(0.5, 0.5)
-		Converted["_Button"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Converted["_Button"].BackgroundColor3 = Color3.fromRGB(31, 153, 209 )
 		Converted["_Button"].BackgroundTransparency = 1
 		Converted["_Button"].Position = UDim2.new(0.5, 0, 0.5, 0)
 		Converted["_Button"].Size = UDim2.new(1, 0, 1, 0)
@@ -443,7 +443,7 @@ do
 			--Properties
 
 			Converted["_Loader"].AnchorPoint = Vector2.new(1, 1)
-			Converted["_Loader"].BackgroundColor3 = Color3.fromRGB(28.000000230968, 28.000000230968, 28.000000230968)
+			Converted["_Loader"].BackgroundColor3 = Color3.fromRGB(31, 153, 209 )
 			Converted["_Loader"].Position = UDim2.new(1, -20, 1, -20)
 			Converted["_Loader"].Size = UDim2.new(0, 280, 0, 127)
 			Converted["_Loader"].Name = "Loader"
@@ -466,7 +466,7 @@ do
 			Converted["_GameThumbnail"].Image = "https://www.roblox.com/asset-thumbnail/image?assetId=5670218884&width=768&height=432&format=png"
 			Converted["_GameThumbnail"].ImageTransparency = 0.8
 			Converted["_GameThumbnail"].ScaleType = Enum.ScaleType.Crop
-			Converted["_GameThumbnail"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_GameThumbnail"].BackgroundColor3 = Color3.fromRGB(31, 153, 209 )
 			Converted["_GameThumbnail"].BackgroundTransparency = 1
 			Converted["_GameThumbnail"].Size = UDim2.new(1, 0, 1, 0)
 			Converted["_GameThumbnail"].Name = "GameThumbnail"
@@ -481,14 +481,14 @@ do
 			}
 			Converted["_UIGradient"].Parent = Converted["_GameThumbnail"]
 
-			Converted["_Main"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_Main"].BackgroundColor3 = Color3.fromRGB(31, 153, 209 )
 			Converted["_Main"].BackgroundTransparency = 1
 			Converted["_Main"].ClipsDescendants = true
 			Converted["_Main"].Size = UDim2.new(1, 0, 1, 0)
 			Converted["_Main"].Name = "Main"
 			Converted["_Main"].Parent = Converted["_Loader"]
 
-			Converted["_No"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_No"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_No"].Position = UDim2.new(0, 154, 0, 92)
 			Converted["_No"].Size = UDim2.new(0, 85, 0, 24)
 			Converted["_No"].Name = "No"
@@ -497,19 +497,19 @@ do
 			Converted["_UICorner2"].CornerRadius = UDim.new(0, 5)
 			Converted["_UICorner2"].Parent = Converted["_No"]
 
-			Converted["_UIStroke"].Color = Color3.fromRGB(255, 43.00000123679638, 43.00000123679638)
+			Converted["_UIStroke"].Color = Color3.fromRGB(31, 153, 209)
 			Converted["_UIStroke"].Parent = Converted["_No"]
 
 			Converted["_UIGradient1"].Color = ColorSequence.new{
-				ColorSequenceKeypoint.new(0, Color3.fromRGB(255, 73.00000324845314, 73.00000324845314)),
-				ColorSequenceKeypoint.new(1, Color3.fromRGB(144.00000661611557, 47.0000009983778, 47.0000009983778))
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(31, 153, 209 )),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(31, 153, 209 ))
 			}
 			Converted["_UIGradient1"].Rotation = -90
 			Converted["_UIGradient1"].Parent = Converted["_No"]
 
 			Converted["_TextLabel"].Font = Enum.Font.GothamMedium
 			Converted["_TextLabel"].Text = "Don't Load"
-			Converted["_TextLabel"].TextColor3 = Color3.fromRGB(225.00001698732376, 225.00001698732376, 225.00001698732376)
+			Converted["_TextLabel"].TextColor3 = Color3.fromRGB(31, 153, 209 )
 			Converted["_TextLabel"].TextSize = 14
 			Converted["_TextLabel"].AnchorPoint = Vector2.new(0.5, 0.5)
 			Converted["_TextLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
