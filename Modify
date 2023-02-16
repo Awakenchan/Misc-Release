@@ -603,7 +603,7 @@ do
 
 			Converted["_Title"].Font = Enum.Font.GothamBold
 			Converted["_Title"].Text = "Game Detected"
-			Converted["_Title"].TextColor3 = Color3.fromRGB(225.00000178813934, 225.00000178813934, 225.00000178813934)
+			Converted["_Title"].TextColor3 = Color3.fromRGB(57, 124, 211)
 			Converted["_Title"].TextSize = 18
 			Converted["_Title"].TextTruncate = Enum.TextTruncate.AtEnd
 			Converted["_Title"].TextWrapped = true
@@ -1358,7 +1358,7 @@ do
 			Converted["_Title"].TextSize = 16
 			Converted["_Title"].TextTruncate = Enum.TextTruncate.AtEnd
 			Converted["_Title"].AnchorPoint = Vector2.new(0.5, 0.5)
-			Converted["_Title"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_Title"].BackgroundColor3 = Color3.fromRGB(57, 124, 211)
 			Converted["_Title"].BackgroundTransparency = 1
 			Converted["_Title"].Position = UDim2.new(0.5, 0, 0.5, 0)
 			Converted["_Title"].Size = UDim2.new(1, -150, 0.5, 0)
