@@ -512,14 +512,14 @@ do
 			Converted["_TextLabel"].TextColor3 = Color3.fromRGB(31, 153, 209 )
 			Converted["_TextLabel"].TextSize = 14
 			Converted["_TextLabel"].AnchorPoint = Vector2.new(0.5, 0.5)
-			Converted["_TextLabel"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_TextLabel"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_TextLabel"].BackgroundTransparency = 1
 			Converted["_TextLabel"].Position = UDim2.new(0.5, 0, 0.5, 0)
 			Converted["_TextLabel"].Size = UDim2.new(0.899999976, 0, 0.899999976, 0)
 			Converted["_TextLabel"].Parent = Converted["_No"]
 
 			Converted["_Yes"].AnchorPoint = Vector2.new(1, 0)
-			Converted["_Yes"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_Yes"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_Yes"].Position = UDim2.new(0, 125, 0, 92)
 			Converted["_Yes"].Size = UDim2.new(0, 85, 0, 24)
 			Converted["_Yes"].Name = "Yes"
@@ -528,36 +528,36 @@ do
 			Converted["_UICorner3"].CornerRadius = UDim.new(0, 5)
 			Converted["_UICorner3"].Parent = Converted["_Yes"]
 
-			Converted["_UIStroke1"].Color = Color3.fromRGB(12.000000234693289, 129.00000751018524, 255)
+			Converted["_UIStroke1"].Color = Color3.fromRGB(31, 153, 209)
 			Converted["_UIStroke1"].Parent = Converted["_Yes"]
 
 			Converted["_TextLabel1"].Font = Enum.Font.GothamMedium
 			Converted["_TextLabel1"].Text = "Load"
-			Converted["_TextLabel1"].TextColor3 = Color3.fromRGB(225.00001698732376, 225.00001698732376, 225.00001698732376)
+			Converted["_TextLabel1"].TextColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_TextLabel1"].TextSize = 14
 			Converted["_TextLabel1"].AnchorPoint = Vector2.new(0.5, 0.5)
-			Converted["_TextLabel1"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_TextLabel1"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_TextLabel1"].BackgroundTransparency = 1
 			Converted["_TextLabel1"].Position = UDim2.new(0.5, 0, 0.5, 0)
 			Converted["_TextLabel1"].Size = UDim2.new(0.899999976, 0, 0.899999976, 0)
 			Converted["_TextLabel1"].Parent = Converted["_Yes"]
 
 			Converted["_UIGradient2"].Color = ColorSequence.new{
-				ColorSequenceKeypoint.new(0, Color3.fromRGB(12.000000234693289, 129.00000751018524, 255)),
-				ColorSequenceKeypoint.new(1, Color3.fromRGB(21.000000648200512, 72.00000330805779, 116.00000068545341))
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(31, 153, 209)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(31, 153, 209))
 			}
 			Converted["_UIGradient2"].Rotation = -90
 			Converted["_UIGradient2"].Parent = Converted["_Yes"]
 
 			Converted["_GameName"].Font = Enum.Font.Gotham
 			Converted["_GameName"].Text = "[âš”] item asylum"
-			Converted["_GameName"].TextColor3 = Color3.fromRGB(225.00000178813934, 225.00000178813934, 225.00000178813934)
+			Converted["_GameName"].TextColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_GameName"].TextSize = 13
 			Converted["_GameName"].TextTruncate = Enum.TextTruncate.AtEnd
 			Converted["_GameName"].TextWrapped = true
 			Converted["_GameName"].TextXAlignment = Enum.TextXAlignment.Left
 			Converted["_GameName"].TextYAlignment = Enum.TextYAlignment.Top
-			Converted["_GameName"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_GameName"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_GameName"].BackgroundTransparency = 1
 			Converted["_GameName"].Position = UDim2.new(0, 12, 0, 44)
 			Converted["_GameName"].Size = UDim2.new(0, 257, 0, 13)
@@ -787,7 +787,7 @@ do
 			Converted["_Ignore7"].Parent = Converted["_Theme7"]
 
 			Converted["_Interact"].AnchorPoint = Vector2.new(1, 0)
-			Converted["_Interact"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_Interact"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_Interact"].BackgroundTransparency = 1
 			Converted["_Interact"].Position = UDim2.new(0, 268, 0, 12)
 			Converted["_Interact"].Size = UDim2.new(0, 147, 0, 21)
@@ -796,7 +796,7 @@ do
 
 			Converted["_Button"].AnchorPoint = Vector2.new(1, 0)
 			Converted["_Button"].AutomaticSize = Enum.AutomaticSize.X
-			Converted["_Button"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_Button"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_Button"].ClipsDescendants = true
 			Converted["_Button"].Position = UDim2.new(1, 0, 0, 0)
 			Converted["_Button"].Size = UDim2.new(0, 1, 1, 0)
@@ -806,23 +806,23 @@ do
 			Converted["_UICorner5"].CornerRadius = UDim.new(0, 5)
 			Converted["_UICorner5"].Parent = Converted["_Button"]
 
-			Converted["_UIStroke3"].Color = Color3.fromRGB(12.000000234693289, 129.00000751018524, 255)
+			Converted["_UIStroke3"].Color = Color3.fromRGB(31, 153, 209)
 			Converted["_UIStroke3"].Parent = Converted["_Button"]
 
 			Converted["_UIGradient3"].Color = ColorSequence.new{
-				ColorSequenceKeypoint.new(0, Color3.fromRGB(12.000000234693289, 129.00000751018524, 255)),
-				ColorSequenceKeypoint.new(1, Color3.fromRGB(21.000000648200512, 72.00000330805779, 116.00000068545341))
+				ColorSequenceKeypoint.new(0, Color3.fromRGB(31, 153, 209)),
+				ColorSequenceKeypoint.new(1, Color3.fromRGB(31, 153, 209))
 			}
 			Converted["_UIGradient3"].Rotation = -90
 			Converted["_UIGradient3"].Parent = Converted["_Button"]
 
 			Converted["_TextLabel2"].Font = Enum.Font.Gotham
 			Converted["_TextLabel2"].Text = "Copied"
-			Converted["_TextLabel2"].TextColor3 = Color3.fromRGB(225.00001698732376, 225.00001698732376, 225.00001698732376)
+			Converted["_TextLabel2"].TextColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_TextLabel2"].TextSize = 13
 			Converted["_TextLabel2"].AnchorPoint = Vector2.new(0.5, 0.5)
 			Converted["_TextLabel2"].AutomaticSize = Enum.AutomaticSize.X
-			Converted["_TextLabel2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_TextLabel2"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_TextLabel2"].BackgroundTransparency = 1
 			Converted["_TextLabel2"].Position = UDim2.new(0.5, 0, 0.5, 0)
 			Converted["_TextLabel2"].Size = UDim2.new(0, 1, 0.5, 0)
@@ -837,23 +837,23 @@ do
 			Converted["_UIListLayout"].VerticalAlignment = Enum.VerticalAlignment.Center
 			Converted["_UIListLayout"].Parent = Converted["_Button"]
 
-			Converted["_0_padding"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_0_padding"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_0_padding"].BackgroundTransparency = 1
 			Converted["_0_padding"].Name = "0_padding"
 			Converted["_0_padding"].Parent = Converted["_Button"]
 
-			Converted["_padding"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_padding"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_padding"].BackgroundTransparency = 1
 			Converted["_padding"].Name = "padding"
 			Converted["_padding"].Parent = Converted["_Button"]
 
 			Converted["_ImageLabel3"].Image = "http://www.roblox.com/asset/?id=10954923256"
-			Converted["_ImageLabel3"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_ImageLabel3"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_ImageLabel3"].BackgroundTransparency = 1
 			Converted["_ImageLabel3"].Size = UDim2.new(0, 18, 0, 18)
 			Converted["_ImageLabel3"].Parent = Converted["_Button"]
 
-			Converted["_Profile"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_Profile"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_Profile"].BackgroundTransparency = 1
 			Converted["_Profile"].ClipsDescendants = true
 			Converted["_Profile"].Size = UDim2.new(1, 0, 1, 0)
@@ -863,12 +863,12 @@ do
 
 			Converted["_Title2"].Font = Enum.Font.GothamBold
 			Converted["_Title2"].Text = "Welcome back."
-			Converted["_Title2"].TextColor3 = Color3.fromRGB(225.00000178813934, 225.00000178813934, 225.00000178813934)
+			Converted["_Title2"].TextColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_Title2"].TextSize = 18
 			Converted["_Title2"].TextTruncate = Enum.TextTruncate.AtEnd
 			Converted["_Title2"].TextWrapped = true
 			Converted["_Title2"].TextXAlignment = Enum.TextXAlignment.Left
-			Converted["_Title2"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Converted["_Title2"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_Title2"].BackgroundTransparency = 1
 			Converted["_Title2"].Position = UDim2.new(0, 12, 0, 8)
 			Converted["_Title2"].Size = UDim2.new(0, 224, 0, 31)
@@ -887,14 +887,14 @@ do
 			Converted["_Ignore8"].Parent = Converted["_Theme8"]
 
 			Converted["_Player"].AnchorPoint = Vector2.new(0.5, 0.5)
-			Converted["_Player"].BackgroundColor3 = Color3.fromRGB(28.000000230968, 28.000000230968, 28.000000230968)
+			Converted["_Player"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_Player"].BorderSizePixel = 0
 			Converted["_Player"].Position = UDim2.new(0, 140, 0, 77)
 			Converted["_Player"].Size = UDim2.new(0, 245, 0, 71)
 			Converted["_Player"].Name = "Player"
 			Converted["_Player"].Parent = Converted["_Profile"]
 
-			Converted["_Gradient"].BackgroundColor3 = Color3.fromRGB(0, 170.0000050663948, 255)
+			Converted["_Gradient"].BackgroundColor3 = Color3.fromRGB(31, 153, 209)
 			Converted["_Gradient"].BorderSizePixel = 0
 			Converted["_Gradient"].Size = UDim2.new(1, 0, 1, 0)
 			Converted["_Gradient"].ZIndex = 0
