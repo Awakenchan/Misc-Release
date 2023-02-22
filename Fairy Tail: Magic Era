@@ -166,12 +166,14 @@ Farming:CreateToggle({
         _G.CatFarm = Value
         while _G.CatFarm do task.wait(0.8)
             startquest()  
-                    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").QuestData["Cat Locations"].Cat.CFrame
+            if game:GetService("Players").LocalPlayer.Data.Quests.find_missing_cat.Progress.Value == 0 then 
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").QuestData["Cat Locations"].Cat.CFrame
                 wait(1)
-               if game:GetService("Workspace").QuestData["Cat Locations"].Cat then
                 local clickdetector = game:GetService("Workspace").QuestData["Cat Locations"].Cat.ClickDetector
                fireclickdetector(clickdetector)      
-              end
+            else
+                startquest()
+            end
         end
     end;
     SavingDisabled = true; 
