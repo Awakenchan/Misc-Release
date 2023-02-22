@@ -1,6 +1,3 @@
-
-
-
 local Atlas = loadstring(game:HttpGet("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Modify"))()
 local UI = Atlas.new({
     Name = "Awaken#6969 Test | Test script "; 
@@ -47,7 +44,19 @@ local tptosafezone = Farming:CreateToggle({
                 }
                     
                 game:GetService("ReplicatedStorage").Remotes.Sell:FireServer(ohTable1)
+                local ohTable1 = {
+                    ["Bronze Coin"] = -9999999,
+                    ["Meat"] = -9999999,
+                    ["Silver Coin"] = -9999999999999999
+                    }
+                        
+                    game:GetService("ReplicatedStorage").Remotes.Sell:FireServer(ohTable1)
                     
+                local ohTable1 = {
+                    ["Silver Coin"] = -9999999999999999
+                    }
+                    
+                    game:GetService("ReplicatedStorage").Remotes.Sell:FireServer(ohTable1) 
                     local args = {
                         [1] = {
                             ["Meat"] = 99999,
