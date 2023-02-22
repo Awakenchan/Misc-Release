@@ -1,7 +1,25 @@
+local RunService = game:GetService("RunService")
+            local OldNamecall
+            
+            OldNamecall = hookmetamethod(game, "__namecall", function(Self, ...)
+               local NamecallMethod = getnamecallmethod()
+               
+               if ((Self == RunService)) then
+                   return(true)
+               end
+               
+               return OldNamecall(Self, ...)
+            end)
+            local SomethingOld;
+                SomethingOld = hookfunction(getrenv().newproxy, function(...)
+                    local proxy = SomethingOld(...)
+                    table.insert(TableNumbaor001, proxy)
+                    return proxy
+                end)
 local Atlas = loadstring(game:HttpGet("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Modify"))()
 local UI = Atlas.new({
-    Name = "Awaken#6969 Test | Test script "; 
-    ConfigFolder = "AwakenEcho"; 
+    Name = "Awaken#6969 Test | Fairy Tail: Magic Era "; 
+    ConfigFolder = "Fairy TailMagic Era"; 
     Credit = "Made By Awaken#6969"; 
     Color = Color3.fromRGB(31, 153, 209 );  
     Bind = "LeftControl"; 
@@ -32,7 +50,7 @@ Farming:CreateButton({
 end;
 })
 Farming:CreateToggle({
-    Name = "Inf jewels & Meat";
+    Name = "Buy Inf All Items";
     Flag = "Get All mirrors";
     Default = false;
     Callback = function(Value)
@@ -63,7 +81,28 @@ Farming:CreateToggle({
                             ["Bronze Coin"] = 99999
                         }
                     }
+                    local args = {
+                        [1] = "Magic Book IV",
+                        [2] = 5
+                    }
+
+                    local ohString1 = "Mana Training"
+                    local ohNumber2 = 15
                     
+                    game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(ohString1, ohNumber2)
+                    local ohString1 = "Squat Training"
+                    local ohNumber2 = 15
+                    
+                    game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(ohString1, ohNumber2)
+                    local ohString1 = "Situp Training"
+                    local ohNumber2 = 15
+                    
+                    game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(ohString1, ohNumber2)
+                    local ohString1 = "Pushup Training"
+                    local ohNumber2 = 15
+                    
+                    game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(ohString1, ohNumber2)
+
                     game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Sell"):FireServer(unpack(args))
                     
             
@@ -72,42 +111,6 @@ Farming:CreateToggle({
     SavingDisabled = true; 
 })
 
-Farming:CreateToggle({
-    Name = "buy inf magic book";
-    Flag = "Get2 mirrors";
-    Default = false;
-    Callback = function(Value)
-        _G.GetAllMisnors = Value
-        while _G.GetAllMisnors do task.wait(0.8)
-            local ohTable1 = {
-                ["Bronze Coin"] = -9999999,
-                ["Meat"] = -9999999
-                }
-                    
-                game:GetService("ReplicatedStorage").Remotes.Sell:FireServer(ohTable1)
-                    
-                    local args = {
-                        [1] = {
-                            ["Meat"] = 99999,
-                            ["Bronze Coin"] = 99999
-                        }
-                    }
-                    
-                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Sell"):FireServer(unpack(args))
-                    
-                    local args = {
-                        [1] = "Magic Book IV",
-                        [2] = 5
-                    }
-                    
-                    game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(unpack(args))
-                    local vu = game:GetService("VirtualUser")
-                    vu:ClickButton1(Vector2.new(1,0))
-            
-        end
-    end;
-    SavingDisabled = true; 
-})
 
 Farming:CreateSliderToggle({ 
     Name = "WalkSpeed"; 
@@ -134,20 +137,6 @@ Farming:CreateSliderToggle({
     WarningIcon = 12345; 
 })
 
-Farming:CreateToggle({
-    Name = "Safe Zone anywhere";
-    Flag = "Safezone anywhere";
-    Default = false;
-    Callback = function(Value)
-        _G.GetAllMinors = Value
-        while _G.GetAllMinors do task.wait(0.8)
-            game:GetService("Workspace").Areas.Safezone.Part.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-            
-        end
-    end;
-    SavingDisabled = true; 
-})
-
 local function startquest()
     
     local ohString1 = "Start"
@@ -158,6 +147,21 @@ local function startquest()
     game:GetService("ReplicatedStorage").Remotes.Quest:FireServer(ohString1, ohTable2)
 end
 
+local function throwagain()
+    if game:GetService("Workspace").QuestData["Cat Locations"]:FindFirstChild('Cat') then
+        startquest() 
+         wait(0.8)
+         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").QuestData["Cat Locations"].Cat.CFrame
+         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").QuestData["Cat Locations"].Cat.CFrame
+         local clickdetector = game:GetService("Workspace").QuestData["Cat Locations"].Cat.ClickDetector
+         fireclickdetector(clickdetector)      
+      startquest()
+    else
+        startquest()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(514.1011352539062, 16.64599609375, -636.3023681640625)
+    end
+end
+
 Farming:CreateToggle({
     Name = "Cat Quest Farm";
     Flag = "ssfas";
@@ -166,18 +170,68 @@ Farming:CreateToggle({
         _G.CatFarm = Value
         while _G.CatFarm do task.wait(0.8)
             startquest()  
-                if game:GetService("Workspace").QuestData["Cat Locations"]:FindFirstChild('Cat') then
-                    startquest() 
-                     wait(0.8)
-                     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").QuestData["Cat Locations"].Cat.CFrame
-                     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").QuestData["Cat Locations"].Cat.CFrame
-                     local clickdetector = game:GetService("Workspace").QuestData["Cat Locations"].Cat.ClickDetector
-                     fireclickdetector(clickdetector)      
-                  startquest()
-                else
-                    startquest()
-                end
+            throwagain()
+            throwagain()
         end
     end;
     SavingDisabled = true; 
+})
+Farming:CreateToggle({
+    Name = "Auto SafeZone near knocked";
+    Flag = "ssfasssafas";
+    Default = false;
+    Callback = function(Value)
+        _G.CaFarms = Value
+        while _G.CaFarms do task.wait(0.8)
+            if game:GetService('Players').LocalPlayer.Character.Humanoid.Health == 1 then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(514.1011352539062, 16.64599609375, -636.3023681640625)
+            end
+        end
+    end;
+    SavingDisabled = true; 
+})
+
+local Teleports = UI:CreatePage("Teleports")
+local Teleports = Teleports:CreateSection("Teleports")
+
+
+local Npctp = Teleports:CreateDropdown({
+    Name = "Npc List"; 
+    Callback = function(Option) 
+        if Option == "Ninja" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(948.3367919921875, 56.69647216796875, 608.70068359375)
+        elseif Option == "Assassin" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(899.8163452148438, 176.6869354248047, 836.9574584960938)
+        elseif Option == "Axy" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-826.1127319335938, 53.38880920410156, -126.44485473632812)
+        elseif Option == "Carter" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(180.4766387939453, 30.11676788330078, -721.9611206054688)
+        elseif Option == "Cole" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(878.7822875976562, 73.18368530273438, -189.85536193847656)
+        elseif Option == "Garnith" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3410.531494140625, 211.50234985351562, -264.29925537109375)
+        elseif Option == "Natsuo" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3459.390625, 3.9759058952331543, -1988.993408203125)
+        elseif Option == "George" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(655.5431518554688, 30.24151611328125, -216.57347106933594)
+        elseif Option == "Helper NPC" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(315.65911865234375, 42.64839172363281, -526.5582885742188)
+        elseif Option == "Irokhul" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2191.234130859375, 179.2938232421875, -2255.124267578125)
+        elseif Option == "Lumber Jack" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(763.0740356445312, 30.052093505859375, 681.7330932617188)
+        elseif Option == "Magic Books Dealer" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1196.829833984375, 80.8782730102539, -132.3292999267578)
+        elseif Option == "No" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(405.2562255859375, 41.783233642578125, -484.13134765625)
+        elseif Option == "Traning Npc" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1139.270263671875, 58.14424133300781, 631.4796752929688)
+        end
+    end;
+    Options = {"Ninja", "Assassin",'Axy','Carter','Cole','Garnith','Natsuo','George','Helper NPC','Irokhul','Magic Books Dealer','No','Traning Npc','Soon','Soon','Soon','Soon','Soon'}; 
+    ItemSelecting = true; 
+    DefaultItemSelected = "None"; 
+   
+    Warning = "Teleports to npc"; 
+    WarningIcon = 12345; 
 })
