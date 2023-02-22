@@ -77,8 +77,8 @@ Farming:CreateToggle({
     Flag = "Get2 mirrors";
     Default = false;
     Callback = function(Value)
-        _G.GetAllMinors = Value
-        while _G.GetAllMinors do task.wait(0.8)
+        _G.GetAllMisnors = Value
+        while _G.GetAllMisnors do task.wait(0.8)
             local ohTable1 = {
                 ["Bronze Coin"] = -9999999,
                 ["Meat"] = -9999999
@@ -166,14 +166,17 @@ Farming:CreateToggle({
         _G.CatFarm = Value
         while _G.CatFarm do task.wait(0.8)
             startquest()  
-            if game:GetService("Players").LocalPlayer.Data.Quests.find_missing_cat.Progress.Value == 0 then 
-                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").QuestData["Cat Locations"].Cat.CFrame
-                wait(1)
-                local clickdetector = game:GetService("Workspace").QuestData["Cat Locations"].Cat.ClickDetector
-               fireclickdetector(clickdetector)      
-            else
-                startquest()
-            end
+                if game:GetService("Workspace").QuestData["Cat Locations"]:FindFirstChild('Cat') then
+                    startquest() 
+                     wait(0.8)
+                     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").QuestData["Cat Locations"].Cat.CFrame
+                     game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").QuestData["Cat Locations"].Cat.CFrame
+                     local clickdetector = game:GetService("Workspace").QuestData["Cat Locations"].Cat.ClickDetector
+                     fireclickdetector(clickdetector)      
+                  startquest()
+                else
+                    startquest()
+                end
         end
     end;
     SavingDisabled = true; 
