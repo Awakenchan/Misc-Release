@@ -1,0 +1,140 @@
+
+
+
+local Atlas = loadstring(game:HttpGet("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Modify"))()
+local UI = Atlas.new({
+    Name = "Awaken#6969 Test | Test script "; 
+    ConfigFolder = "AwakenEcho"; 
+    Credit = "Made By Awaken#6969"; 
+    Color = Color3.fromRGB(31, 153, 209 );  
+    Bind = "LeftControl"; 
+    UseLoader = false; 
+    FullName = "Awaken"; 
+    CheckKey = function(inputtedKey) 
+        return inputtedKey=="Awaken#6969"
+    end;
+    Discord = "discord.gg/altraxshub"; 
+})
+
+local Farming = UI:CreatePage("Farming")
+local Farming = Farming:CreateSection("Farming")
+
+local info3 = Farming:CreateParagraph("| Farming Functions 💀")
+
+Farming:CreateButton({
+    Name = "TP to random coin",
+    Callback = function()
+        for i,v in pairs(game:GetService("Workspace").Trinkets:GetChildren()) do
+            if v:FindFirstChild("ClickPart") then
+              local path = v
+              for i,o in pairs(v:GetChildren()) do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.ClickPart.CFrame
+              end
+            end
+        end
+end;
+})
+local tptosafezone = Farming:CreateToggle({
+    Name = "Inf jewels & Meat";
+    Flag = "Get All mirrors";
+    Default = false;
+    Callback = function(Value)
+        _G.GetAllMinors = Value
+        while _G.GetAllMinors do task.wait(0.8)
+            local ohTable1 = {
+                ["Bronze Coin"] = -9999999,
+                ["Meat"] = -9999999
+                }
+                    
+                game:GetService("ReplicatedStorage").Remotes.Sell:FireServer(ohTable1)
+                    
+                    local args = {
+                        [1] = {
+                            ["Meat"] = 99999,
+                            ["Bronze Coin"] = 99999
+                        }
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Sell"):FireServer(unpack(args))
+                    
+            
+        end
+    end;
+    SavingDisabled = true; 
+})
+
+local tptosafezone = Farming:CreateToggle({
+    Name = "buy inf magic book";
+    Flag = "Get2 mirrors";
+    Default = false;
+    Callback = function(Value)
+        _G.GetAllMinors = Value
+        while _G.GetAllMinors do task.wait(0.8)
+            local ohTable1 = {
+                ["Bronze Coin"] = -9999999,
+                ["Meat"] = -9999999
+                }
+                    
+                game:GetService("ReplicatedStorage").Remotes.Sell:FireServer(ohTable1)
+                    
+                    local args = {
+                        [1] = {
+                            ["Meat"] = 99999,
+                            ["Bronze Coin"] = 99999
+                        }
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Sell"):FireServer(unpack(args))
+                    
+                    local args = {
+                        [1] = "Magic Book IV",
+                        [2] = 5
+                    }
+                    
+                    game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(unpack(args))
+                    local vu = game:GetService("VirtualUser")
+                    vu:ClickButton1(Vector2.new(1,0))
+            
+        end
+    end;
+    SavingDisabled = true; 
+})
+
+Farming:CreateSliderToggle({ 
+    Name = "WalkSpeed"; 
+    SliderFlag = "WalkspeedFlag"; 
+    ToggleFlag = "Toggle";
+    Min = 16; 
+    Max = 600; 
+    AllowOutOfRange = false; 
+    Digits = 3; 
+    SliderDefault = 16; 
+    ToggleDefault = false; 
+    SliderCallback = function(Value) 
+        while _G.Walkspeed do task.wait()
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+        end
+    end;
+    ToggleCallback = function(Value) 
+        _G.Walkspeed = Value
+        if _G.Walkspeed == false then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+        end
+    end;
+    Warning = "This has a warning"; 
+    WarningIcon = 12345; 
+})
+
+Farming:CreateToggle({
+    Name = "Safe Zone anywhere";
+    Flag = "Safezone anywhere";
+    Default = false;
+    Callback = function(Value)
+        _G.GetAllMinors = Value
+        while _G.GetAllMinors do task.wait(0.8)
+            game:GetService("Workspace").Areas.Safezone.Part.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+            
+        end
+    end;
+    SavingDisabled = true; 
+})
