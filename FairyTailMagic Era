@@ -1,1 +1,588 @@
-loadstring(game:HttpGet('https://scripts.luawl.com/FTME/ShitTail:MagicEra.lua'))()
+
+local function buyitems()
+        local ohTable1 = {
+            ["Bronze Coin"] = -9999999,
+            ["Silver Coin"] = -9999999
+            }
+                
+            game:GetService("ReplicatedStorage").Remotes.Sell:FireServer(ohTable1)
+                   
+            local ohString1 = "Mana Training"
+            local ohNumber2 = 15
+            
+            game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(ohString1, ohNumber2)
+            local ohString1 = "Squat Training"
+            local ohNumber2 = 15
+            
+            game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(ohString1, ohNumber2)
+            local ohString1 = "Situp Training"
+            local ohNumber2 = 15
+            
+            game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(ohString1, ohNumber2)
+            local ohString1 = "Pushup Training"
+            local ohNumber2 = 15
+            
+            game:GetService("ReplicatedStorage").Remotes.Purchase:FireServer(ohString1, ohNumber2)
+            local args = {
+                [1] = "Magic Book IV",
+                [2] = 2
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Purchase"):FireServer(unpack(args))     
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Sell"):FireServer(unpack(args))
+end
+local Atlas = loadstring(game:HttpGet("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Modify"))()
+local UI = Atlas.new({
+    Name = "Awaken#6969  | ShitTale:Magic Poop Era"; 
+    ConfigFolder = "Fairy TailMagic Era"; 
+    Credit = "Made By Awaken#6969"; 
+    Color = Color3.fromRGB(31, 153, 209 );  
+    Bind = "LeftAlt"; 
+    UseLoader = false; 
+    FullName = "Awaken"; 
+    CheckKey = function(inputtedKey) 
+        return inputtedKey=="Awaken#6969"
+    end;
+    Discord = "discord.gg/altraxshub"; 
+})
+
+local Farming = UI:CreatePage("Farming")
+local Farming = Farming:CreateSection("Farming")
+
+local info3 = Farming:CreateParagraph("| Farming Functions 💀")
+
+local username = game:GetService("Players").LocalPlayer.Name
+Farming:CreateButton({
+    Name = "Fast Reset",
+    Callback = function()
+        game:GetService("Workspace").Live[username].Torso.Neck:Destroy()
+end;
+})
+Farming:CreateToggle({
+    Name = "Auto SafeZone when damaged";
+    Flag = "ssfasssafas";
+    Default = false;
+    Callback = function(Value)
+        _G.CaFarms = Value
+        while _G.CaFarms do task.wait(0.8)
+            if game:GetService('Players').LocalPlayer.Character.Humanoid.Health ~= 100 then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(514.1011352539062, 16.64599609375, -636.3023681640625)
+            end
+        end
+    end;
+    SavingDisabled = true; 
+})
+
+Farming:CreateButton({
+    Name = "TP to random coin",
+    Callback = function()
+        for i,v in pairs(game:GetService("Workspace").Trinkets:GetChildren()) do
+            if v:FindFirstChild("ClickPart") then
+              local path = v
+              for i,o in pairs(v:GetChildren()) do
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.ClickPart.CFrame
+              end
+            end
+        end
+end;
+})
+Farming:CreateToggle({
+    Name = "Buy Inf All Items";
+    Flag = "Get All mirrors";
+    Default = false;
+    Callback = function(Value)
+        _G.GetAllMinors = Value
+        while _G.GetAllMinors do task.wait(0.8)
+            buyitems()
+
+        end
+    end;
+    SavingDisabled = true; 
+})
+
+
+Farming:CreateSliderToggle({ 
+    Name = "WalkSpeed"; 
+    SliderFlag = "WalkspeedFlag"; 
+    ToggleFlag = "Toggle";
+    Min = 16; 
+    Max = 600; 
+    AllowOutOfRange = false; 
+    Digits = 3; 
+    SliderDefault = 16; 
+    ToggleDefault = false; 
+    SliderCallback = function(Value) 
+        while _G.Walkspeed do task.wait()
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+        end
+    end;
+    ToggleCallback = function(Value) 
+        _G.Walkspeed = Value
+        if _G.Walkspeed == false then
+            game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+        end
+    end;
+    Warning = "This has a warning"; 
+    WarningIcon = 12345; 
+})
+
+--[[
+Auto:CreateDropdown("Select Mob", {"Wolf", "Dire Wolf", "Polar Bear", "Enibras, The Demon Walker", "Cavern Warrior", "Bone Tyrant", "Orc", "Hleam Eyes", "Scorpion", "Thonk, The Orc Lord", "G-Knight", "Conjured Skeleton Guardian", "Golem", "Abu", "Rog, The Bearded One", "Vedalia"}, nil,  0.25, function(sel)
+    mob = sel
+    Library:CreateNotification("Seleted Mob :", mob, 5)
+end)
+
+Auto:CreateToggle("AutoFarm Selected Mob",false, Color3.fromRGB(0, 125, 255), 0.25, function(value)
+    getgenv().farm = value
+    while wait() do
+        if not getgenv().farm then break end
+        pcall(function()
+          local RunService = game:GetService("RunService")
+          while RunService.RenderStepped:Wait() and getgenv().farm == true do
+              for i, v in pairs(game:GetService("Workspace").NPCS:GetChildren()) do
+                  if v.Name == mob and v:FindFirstChild("HumanoidRootPart") then
+                     if v:FindFirstChild("Health").Value <= 15 then
+                         v:Destroy()
+                     end 
+                      if v:FindFirstChild("Humanoid") then
+                          if v:FindFirstChild("Humanoid").Health > 0 then
+                              if game:GetService("Players").LocalPlayer.Character then
+                                  if game:GetService("Players").LocalPlayer.Character.Humanoid and game:GetService("Players").LocalPlayer.Character.HumanoidRootPart then
+                                      game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame * CFrame.new(zs,xs,ys)
+                                  end
+                              end
+                          end
+                      end
+                  end
+              end
+          end
+      end)
+    end
+end)
+
+Auto:CreateSlider("Distance Z",0,-10,0,Color3.fromRGB(0, 125, 255), function(value)
+    zs = value
+ end)
+Auto:CreateSlider("Distance X",0,-10,0,Color3.fromRGB(0, 125, 255), function(value)
+    xs = value
+ end)
+Auto:CreateSlider("Distance Y",0,-10,0,Color3.fromRGB(0, 125, 255), function(value)
+    ys = value
+end)
+--]]
+
+local function startquest()
+    
+    local ohString1 = "Start"
+    local ohTable2 = {
+        ["Name"] = "find_missing_cat"
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.Quest:FireServer(ohString1, ohTable2)
+end
+local function startquest()
+    
+    local ohString1 = "Start"
+    local ohTable2 = {
+        ["Name"] = "find_missing_cat"
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.Quest:FireServer(ohString1, ohTable2)
+end
+
+local function throwagain()
+    game:GetService("Workspace").QuestData["Cat Locations"]:findFindFirstChild('Cat')
+    if not game:GetService("Workspace").QuestData["Cat Locations"]:FindFirstChild('Cat') then
+        startquest()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(514.1011352539062, 16.64599609375, -636.3023681640625)
+    elseif game:GetService("Workspace").QuestData["Cat Locations"]:FindFirstChild('Cat') then
+        startquest() 
+         wait(0.8)
+         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").QuestData["Cat Locations"].Cat.CFrame
+         game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").QuestData["Cat Locations"].Cat.CFrame
+         local clickdetector = game:GetService("Workspace").QuestData["Cat Locations"].Cat.ClickDetector
+         fireclickdetector(clickdetector)      
+    end
+end
+Farming:CreateToggle({
+    Name = "Auto Cat Quest";
+    Flag = "ssfagsaas";
+    Default = false;
+    Callback = function(Value)
+        _G.CatFarm = Value
+        while _G.CatFarm do task.wait(0.8)
+            startquest()  
+            throwagain()
+        end
+    end;
+    SavingDisabled = true; 
+})
+local function throwsafezone()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(514.1011352539062, 16.64599609375, -636.3023681640625)
+end
+local function startletter()
+    local args = {
+        [1] = "Start",
+        [2] = {
+            ["Name"] = "letter_hospital"
+        }
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Quest"):FireServer(unpack(args))
+end
+local function endletter()
+    local args = {
+        [1] = "AddProg",
+        [2] = "letter_hospital"
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Quest"):FireServer(unpack(args))
+end
+local function throwendletterzone()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(235.53775024414062, 41.33052062988281, -97.52354431152344)
+end
+
+Farming:CreateToggle({
+    Name = "Auto Letter Farm";
+    Flag = "ssgass";
+    Default = false;
+    Callback = function(Value)
+        _G.LetterFarm = Value
+        while _G.LetterFarm do task.wait(0.8)
+            throwsafezone()
+            startletter()
+            startletter()
+            wait(1)
+            throwendletterzone()
+            throwendletterzone()
+            endletter()
+            wait(1)
+            endletter()
+            wait(1)
+            endletter()
+            wait(1)
+            endletter()
+        end
+    end;
+    SavingDisabled = true; 
+})
+local function getlogquest()
+    local args = {
+        [1] = "Start",
+        [2] = {
+            ["Name"] = "log_quest"
+        }
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Quest"):FireServer(unpack(args))
+    
+end
+local N=game:GetService("VirtualInputManager")
+local function AutoFarmLog()
+    wait(0.10)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(728.6914672851562, 24.748558044433594, 581.1959228515625)
+    
+    N:SendKeyEvent(true,"E",false,game)
+    N:SendKeyEvent(true,"E",false,game)
+    wait(2.5)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(754.4818115234375, 24.748558044433594, 577.2650756835938)
+    local args = {
+        [1] = 2
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CollectLog"):FireServer(unpack(args))
+    N:SendKeyEvent(true,"E",false,game)
+    N:SendKeyEvent(true,"E",false,game)
+    wait(2.5)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(742.3889770507812, 24.748558044433594, 544.8399047851562)
+    local args = {
+        [1] = 3
+    }
+    game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CollectLog"):FireServer(unpack(args))
+    N:SendKeyEvent(true,"E",false,game)
+    N:SendKeyEvent(true,"E",false,game)
+    wait(2.5)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(710.8258666992188, 32.596519470214844, 225.7753448486328)
+end
+
+Farming:CreateToggle({
+    Name = "Auto Log Quest";
+    Flag = "agas";
+    Default = false;
+    Callback = function(Value)
+        _G.LetterFarm = Value
+        while _G.LetterFarm do task.wait(0.8)
+            getlogquest()
+            getlogquest()
+            AutoFarmLog()
+        end
+    end;
+    SavingDisabled = true; 
+})
+
+local Spin = UI:CreatePage("Farming")
+local Spin = Spin:CreateSection("Farming")
+
+Spin:CreateDropdown({
+    Name = "Select Element"; 
+    Callback = function(selectedele)   
+        sel = selectedele
+    end;
+    Options = ele; 
+    ItemSelecting = true; 
+    DefaultItemSelected = "None"; 
+   
+    Warning = "Select Element to roll"; 
+    WarningIcon = 12345; 
+})
+
+Spin:CreateToggle({
+    Name = "Roll for Selected Element";
+    Flag = "Spinssssssssss";
+    Default = false;
+    Callback = function(Value)
+        getgenv().AutoSpin = Value
+        while getgenv().AutoSpin do task.wait()
+            for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.RerollElement.Root.Roll.Main.MouseButton1Click)) do
+            v:Fire()
+         end
+         local args = {
+            [1] = false
+         }
+        
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Spin"):InvokeServer(unpack(args))
+         if game:GetService("Players").LocalPlayer.Data.Element.Value == sel then 
+            rconsoleinfo('Got Selected Element: '..sel..' Rejoing..')
+            getgenv().AutoSpin = Value
+            throwrejoin()
+            break
+         end   
+        end
+    end;
+    SavingDisabled = true; 
+})
+
+local Teleports = UI:CreatePage("Teleports")
+local Teleports = Teleports:CreateSection("Teleports")
+
+
+local Npctp = Teleports:CreateDropdown({
+    Name = "Npc List"; 
+    Callback = function(Option) 
+        if Option == "Ninja" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(948.3367919921875, 56.69647216796875, 608.70068359375)
+        elseif Option == "Assassin" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(899.8163452148438, 176.6869354248047, 836.9574584960938)
+        elseif Option == "Axy" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-826.1127319335938, 53.38880920410156, -126.44485473632812)
+        elseif Option == "Carter" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(180.4766387939453, 30.11676788330078, -721.9611206054688)
+        elseif Option == "Cole" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(878.7822875976562, 73.18368530273438, -189.85536193847656)
+        elseif Option == "Garnith" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3410.531494140625, 211.50234985351562, -264.29925537109375)
+        elseif Option == "Natsuo" then
+            tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(5.5, Enum.EasingStyle.Linear)
+tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(-3459.390625, 6.187412261962891, -1988.993408203125)}):Play()
+        elseif Option == "George" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(655.5431518554688, 30.24151611328125, -216.57347106933594)
+        elseif Option == "Helper NPC" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(315.65911865234375, 42.64839172363281, -526.5582885742188)
+        elseif Option == "Irokhul" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2191.234130859375, 179.2938232421875, -2255.124267578125)
+        elseif Option == "Lumber Jack" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(763.0740356445312, 30.052093505859375, 681.7330932617188)
+        elseif Option == "Magic Books Dealer" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1196.829833984375, 80.8782730102539, -132.3292999267578)
+        elseif Option == "No" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(405.2562255859375, 41.783233642578125, -484.13134765625)
+        elseif Option == "Traning Npc" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1139.270263671875, 58.14424133300781, 631.4796752929688)
+        end
+    end;
+    Options = {"Ninja", "Assassin",'Axy','Carter','Cole','Garnith','Natsuo','George','Helper NPC','Irokhul','Magic Books Dealer','No','Traning Npc','Soon','Soon','Soon','Soon','Soon'}; 
+    ItemSelecting = true; 
+    DefaultItemSelected = "None"; 
+   
+    Warning = "Teleports to npc"; 
+    WarningIcon = 12345; 
+})
+local Spin = UI:CreatePage("Spin")
+local Spin = Spin:CreateSection("Spin")
+local function throwrejoin()
+    local ts = game:GetService("TeleportService")
+
+   local p = game:GetService("Players").LocalPlayer
+
+   ts:Teleport(game.PlaceId, p)
+end
+
+local function throwsafety()
+local safetystop = {
+    "UpdateSetting",
+    "UpdateSlotData",
+    "Codes",
+    "Claim",
+    'Remotes',
+}
+
+local Events = {
+    Fire = true, 
+    Invoke = true, 
+    FireServer = true, 
+    InvokeServer = true,
+    OnClientEvent = true,
+}
+
+local gameMeta = getrawmetatable(game)
+local psuedoEnv = {
+    ["__index"] = gameMeta.__index,
+    ["__namecall"] = gameMeta.__namecall;
+}
+setreadonly(gameMeta, false)
+gameMeta.__index, gameMeta.__namecall = newcclosure(function(self, index, ...)
+    if Events[index] then
+        if table.find(safetystop, self.Name) and not checkcaller() and getnilinstances() then
+            return workspace:WaitForChild("Awaken<3")
+        end
+    end
+    return psuedoEnv.__index(self, index, ...)
+end)
+setreadonly(gameMeta, true)
+end
+local function throwredeem()
+    local codes = {"Ritual","CodeFix","Likes600", 'Likes2000'}
+            for i,v in pairs(codes) do
+                local args = {
+                [1] = "Claim",
+                [2] = {
+                    ["CodeName"] = v
+                }
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Codes"):FireServer(unpack(args))
+            end---thanks for method by vilmom#0161
+end
+local function afterrejoin(str)
+    if identifyexecutor() == "Synapse X" then
+        pcall(function()
+            syn.queue_on_teleport(str)
+        end)
+    else 
+        local suc,err = pcall(function() queue_on_teleport(str) end)
+        if err then
+            print("Error occured, trying again...")
+            local suc,eror = pcall(function() queue_on_teleport(str) end)
+                        if eror then print("Cant queue teleport") end
+        end
+    end
+queue_on_teleport( 
+_G.Spin == true,
+loadstring(game:HttpGet('https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Fairy%20Tail%3A%20Magic%20Era'))()
+)
+end
+_G.Spin = false
+Spin:CreateToggle({
+    Name = "Inf spins(rejoin method)";
+    Flag = "Spin";
+    Default = false;
+    Callback = function(Value)
+        _G.Spin = Value
+        while _G.Spin do task.wait()
+            throwredeem()
+            throwrejoin()
+            throwsafety()
+            afterrejoin()
+        end
+    end;
+    SavingDisabled = false; 
+})
+
+local ele = {
+    'Bullet',
+    'Water',
+    'Speed',
+    'Healing',
+    'Earth',
+    'Fire',
+    'Poison',
+    'Sleep',
+    'Gravity',
+    'Wind',
+    'kings Flame',
+    'Foresight',
+    'Iron Dragon Slayer',
+    'Fire Dragon Slayer',
+    'Juncture',
+    'Thunder Dragon Slayer',
+    'Shadow Dragon Slayer',
+    'Heavenly Body',
+    'Ice-Make',
+    'Amatarasu',
+}
+
+Spin:CreateDropdown({
+    Name = "Select Element"; 
+    Callback = function(selectedele)   
+        sel = selectedele
+    end;
+    Options = ele; 
+    ItemSelecting = true; 
+    DefaultItemSelected = "None"; 
+   
+    Warning = "Select Element to roll"; 
+    WarningIcon = 12345; 
+})
+
+Spin:CreateToggle({
+    Name = "Roll for Selected Element";
+    Flag = "Spinssssssssss";
+    Default = false;
+    Callback = function(Value)
+        getgenv().AutoSpin = Value
+        while getgenv().AutoSpin do task.wait()
+            for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.RerollElement.Root.Roll.Main.MouseButton1Click)) do
+            v:Fire()
+         end
+         local args = {
+            [1] = false
+         }
+        
+         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Spin"):InvokeServer(unpack(args))
+         if game:GetService("Players").LocalPlayer.Data.Element.Value == sel then 
+            rconsoleinfo('Got Selected Element: '..sel..' Rejoing..')
+            getgenv().AutoSpin = Value
+            throwrejoin()
+            break
+         end   
+        end
+    end;
+    SavingDisabled = true; 
+})
+
+
+local Part = Instance.new('Part',workspace)
+Part.Name = "poopy"
+Part.Size = Vector3.new(1000,0,1000)
+Part.Anchored = true
+Part.Transparency = 0
+Part.CFrame = CFrame.new(Vector3.new(754.0173950195312, 21.72356414794922, 567.2393798828125))
+local noclip = true
+    local player = game.Players.LocalPlayer
+    local character = player.Character or player.CharacterAdded:Wait()
+    plr = game.Players.LocalPlayer
+    
+    while true do
+        player = game.Players.LocalPlayer
+        character = player.Character
+    
+            for _, v in pairs(character:GetDescendants()) do
+                pcall(function()
+                    if v:IsA("BasePart") then
+                        v.CanCollide = false
+                    end
+                end)
+            end
+    
+        game:GetService("RunService").Stepped:wait()
+    end
