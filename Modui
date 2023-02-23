@@ -11,14 +11,6 @@ local plr = Players.LocalPlayer
 
 local mouse = plr:GetMouse()
 
-if not LPH_OBFUSCATED then
-    local function r(f)
-        return f
-    end
-    LPH_JIT_MAX = r
-    LPH_NO_VIRTUALIZE = r
-    LPH_JIT = r
-end
 
 local Library = {}
 
