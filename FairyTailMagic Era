@@ -320,8 +320,8 @@ Farming:CreateToggle({
     SavingDisabled = true; 
 })
 
-local Spin = UI:CreatePage("Farming")
-local Spin = Spin:CreateSection("Farming")
+local Spin = UI:CreatePage("Spin")
+local Spin = Spin:CreateSection("Spin")
 
 Spin:CreateDropdown({
     Name = "Select Element"; 
