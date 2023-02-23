@@ -192,7 +192,6 @@ local function startquest()
 end
 
 local function throwagain()
-    game:GetService("Workspace").QuestData["Cat Locations"]:findFindFirstChild('Cat')
     if not game:GetService("Workspace").QuestData["Cat Locations"]:FindFirstChild('Cat') then
         startquest()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(514.1011352539062, 16.64599609375, -636.3023681640625)
