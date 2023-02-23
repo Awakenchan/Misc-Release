@@ -323,6 +323,99 @@ Farming:CreateToggle({
 local Spin = UI:CreatePage("Spin")
 local Spin = Spin:CreateSection("Spin")
 
+local function throwrejoin()
+    local ts = game:GetService("TeleportService")
+
+   local p = game:GetService("Players").LocalPlayer
+
+   ts:Teleport(game.PlaceId, p)
+end
+
+local function throwsafety()
+local safetystop = {
+    "UpdateSetting",
+    "UpdateSlotData",
+    "Codes",
+    "Claim",
+    'Remotes',
+}
+
+local Events = {
+    Fire = true, 
+    Invoke = true, 
+    FireServer = true, 
+    InvokeServer = true,
+    OnClientEvent = true,
+}
+
+local gameMeta = getrawmetatable(game)
+local psuedoEnv = {
+    ["__index"] = gameMeta.__index,
+    ["__namecall"] = gameMeta.__namecall;
+}
+setreadonly(gameMeta, false)
+gameMeta.__index, gameMeta.__namecall = newcclosure(function(self, index, ...)
+    if Events[index] then
+        if table.find(safetystop, self.Name) and not checkcaller() and getnilinstances() then
+            return workspace:WaitForChild("Awaken<3")
+        end
+    end
+    return psuedoEnv.__index(self, index, ...)
+end)
+setreadonly(gameMeta, true)
+end
+local function throwredeem()
+    local codes = {"Ritual","CodeFix","Likes600", 'Likes2000'}
+            for i,v in pairs(codes) do
+                local args = {
+                [1] = "Claim",
+                [2] = {
+                    ["CodeName"] = v
+                }
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("Codes"):FireServer(unpack(args))
+            end---thanks for method by vilmom#0161
+end
+
+Spin:CreateToggle({
+    Name = "Inf spins(rejoin method)";
+    Flag = "Ssesa";
+    Default = false;
+    Callback = function(Value)
+        _G.Spin = Value
+        while _G.Spin do task.wait()
+            throwredeem()
+            throwrejoin()
+            throwsafety()
+            afterrejoin()
+        end
+    end;
+    SavingDisabled = true; 
+})
+
+local ele = {
+    'Bullet',
+    'Water',
+    'Speed',
+    'Healing',
+    'Earth',
+    'Fire',
+    'Poison',
+    'Sleep',
+    'Gravity',
+    'Wind',
+    'kings Flame',
+    'Foresight',
+    'Iron Dragon Slayer',
+    'Fire Dragon Slayer',
+    'Juncture',
+    'Thunder Dragon Slayer',
+    'Shadow Dragon Slayer',
+    'Heavenly Body',
+    'Ice-Make',
+    'Amatarasu',
+}
 Spin:CreateDropdown({
     Name = "Select Element"; 
     Callback = function(selectedele)   
