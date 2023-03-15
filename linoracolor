@@ -5,7 +5,7 @@ local ThemeManager = {} do
 
 	ThemeManager.Library = nil
 	ThemeManager.BuiltInThemes = {
-		['Default'] 		= { 1, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1c1c1c","AccentColor":"0055ff","BackgroundColor":"141414","OutlineColor":"323232"}') },
+		['Default'] 		= { 1, httpService:JSONDecode('{"FontColor":"698bbe","MainColor":"1b1e24","AccentColor":"3b629b","BackgroundColor":"1b1c1e","OutlineColor":"303a48"}') },
 		['Dracula'] 		= { 2, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"232533","AccentColor":"6271a5","BackgroundColor":"1b1c27","OutlineColor":"7c82a7"}') },
 		['Bitch Bot'] 		= { 3, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"1e1e1e","AccentColor":"7e48a3","BackgroundColor":"232323","OutlineColor":"141414"}') },
 		['Kiriot Hub'] 		= { 4, httpService:JSONDecode('{"FontColor":"ffffff","MainColor":"30333b","AccentColor":"ffaa00","BackgroundColor":"1a1c20","OutlineColor":"141414"}') },
@@ -38,11 +38,11 @@ local ThemeManager = {} do
 	end
 
 	function ThemeManager:ThemeUpdate()
-		self.Library.FontColor = 35, 36, 42 
-		self.Library.MainColor = 38, 39, 43
-		self.Library.AccentColor = 114, 139, 213
-		self.Library.BackgroundColor = 40, 47, 64
-		self.Library.OutlineColor = 98, 127, 193
+		self.Library.FontColor = Options.FontColor.Value
+		self.Library.MainColor = Options.MainColor.Value
+		self.Library.AccentColor = Options.AccentColor.Value
+		self.Library.BackgroundColor = Options.BackgroundColor.Value
+		self.Library.OutlineColor = Options.OutlineColor.Value
 
 		self.Library.AccentColorDark = self.Library:GetDarkerColor(self.Library.AccentColor);
 		self.Library:UpdateColorsUsingRegistry()
