@@ -38,11 +38,11 @@ local ThemeManager = {} do
 	end
 
 	function ThemeManager:ThemeUpdate()
-		self.Library.FontColor = Options.FontColor.Value
-		self.Library.MainColor = Options.MainColor.Value
-		self.Library.AccentColor = Options.AccentColor.Value
-		self.Library.BackgroundColor = Options.BackgroundColor.Value
-		self.Library.OutlineColor = Options.OutlineColor.Value
+		self.Library.FontColor = 35, 36, 42 
+		self.Library.MainColor = 38, 39, 43
+		self.Library.AccentColor = 114, 139, 213
+		self.Library.BackgroundColor = 40, 47, 64
+		self.Library.OutlineColor = 98, 127, 193
 
 		self.Library.AccentColorDark = self.Library:GetDarkerColor(self.Library.AccentColor);
 		self.Library:UpdateColorsUsingRegistry()
@@ -76,11 +76,11 @@ local ThemeManager = {} do
 	end
 
 	function ThemeManager:CreateThemeManager(groupbox)
-		groupbox:AddLabel('Background color'):AddColorPicker('BackgroundColor', { Default = 35, 36, 42 });
-		groupbox:AddLabel('Main color')	:AddColorPicker('MainColor', { Default = 38, 39, 43 });
-		groupbox:AddLabel('Accent color'):AddColorPicker('AccentColor', { Default = 114, 139, 213 });
-		groupbox:AddLabel('Outline color'):AddColorPicker('OutlineColor', { Default = 40, 47, 64 });
-		groupbox:AddLabel('Font color')	:AddColorPicker('FontColor', { Default = 98, 127, 193 });
+		groupbox:AddLabel('Background color'):AddColorPicker('BackgroundColor', { Default = self.Library.BackgroundColor });
+		groupbox:AddLabel('Main color')	:AddColorPicker('MainColor', { Default = self.Library.MainColor });
+		groupbox:AddLabel('Accent color'):AddColorPicker('AccentColor', { Default = self.Library.AccentColor });
+		groupbox:AddLabel('Outline color'):AddColorPicker('OutlineColor', { Default = self.Library.OutlineColor });
+		groupbox:AddLabel('Font color')	:AddColorPicker('FontColor', { Default = self.Library.FontColor });
 
 		local ThemesArray = {}
 		for Name, Theme in next, self.BuiltInThemes do
