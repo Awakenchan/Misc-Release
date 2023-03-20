@@ -49,18 +49,15 @@ local AutoSpin = false
 Toggles.AutoSpin:OnChanged(function(value)
     AutoSpin = value
    if (value) then
-    getgenv().AutoSpin = true
-    while getgenv().AutoSpin do task.wait()
-        getgenv().AutoSpin = Value
-        while getgenv().AutoSpin do task.wait()
-            autospin()
-         if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == selected then 
-            rconsoleinfo('Got Selected Element: '..sel..' Rejoing..')
-            getgenv().AutoSpin = Value
-            throwrejoin()
-            break
-         end   
-        end
+        getgenv().AutoSpin = true
+     while getgenv().AutoSpin do task.wait()
+        autospin()
+        if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == selected then 
+           rconsoleinfo('Got Selected Element: '..sel..' Rejoing..')
+           getgenv().AutoSpin = Value
+           throwrejoin()
+           break
+        end   
     end
    else
     getgenv().AutoSpin = false
