@@ -44,6 +44,7 @@ Spin:CreateToggle("myTogglessssss",{
            autospin()
            if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == sel then 
               getgenv().AutoSpin = false
+              rconsoleinfo('Got selected fruit: '..sel)
               break
            end   
        end
