@@ -14,10 +14,11 @@ local Tabs = {
 }
 local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Player')
 
-
 local fruits = {
     'Dough',
     'Dragon',
+    'Rubber',
+    'Darkness',
 }
 
 LeftGroupBox:AddDropdown('SelectFruit', {
@@ -53,7 +54,7 @@ Toggles.AutoSpin:OnChanged(function(value)
      while getgenv().AutoSpin do task.wait()
         autospin()
         if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == selected then 
-           rconsoleinfo('Got Selected Element: '..sel..' Rejoing..')
+            Library:Notify('Got Selected Fruit: '..selected, 5)
            getgenv().AutoSpin = Value
            throwrejoin()
            break
