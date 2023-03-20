@@ -30,6 +30,9 @@ local fruits = {
     'Barrier',
     'Phoenix',
     'Quake',
+    'Paw',
+    'Flame',
+    'TSRubber',
 }
 
 Spin:CreateDropdown("Slot", {
