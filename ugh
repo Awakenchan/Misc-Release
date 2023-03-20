@@ -32,7 +32,7 @@ local fruits = {
 
 
 Spin:CreateDropdown("mySelecdownssss", {
-    Name = "Select Cum on Awakne Fruit"; 
+    Name = "select cum fruits"; 
     Values = fruits;
     SelectType = "Multi";
     Callback = function(selectedele)   
