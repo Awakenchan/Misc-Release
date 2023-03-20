@@ -55,8 +55,7 @@ Toggles.AutoSpin:OnChanged(function(value)
         autospin()
         if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == selected then 
             Library:Notify('Got Selected Fruit: '..selected, 5)
-           getgenv().AutoSpin = Value
-           throwrejoin()
+           getgenv().AutoSpin = false
            break
         end   
     end
