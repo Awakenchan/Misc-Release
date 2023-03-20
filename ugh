@@ -12,11 +12,15 @@ local Spin = Spin:CreateLeftSection("Spin")
 
 local function autospin()
     local args = {
-    [1] = "FruitsHandler",
-    [2] = "Spin",
-    [3] = {}
-}
-game:GetService("ReplicatedStorage"):WaitForChild("Replicator"):InvokeServer(unpack(args))
+        [1] = "FruitsHandler",
+        [2] = "Spin",
+        [3] = {
+            ["Type"] = "Fast"
+        }
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("Replicator"):InvokeServer(unpack(args))
+    
 end
 local fruits = {
     'Dough',
