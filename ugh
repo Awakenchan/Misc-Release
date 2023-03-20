@@ -19,6 +19,7 @@ local fruits = {
     'Dragon',
     'Rubber',
     'Darkness',
+    'Barrier',
 }
 
 LeftGroupBox:AddDropdown('SelectFruit', {
@@ -29,10 +30,9 @@ LeftGroupBox:AddDropdown('SelectFruit', {
     Text = 'Select Fruit',
     Tooltip = 'OH MY GOD IM ABOUT TO CUM', 
 })
-Options.SelectFruit:OnChanged(function()
-    selected = Options.SelectFruit.Value 
+Options.SelectFruit:OnChanged(function(selected)
+    Options.SelectFruit.Value = selected
 end)
-
 local function autospin()
     local args = {
     [1] = "FruitsHandler",
@@ -53,8 +53,8 @@ Toggles.AutoSpin:OnChanged(function(value)
         getgenv().AutoSpin = true
      while getgenv().AutoSpin do task.wait()
         autospin()
-        if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == selected then 
-            Library:Notify('Got Selected Fruit: '..selected, 5)
+        if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == Options.SelectFruit.Value then 
+            Library:Notify('Got Selected Fruit: '..Options.SelectFruit.Value, 5)
            getgenv().AutoSpin = false
            break
         end   
