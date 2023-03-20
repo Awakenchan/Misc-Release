@@ -55,7 +55,7 @@ Spin:CreateDropdown("mySelecdownssss", {
 })
 
 Spin:CreateToggle("myTogglessssss",{
-    Name = "Roll for Selected Cum on Awakne Fruit";
+    Name = "Roll for Selected Cum Fruit";
     Callback = function(Value)
         getgenv().AutoSpin = Value
         while getgenv().AutoSpin do task.wait()
