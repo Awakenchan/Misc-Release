@@ -28,7 +28,18 @@ local fruits = {
     'Rubber',
     'Darkness',
     'Barrier',
+    'Phoenix',
+    'Quake',
 }
+
+Spin:CreateDropdown("Slot", {
+    Name = "select cum Slot"; 
+    Values = {'1','2','3','4',};
+    SelectType = "Multi";
+    Callback = function(selectedele)   
+        slot = selectedele
+    end;
+})
 
 
 Spin:CreateDropdown("mySelecdownssss", {
@@ -46,7 +57,7 @@ Spin:CreateToggle("myTogglessssss",{
         getgenv().AutoSpin = Value
         while getgenv().AutoSpin do task.wait()
            autospin()
-           if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == sel then 
+           if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots[slot].Value == sel then 
               getgenv().AutoSpin = false
               rconsoleinfo('Got selected fruit: '..sel)
               break
