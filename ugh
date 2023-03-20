@@ -1,0 +1,89 @@
+local repo = 'https://raw.githubusercontent.com/wally-rblx/LinoriaLib/main/'
+local Library = loadstring(game:HttpGet(repo .. 'Library.lua'))()
+local ThemeManager = loadstring(game:HttpGet('https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/linoracolor'))()
+local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
+Library:Notify('Welcome '..game.Players.LocalPlayer.Name, 5)
+local Window = Library:CreateWindow({
+    Title = 'FrostHub Community Script',
+    Center = true, 
+    AutoShow = true,
+})
+local Tabs = {
+    Main = Window:AddTab('Player'), 
+    ['UI Settings'] = Window:AddTab('UI Settings'),
+}
+local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Player')
+
+
+local fruits = {
+    'Dough',
+    'Dragon',
+}
+
+LeftGroupBox:AddDropdown('SelectFruit', {
+    Values = fruits,
+    Default = nil, 
+    Multi = true, 
+
+    Text = 'Select Fruit',
+    Tooltip = 'OH MY GOD IM ABOUT TO CUM', 
+})
+Options.SelectFruit:OnChanged(function()
+    selected = Options.SelectFruit.Value 
+end)
+
+local function autospin()
+    local args = {
+    [1] = "FruitsHandler",
+    [2] = "Spin",
+    [3] = {}
+}
+game:GetService("ReplicatedStorage"):WaitForChild("Replicator"):InvokeServer(unpack(args))
+end
+LeftGroupBox:AddToggle('AutoSpin', {
+    Text = 'AutoSpin',
+    Default = false, 
+    Tooltip = 'Cum with AutoSpin',
+})
+local AutoSpin = false
+Toggles.AutoSpin:OnChanged(function(value)
+    AutoSpin = value
+   if (value) then
+    getgenv().AutoSpin = true
+    while getgenv().AutoSpin do task.wait()
+        getgenv().AutoSpin = Value
+        while getgenv().AutoSpin do task.wait()
+            autospin()
+         if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == selected then 
+            rconsoleinfo('Got Selected Element: '..sel..' Rejoing..')
+            getgenv().AutoSpin = Value
+            throwrejoin()
+            break
+         end   
+        end
+    end
+   else
+    getgenv().AutoSpin = false
+   end
+end)
+
+Library:SetWatermarkVisibility(true)
+game:GetService("RunService").RenderStepped:Connect(function(frame)
+    Library:SetWatermark('Awaken#6969 | FrostHub Wining'..' | '.."Fps: " ..tostring(math.round(1/frame)))
+end)
+Library:OnUnload(function()
+    print('Unloaded!')
+    Library.Unloaded = true
+end)
+local MenuGroup = Tabs['UI Settings']:AddLeftGroupbox('Menu')
+MenuGroup:AddButton('Unload', function() Library:Unload() end)
+MenuGroup:AddLabel('Menu bind'):AddKeyPicker('MenuKeybind', { Default = 'End', NoUI = true, Text = 'Menu keybind' }) 
+Library.ToggleKeybind = Options.MenuKeybind
+ThemeManager:SetLibrary(Library)
+SaveManager:SetLibrary(Library)
+SaveManager:IgnoreThemeSettings() 
+SaveManager:SetIgnoreIndexes({ 'MenuKeybind' }) 
+ThemeManager:SetFolder('ParkourAltraxs')
+SaveManager:SetFolder('ParkourAltraxs/specific-game')
+SaveManager:BuildConfigSection(Tabs['UI Settings']) 
+ThemeManager:ApplyToTab(Tabs['UI Settings'])
