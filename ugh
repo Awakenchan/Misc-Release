@@ -43,7 +43,7 @@ Spin:CreateDropdown("mySelecdownssss", {
 Spin:CreateToggle("myTogglessssss",{
     Name = "Roll for Selected Cum on Awakne Fruit";
     Callback = function(Value)
-        getgenv().AutoSpin = value
+        getgenv().AutoSpin = Value
         while getgenv().AutoSpin do task.wait()
            autospin()
            if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == sel then 
