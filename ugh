@@ -1,38 +1,15 @@
-local repo = 'https://raw.githubusercontent.com/wally-rblx/LinoriaLib/main/'
-local Library = loadstring(game:HttpGet(repo .. 'Library.lua'))()
-local ThemeManager = loadstring(game:HttpGet('https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/linoracolor'))()
-local SaveManager = loadstring(game:HttpGet(repo .. 'addons/SaveManager.lua'))()
-Library:Notify('Welcome '..game.Players.LocalPlayer.Name, 5)
-local Window = Library:CreateWindow({
-    Title = 'FrostHub Community Script',
-    Center = true, 
-    AutoShow = true,
+local Atlas = loadstring(game:HttpGet("https://siegehub.net/Atlas_v2.lua"))()
+
+local Window = Atlas:CreateWindow({
+    Name = "Awaken#6969 | FrostHub Winning";
+    Version = "v1.0";
+    ConfigFolder = "Awaken Washere";
+    Bind = "LeftAlt";
 })
-local Tabs = {
-    Main = Window:AddTab('Player'), 
-    ['UI Settings'] = Window:AddTab('UI Settings'),
-}
-local LeftGroupBox = Tabs.Main:AddLeftGroupbox('Player')
 
-local fruits = {
-    'Dough',
-    'Dragon',
-    'Rubber',
-    'Darkness',
-    'Barrier',
-}
+local Spin = Window:CreatePage("Spin")
+local Spin = Spin:CreateLeftSection("Spin")
 
-LeftGroupBox:AddDropdown('SelectFruit', {
-    Values = fruits,
-    Default = nil, 
-    Multi = true, 
-
-    Text = 'Select Fruit',
-    Tooltip = 'OH MY GOD IM ABOUT TO CUM', 
-})
-Options.SelectFruit:OnChanged(function(selected)
-    Options.SelectFruit.Value = selected
-end)
 local function autospin()
     local args = {
     [1] = "FruitsHandler",
@@ -41,46 +18,35 @@ local function autospin()
 }
 game:GetService("ReplicatedStorage"):WaitForChild("Replicator"):InvokeServer(unpack(args))
 end
-LeftGroupBox:AddToggle('AutoSpin', {
-    Text = 'AutoSpin',
-    Default = false, 
-    Tooltip = 'Cum with AutoSpin',
-})
-local AutoSpin = false
-Toggles.AutoSpin:OnChanged(function(value)
-    AutoSpin = value
-   if (value) then
-        getgenv().AutoSpin = true
-     while getgenv().AutoSpin do task.wait()
-        autospin()
-        if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == Options.SelectFruit.Value then 
-            Library:Notify('Got Selected Fruit: '..Options.SelectFruit.Value, 5)
-           getgenv().AutoSpin = false
-           break
-        end   
-    end
-   else
-    getgenv().AutoSpin = false
-   end
-end)
+local fruits = {
+    'Dough',
+    'Dragon',
+    'Rubber',
+    'Darkness',
+    'Barrier',
+}
 
-Library:SetWatermarkVisibility(true)
-game:GetService("RunService").RenderStepped:Connect(function(frame)
-    Library:SetWatermark('Awaken#6969 | FrostHub Wining'..' | '.."Fps: " ..tostring(math.round(1/frame)))
-end)
-Library:OnUnload(function()
-    print('Unloaded!')
-    Library.Unloaded = true
-end)
-local MenuGroup = Tabs['UI Settings']:AddLeftGroupbox('Menu')
-MenuGroup:AddButton('Unload', function() Library:Unload() end)
-MenuGroup:AddLabel('Menu bind'):AddKeyPicker('MenuKeybind', { Default = 'End', NoUI = true, Text = 'Menu keybind' }) 
-Library.ToggleKeybind = Options.MenuKeybind
-ThemeManager:SetLibrary(Library)
-SaveManager:SetLibrary(Library)
-SaveManager:IgnoreThemeSettings() 
-SaveManager:SetIgnoreIndexes({ 'MenuKeybind' }) 
-ThemeManager:SetFolder('ParkourAltraxs')
-SaveManager:SetFolder('ParkourAltraxs/specific-game')
-SaveManager:BuildConfigSection(Tabs['UI Settings']) 
-ThemeManager:ApplyToTab(Tabs['UI Settings'])
+
+Spin:CreateDropdown("mySelecdownssss", {
+    Name = "Select Cum on Awakne Fruit"; 
+    Values = fruits;
+    SelectType = "Multi";
+    Callback = function(selectedele)   
+        sel = selectedele
+    end;
+})
+
+Spin:CreateToggle("myTogglessssss",{
+    Name = "Roll for Selected Cum on Awakne Fruit";
+    Callback = function(Value)
+        getgenv().AutoSpin = true
+        while getgenv().AutoSpin do task.wait()
+           autospin()
+           if game:GetService("Players").LocalPlayer.MAIN_DATA.Slots["2"].Value == sel then 
+              getgenv().AutoSpin = false
+              break
+           end   
+       end
+    end;
+    Default = false;
+})
