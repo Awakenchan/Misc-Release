@@ -328,7 +328,7 @@ local UpdateLog = Tab:Section({
 })
 
 UpdateLog:Label({
-	Name = "[+]Added Auto Hoops\n [+]Added Insta unlock Island\n [+]Added Dupe Section\n [+]Added Iland Teleport\n [+]Added UpdateLog Tab", 
+	Name = "\n [+]Added Auto Hoops\n [+]Added Insta unlock Island\n [+]Added Dupe Section\n [+]Added Iland Teleport\n [+]Added UpdateLog Tab", 
 })
 
 Library:Notify({
