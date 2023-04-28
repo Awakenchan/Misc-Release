@@ -1,0 +1,302 @@
+local function throwdupe()
+    game:GetService("Players").LocalPlayer:Kick("Duped")
+end
+
+local function throwrejoin()
+    local ts = game:GetService("TeleportService")
+
+   local p = game:GetService("Players").LocalPlayer
+
+   ts:Teleport(game.PlaceId, p)
+end
+local function throwaccept()
+    local args = {
+        [1] = "acceptTrade"
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("tradingEvent"):FireServer(unpack(args))   
+                 
+end  
+
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
+--[[
+    Library:Notify({
+		Name = "Button",
+		Text = "Clicked",
+		Icon = "rbxassetid://11401835376",
+		Duration = 3
+	})
+]]
+local Namepl = game.Players.LocalPlayer.Name
+Window = Library:Create({
+	Name = "Ninja Legends ",
+	Footer = "By Awaken#6969",
+	ToggleKey = Enum.KeyCode.RightShift,
+	LoadedCallback = function()
+		Window:TaskBarOnly(false)
+	end,
+	KeySystem = false,
+	Key = "123456",
+	MaxAttempts = 5,
+	DiscordLink = nil,
+})
+
+Window:ChangeTogglekey(Enum.KeyCode.RightShift)
+
+local Tab = Window:Tab({
+	Name = "Main",
+	Icon = "rbxassetid://11396131982",
+	Color = Color3.new(1, 0, 0)
+})
+
+local Main = Tab:Section({
+	Name = "Features"
+})
+
+
+Main:Toggle({
+	Name = "Auto Click",
+	Default = false,
+	Callback = function(value) 
+		local args = {
+            [1] = "swingKatana"
+         }   
+         getgenv().main = value
+         while getgenv().main do task.wait()
+            game:GetService("Players"):WaitForChild(Namepl):WaitForChild("ninjaEvent"):FireServer(unpack(args))
+         end
+	end
+})
+
+Main:Slider({
+	Name = "Auto Sell Wait Value",
+	Max = 10,
+	Min = 1,
+	Default = 2,
+	Callback = function(Number)
+		svalue = Number
+	end
+})
+
+Main:Toggle({
+	Name = "Auto sell",
+	Default = false,
+	Callback = function(value) 
+        getgenv().AutoSell = value
+        while getgenv().AutoSell do task.wait()
+         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(76.51787567138672, 91245.03125, 133.46510314941406)
+          task.wait(svalue)
+          game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(78.73371124267578, 91261.8828125, 124.42424011230469)
+        end
+	end
+})
+
+Main:Toggle({
+	Name = "Auto buy Belts",
+	Default = false,
+	Callback = function(value) 
+        getgenv().AutoBuyBelts = value
+        while getgenv().AutoBuyBelts do task.wait()
+            local args = {
+                [1] = "buyAllBelts",
+                [2] = "Blazing Vortex Island"
+            }
+            
+            game:GetService("Players"):WaitForChild(Namepl):WaitForChild("ninjaEvent"):FireServer(unpack(args))
+            task.wait(5)
+            
+        end
+	end
+})
+
+Main:Toggle({
+	Name = "Auto buy Swords",
+	Default = false,
+	Callback = function(value) 
+        getgenv().AutoBuySwords = value
+        while getgenv().AutoBuySwords do task.wait()
+            local args = {
+                [1] = "buyAllSwords",
+                [2] = "Blazing Vortex Island"
+            }
+            
+            game:GetService("Players"):WaitForChild(Namepl):WaitForChild("ninjaEvent"):FireServer(unpack(args))
+            
+            task.wait(5)
+        end
+	end
+})
+Main:Toggle({
+	Name = "Auto Upgrade Skills",
+	Default = false,
+	Callback = function(value) 
+        getgenv().AutoUpgradeSkils  = value
+        while getgenv().AutoUpgradeSkils do task.wait()
+            local args = {
+                [1] = "buyAllSkills",
+                [2] = "Blazing Vortex Island"
+            }
+            
+            game:GetService("Players"):WaitForChild(Namepl):WaitForChild("ninjaEvent"):FireServer(unpack(args))
+            
+            task.wait(5)
+        end
+	end
+})
+
+Main:Toggle({
+	Name = "Auto Hoops",
+	Default = false,
+	Callback = function(value) 
+        getgenv().AutoHoops = value
+        while getgenv().AutoHoops do task.wait()
+            local folder = game:GetService("Workspace").Hoops;
+
+            for i, Obj in next, folder:GetChildren() do
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Obj.CFrame
+                wait(0.1)
+            end
+        end
+	end
+})
+
+Main:Button({
+	Name = "Unlock all iland insta",
+	Callback = function()
+        local folder = game:GetService("Workspace").islandUnlockParts;
+
+        for i, Obj in next, folder:GetChildren() do
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = Obj.CFrame
+            wait(0.1)
+        end
+	end
+})
+
+Main:Label({
+	Name = "Dupe Section", -- String
+})
+Main:Label({
+	Name = "Written Instruction:\nFor Dupe you need 2 accounts\n For for accepting the trade\n One for sending the pets\n After you get 2 accounts do auto accept on accept account\n Then run dupe on pet sending acccount",
+})
+
+Main:Button({
+	Name = "See Example(ctrl+v on discord)",
+	Callback = function()
+		setclipboard('https://i.e-z.host/3q887vl1.mp4')
+	end
+})
+local function starting()
+    Library:Notify({
+		Name = "Dupe Status:",
+		Text = "Dupe Started",
+		Icon = "rbxassetid://11401835376",
+		Duration = 3
+	})
+end
+Main:Toggle({
+	Name = "Auto Accept trade",
+	Default = false,
+	Callback = function(value) 
+        getgenv().autoaccept = value
+        while getgenv().autoaccept do task.wait(0.8)
+            local args = {
+                [1] = "acceptTrade"
+            }
+            
+            game:GetService("ReplicatedStorage"):WaitForChild("rEvents"):WaitForChild("tradingEvent"):FireServer(unpack(args))   
+        end
+	end
+})
+Main:Toggle({
+	Name = "Start Dupe",
+	Default = false,
+	Callback = function(value) 
+        getgenv().dupe = value
+        while getgenv().dupe do task.wait()
+            starting()
+            throwaccept()
+            wait(0.2)
+            throwrejoin()
+            throwdupe()
+        end
+	end
+})
+
+
+--[[
+local Dropdown = Section2:Dropdown({
+	Name = "Real Dropdown",
+	Items = {1, 2, 3, 4, "XD"},
+	Callback = function(item)
+		Library:Notify({
+			Name = "Dropdown",
+			Text = item,
+			Icon = "rbxassetid://11401835376",
+			Duration = 3,
+		})
+	end
+})
+
+local Button = Section2:Button({
+	Name = "Clear dropdown",
+	Callback = function()
+		Dropdown:Clear()
+	end
+})
+
+local Button = Section2:Button({
+	Name = "Update dropdown",
+	Callback = function()
+		Dropdown:UpdateList({
+			Items = {"bruh", 1, 2, 3},
+			Replace = true
+		})
+	end
+})
+]]
+
+local Tab = Window:Tab({
+	Name = "Others",
+	Icon = "rbxassetid://11476626403",
+	Color = Color3.new(0.474509, 0.474509, 0.474509)
+})
+
+local Section = Tab:Section({
+	Name = "Miscs"
+})
+
+local Button = Section:Button({
+	Name = "Destroy library",
+	Callback = function()
+		Library:Destroy()
+	end
+})
+
+local Button = Section:Button({
+	Name = "Hide UI",
+	Callback = function()
+		Window:Toggled(false)
+		
+		task.wait(3)
+		
+		Window:Toggled(true)
+	end
+})
+
+local Button = Section:Button({
+	Name = "Task Bar Only",
+	Callback = function()
+		Window:TaskBarOnly(true)
+
+		task.wait(3)
+
+		Window:TaskBarOnly(false)
+	end
+})
+
+Library:Notify({
+    Name = "Notification:",
+    Text = "Adding more features soon | Last updated: 5:37pm 28-apr-23 by Awaken#6969",
+    Icon = "rbxassetid://11401835376",
+    Duration = 3
+})
