@@ -323,7 +323,11 @@ local Tab = Window:Tab({
 	Color = Color3.new(0.474509, 0.474509, 0.474509)
 })
 
-local Label = Section:Label({
+local UpdateLog = Tab:Section({
+	Name = "UpdateLog" -- String
+})
+
+UpdateLog:Label({
 	Name = "[+]Added Auto Hoops\n [+]Added Insta unlock Island\n [+]Added Dupe Section\n [+]Added Iland Teleport\n [+]Added UpdateLog Tab", 
 })
 
