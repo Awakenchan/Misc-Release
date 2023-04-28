@@ -318,7 +318,7 @@ local Button = Section:Button({
 })
 
 local Tab = Window:Tab({
-	Name = "UpateLog",
+	Name = "UpdateLog",
 	Icon = "rbxassetid://7072707488",
 	Color = Color3.new(0.474509, 0.474509, 0.474509)
 })
