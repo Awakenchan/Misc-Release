@@ -53,7 +53,9 @@ local Main = Tab:Section({
 	Name = "AutoFarm"
 })
 
-
+local plr = game:GetService("Players").LocalPlayer
+local backpack = plr.Backpack
+local tool = backpack:FindFirstChild("1")
 Main:Toggle({
 	Name = "Auto Click",
 	Default = false,
@@ -62,6 +64,11 @@ Main:Toggle({
             [1] = "swingKatana"
          }   
          getgenv().main = value
+         if value == true then
+            if tool then
+             plr.Character.Humanoid:EquipTool(tool)
+            end
+        end
          while getgenv().main do task.wait()
             game:GetService("Players"):WaitForChild(Namepl):WaitForChild("ninjaEvent"):FireServer(unpack(args))
          end
