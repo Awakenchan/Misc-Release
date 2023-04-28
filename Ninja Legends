@@ -164,7 +164,7 @@ local Teleport = Tab:Section({
 })
 
 Teleport:Dropdown({
-	Name = "Teleport to Iland",
+	Name = "Teleport to islands",
 	Items = {'Astral Island','Ancient Inferno Island',"Blazing Vortex Island","Chaos Legends Island","Cybernetic Legends Island","Dark Elements Island","Dragon Legend Island","Enchanted Island","Eternal Island","Midnight Shadow Island","Mystical Island","Sandstorm","Skystorm Ultraus Island","Soul Fusion Island","Space Island","Thunderstorm","Winter Wonder Island","Golden Master Island"},
 	Callback = function(sel)
         if sel == "Enchanted Island" then
@@ -212,7 +212,7 @@ Teleport:Dropdown({
 })
 
 Teleport:Button({
-	Name = "Unlock all iland insta",
+	Name = "Unlock all islands Insta",
 	Callback = function()
         local folder = game:GetService("Workspace").islandUnlockParts;
 
