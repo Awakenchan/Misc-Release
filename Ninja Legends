@@ -46,11 +46,11 @@ Window:ChangeTogglekey(Enum.KeyCode.RightShift)
 local Tab = Window:Tab({
 	Name = "Main",
 	Icon = "rbxassetid://11396131982",
-	Color = Color3.new(1, 0, 0)
+	Color = Color3.new(0.474509, 0.474509, 0.474509)
 })
 
 local Main = Tab:Section({
-	Name = "Features"
+	Name = "AutoFarm"
 })
 
 
@@ -160,7 +160,59 @@ Main:Toggle({
 	end
 })
 
-Main:Button({
+local Teleport = Tab:Section({
+	Name = "Teleport"
+})
+
+Teleport:Dropdown({
+	Name = "Teleport to Iland",
+	Items = {'Astral Island','Ancient Inferno Island',"Blazing Vortex Island","Chaos Legends Island","Cybernetic Legends Island","Dark Elements Island","Dragon Legend Island","Enchanted Island","Eternal Island","Midnight Shadow Island","Mystical Island","Sandstorm","Skystorm Ultraus Island","Soul Fusion Island","Space Island","Thunderstorm","Winter Wonder Island","Golden Master Island"},
+	Callback = function(sel)
+        if sel == "Enchanted Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(89.42432403564453, 765.4537353515625, -143.59664916992188)
+        elseif sel == "Ancient Inferno Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(140.93934631347656, 28255.568359375, 66.01368713378906)
+        elseif sel == "Astral Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(231.18875122070312, 2011.81103515625, 267.81439208984375)
+        elseif sel == "Blazing Vortex Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(140.050048828125, 91243.859375, 66.48097229003906)
+        elseif sel == "Chaos Legends Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(140.08700561523438, 74493.0234375, 66.49698638916016)
+        elseif sel == "Cybernetic Legends Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(140.4621124267578, 66682.1953125, 67.1818618774414)
+        elseif sel == "Dark Elements Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(140.08233642578125, 83196.7734375, 66.5032958984375)
+        elseif sel == "Dragon Legend Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(139.96971130371094, 59593.94921875, 66.40906524658203)
+        elseif sel == "Midnight Shadow Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(140.10267639160156, 33213.54296875, 66.53306579589844)
+        elseif sel == "Mystical Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(155.55892944335938, 4044.652099609375, 29.2349853515625)
+        elseif sel == "Sandstorm" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(141.9872589111328, 17685.806640625, 72.41555786132812)
+        elseif sel == "Skystorm Ultraus Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(140.09323120117188, 70276.703125, 66.505615234375)
+        elseif sel == "Soul Fusion Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(140.0950469970703, 79751.171875, 66.51760864257812)
+        elseif sel == "Space Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(142.0106201171875, 5655.595703125, 72.41039276123047)
+        elseif sel == "Thunderstorm" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(149.52584838867188, 24068.08984375, 48.70173263549805)
+        elseif sel == "Winter Wonder Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(140.099609375, 46017.77734375, 66.53462219238281)
+        elseif sel == "Golden Master Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(140.10923767089844, 52607.1171875, 66.5099105834961)
+        elseif sel == "Eternal Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(142.00997924804688, 13677.91015625, 72.44153594970703)
+        elseif sel == "Inner Peace Island" then 
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(140.09303283691406, 87050.7109375, 66.51351928710938)
+        elseif sel == "Thundra Island" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(141.95755004882812, 9282.9638671875, 72.04279327392578)
+        end
+	end
+})
+
+Teleport:Button({
 	Name = "Unlock all iland insta",
 	Callback = function()
         local folder = game:GetService("Workspace").islandUnlockParts;
@@ -172,14 +224,18 @@ Main:Button({
 	end
 })
 
-Main:Label({
+local Dupe = Tab:Section({
+	Name = "Dupe"
+})
+
+Dupe:Label({
 	Name = "Dupe Section", -- String
 })
-Main:Label({
+Dupe:Label({
 	Name = "Written Instruction:\nFor Dupe you need 2 accounts\n For for accepting the trade\n One for sending the pets\n After you get 2 accounts do auto accept on accept account\n Then run dupe on pet sending acccount",
 })
 
-Main:Button({
+Dupe:Button({
 	Name = "See Example(ctrl+v on discord)",
 	Callback = function()
 		setclipboard('https://i.e-z.host/3q887vl1.mp4')
@@ -193,7 +249,7 @@ local function starting()
 		Duration = 3
 	})
 end
-Main:Toggle({
+Dupe:Toggle({
 	Name = "Auto Accept trade",
 	Default = false,
 	Callback = function(value) 
@@ -207,7 +263,7 @@ Main:Toggle({
         end
 	end
 })
-Main:Toggle({
+Dupe:Toggle({
 	Name = "Start Dupe",
 	Default = false,
 	Callback = function(value) 
@@ -221,39 +277,6 @@ Main:Toggle({
         end
 	end
 })
-
-
---[[
-local Dropdown = Section2:Dropdown({
-	Name = "Real Dropdown",
-	Items = {1, 2, 3, 4, "XD"},
-	Callback = function(item)
-		Library:Notify({
-			Name = "Dropdown",
-			Text = item,
-			Icon = "rbxassetid://11401835376",
-			Duration = 3,
-		})
-	end
-})
-
-local Button = Section2:Button({
-	Name = "Clear dropdown",
-	Callback = function()
-		Dropdown:Clear()
-	end
-})
-
-local Button = Section2:Button({
-	Name = "Update dropdown",
-	Callback = function()
-		Dropdown:UpdateList({
-			Items = {"bruh", 1, 2, 3},
-			Replace = true
-		})
-	end
-})
-]]
 
 local Tab = Window:Tab({
 	Name = "Others",
@@ -294,9 +317,19 @@ local Button = Section:Button({
 	end
 })
 
+local Tab = Window:Tab({
+	Name = "UpateLog",
+	Icon = "rbxassetid://7072707488",
+	Color = Color3.new(0.474509, 0.474509, 0.474509)
+})
+
+local Label = Section:Label({
+	Name = "[+]Added Auto Hoops\n [+]Added Insta unlock Island\n [+]Added Dupe Section\n [+]Added Iland Teleport\n [+]Added UpdateLog Tab", 
+})
+
 Library:Notify({
     Name = "Notification:",
-    Text = "Adding more features soon | Last updated: 5:37pm 28-apr-23 by Awaken#6969",
+    Text = "Adding more features soon | Last updated: 6:34 28-apr-23 by Awaken#6969",
     Icon = "rbxassetid://11401835376",
-    Duration = 3
+    Duration = 10
 })
