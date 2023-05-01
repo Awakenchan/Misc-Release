@@ -1,0 +1,425 @@
+local espLib = {
+    drawings = {},
+    instances = {},
+    espCache = {},
+    chamsCache = {},
+    objectCache = {},
+    conns = {},
+    whitelist = {}, -- insert string that is the player's name you want to whitelist (turns esp color to whitelistColor in options)
+    blacklist = {}, -- insert string that is the player's name you want to blacklist (removes player from esp)
+    options = {
+        enabled = true,
+        minScaleFactorX = 1,
+        maxScaleFactorX = 10,
+        minScaleFactorY = 1,
+        maxScaleFactorY = 10,
+        boundingBox = false, -- WARNING | Significant Performance Decrease when true
+        boundingBoxDescending = false,
+        font = 2,
+        fontSize = 13,
+        limitDistance = false,
+        maxDistance = 1000,
+        visibleOnly = false,
+        teamCheck = false,
+        teamColor = false,
+        fillColor = nil,
+        whitelistColor = Color3.new(1, 0, 0),
+        outOfViewArrows = false,
+        outOfViewArrowsFilled = false,
+        outOfViewArrowsSize = 25,
+        outOfViewArrowsRadius = 100,
+        outOfViewArrowsColor = Color3.new(1, 1, 1),
+        outOfViewArrowsTransparency = 0.5,
+        outOfViewArrowsOutline = false,
+        outOfViewArrowsOutlineFilled = false,
+        outOfViewArrowsOutlineColor = Color3.new(1, 1, 1),
+        outOfViewArrowsOutlineTransparency = 1,
+        names = false,
+        nameTransparency = 1,
+        nameColor = Color3.new(1, 1, 1),
+        boxes = false,
+        boxesTransparency = 1,
+        boxesColor = Color3.new(1, 0, 0),
+        boxFill = false,
+        boxFillTransparency = 0.5,
+        boxFillColor = Color3.new(1, 0, 0),
+        healthBars = false,
+        healthBarsSize = 1,
+        healthBarsTransparency = 1,
+        healthBarsColor = Color3.new(0, 1, 0),
+        healthText = false,
+        healthTextTransparency = 1,
+        healthTextSuffix = "%",
+        healthTextColor = Color3.new(1, 1, 1),
+        distance = false,
+        distanceTransparency = 1,
+        distanceSuffix = " Studs",
+        distanceColor = Color3.new(1, 1, 1),
+        tracers = false,
+        tracerTransparency = 1,
+        tracerColor = Color3.new(1, 1, 1),
+        tracerOrigin = "Bottom", -- Available [Mouse, Top, Bottom]
+        chams = false,
+        chamsFillColor = Color3.new(1, 0, 0),
+        chamsFillTransparency = 0.5,
+        chamsOutlineColor = Color3.new(),
+        chamsOutlineTransparency = 0
+    },
+};
+local espLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Sirius/request/library/esp/esp.lua'),true))()
+
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+local Window = Rayfield:CreateWindow({
+    Name = "Universal ESP:",
+    LoadingTitle = "Universal ESP",
+    LoadingSubtitle = "by Awaken",
+    ConfigurationSaving = {
+       Enabled = true,
+       FolderName = nil, 
+       FileName = "AwakenHub"
+    },
+    Discord = {
+       Enabled = true,
+       Invite = "https://discord.gg/3dPPvsVAy4", 
+       RememberJoins = true 
+    },
+    KeySystem = true,
+    KeySettings = {
+       Title = "Awaken",
+       Subtitle = "Key System",
+       Note = "Key: ESP | Just to be cool looking i added key system :p",
+       FileName = "Universal esp",
+       SaveKey = true,
+       GrabKeyFromSite = false, 
+       Key = "ESP"
+    }
+})
+
+local Tab = Window:CreateTab("ESP", 7072716095)
+
+Tab:CreateParagraph({Title = "ESP", Content = "Clean and universal ESP"})
+
+local ESPToggle = Tab:CreateToggle({
+	Name = "ESP",
+	CurrentValue = false,
+	Callback = function(ESP)
+		local espfunc = ESP
+		if espfunc then
+			espLib:Load()
+		end
+		if not espfunc then
+			espLib:Unload()
+		end
+	end
+})
+
+local TeamCheck = Tab:CreateToggle({
+    Name = "TeamCheck",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "ESPColor", 
+    Callback = function(Value)
+       espLib.options.teamCheck = Value
+    end
+})
+
+local TracersToggle = Tab:CreateToggle({
+	Name = "Tracers",
+	CurrentValue = false,
+	Callback = function(Tracers)
+		espLib.options.tracers = Tracers
+	end
+})
+
+local LimitDistance = Tab:CreateToggle({
+	Name = "Limit Distance",
+	CurrentValue = false,
+	Callback = function(Value)
+		espLib.options.limitDistance = Value
+	end
+})
+
+local Visibleonly = Tab:CreateToggle({
+	Name = "Visible only",
+	CurrentValue = false,
+	Callback = function(Value)
+		espLib.options.visibleOnly = Value
+	end
+})
+local outOfViewArrows = Tab:CreateToggle({
+	Name = "Out Of ViewArrows",
+	CurrentValue = false,
+	Callback = function(Value)
+		espLib.options.outOfViewArrows = Value
+	end
+})
+local outOfViewArrowsFilled = Tab:CreateToggle({
+	Name = "Out Of ViewArrowsFilled",
+	CurrentValue = false,
+	Callback = function(Value)
+		espLib.options.outOfViewArrowsFilled = Value
+	end
+})
+local outOfViewArrowsOutline = Tab:CreateToggle({
+	Name = "Out Of ViewArrowsOutline",
+	CurrentValue = false,
+	Callback = function(Value)
+		espLib.options.outOfViewArrowsOutline = Value
+	end
+})
+local outOfViewArrowsOutlineFilled = Tab:CreateToggle({
+	Name = "Out Of ViewArrows OutlineFilleds",
+	CurrentValue = false,
+	Callback = function(Value)
+		espLib.options.outOfViewArrowsOutlineFilled = Value
+	end
+})
+local boxes = Tab:CreateToggle({
+	Name = "boxes",
+	CurrentValue = false,
+	Callback = function(Value)
+		espLib.options.boxes = Value
+	end
+})
+local boxFill= Tab:CreateToggle({
+	Name = "boxFill",
+	CurrentValue = false,
+	Callback = function(Value)
+		espLib.options.boxFill = Value
+	end
+})
+local healthBars= Tab:CreateToggle({
+	Name = "HealthBars",
+	CurrentValue = false,
+	Callback = function(Value)
+		espLib.options.healthBars = Value
+	end
+})
+local healthText = Tab:CreateToggle({
+	Name = "HealthText",
+	CurrentValue = false,
+	Callback = function(Value)
+		espLib.options.healthText = Value
+	end
+})
+---------------------------------------------Settings for ESP
+
+local Tab = Window:CreateTab("ESP Setting", 7059346373)
+
+local TracersOrigin = Tab:CreateDropdown({
+	Name = "Tracers Location",
+	Options = {"Mouse","Top", "Bottom"},
+	CurrentOption = "",
+	Flag = "TracersOrigin", 
+	Callback = function(Option)
+		espLib.options.tracerOrigin = Option
+	end,
+ })
+
+local ESPColorpicker = Tab:CreateColorPicker({
+    Name = "Tracers Color",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "ESPColor", 
+    Callback = function(Value)
+       espLib.options.tracerColor = Value
+    end
+})
+
+local NamesToggle = Tab:CreateToggle({
+	Name = "Names",
+	CurrentValue = false,
+	Callback = function(Names)
+		espLib.options.names = Names
+	end
+})
+
+local NamesColorpicker = Tab:CreateColorPicker({
+    Name = "Names Colorpicker",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "ESPColor", 
+    Callback = function(Value)
+       espLib.options.nameColor = Value
+    end
+})
+
+local ChamsToggle = Tab:CreateToggle({
+	Name = "Chams",
+	CurrentValue = false,
+	Callback = function(Chams)
+		espLib.options.chams = Chams
+	end
+})
+
+local ChamsColorpicker = Tab:CreateColorPicker({
+    Name = "Chams Colorpicker",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "ChamsColor", 
+    Callback = function(Value)
+       espLib.options.chamsFillColor = Value
+    end
+})
+local DistanceSlider = Tab:CreateSlider({
+    Name = "max Distance",
+    Range = {0, 1000},
+    Increment = 10,
+    Suffix = "=>Distance",
+    CurrentValue = 100,
+    Flag = "Slider1", 
+    Callback = function(Value)
+        espLib.options.maxDistance = Value
+    end,
+})
+
+local outOfViewArrowsSizeSlider = Tab:CreateSlider({
+    Name = "Out Of ViewArrowsSize ",
+    Range = {0, 1000},
+    Increment = 10,
+    Suffix = "=>ArrowsSize",
+    CurrentValue = 25,
+    Flag = "Slider1", 
+    Callback = function(Value)
+        espLib.options.maxDistance = Value
+    end,
+})
+
+local outOfViewArrowsRadiusSlider = Tab:CreateSlider({
+    Name = "Out Of ViewArrowsRadius ",
+    Range = {0, 1000},
+    Increment = 10,
+    Suffix = "=>ArrowsRadius",
+    CurrentValue = 100,
+    Flag = "Slider1", 
+    Callback = function(Value)
+        espLib.options.outOfViewArrowsRadius = Value
+    end,
+})
+
+local outOfViewArrowsColor = Tab:CreateColorPicker({
+    Name = "Out Of ViewArrowsColor",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "Out Of ViewArrowsColor", 
+    Callback = function(Value)
+       espLib.options.outOfViewArrowsColor = Value
+    end
+})
+
+local outOfViewArrowsRadiusSlider = Tab:CreateSlider({
+    Name = "Out Of ViewArrowsTransparency",
+    Range = {0, 100},
+    Increment = 10,
+    Suffix = "=>ArrowsTransparency",
+    CurrentValue = 0.5,
+    Flag = "Slider1", 
+    Callback = function(Value)
+        espLib.options.outOfViewArrowsRadius = Value
+    end,
+})
+local outOfViewArrowsOutlineColor = Tab:CreateColorPicker({
+    Name = "Out Of ViewArrows OutlineColor",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "Out Of ViewArrowsColor", 
+    Callback = function(Value)
+       espLib.options.outOfViewArrowsOutlineColorr = Value
+    end
+})
+
+local outOfViewArrowsOutlineTransparency = Tab:CreateSlider({
+    Name = "Out Of ViewArrows OutlineTransparency",
+    Range = {0, 100},
+    Increment = 10,
+    Suffix = "=>ArrowsTransparency",
+    CurrentValue = 1,
+    Flag = "Slider1", 
+    Callback = function(Value)
+        espLib.options.outOfViewArrowsOutlineTransparency = Value
+    end,
+})
+
+local boxesTransparency = Tab:CreateSlider({
+    Name = "BoxesTransparency",
+    Range = {0, 100},
+    Increment = 10,
+    Suffix = "=>boxesTransparency",
+    CurrentValue = 1,
+    Flag = "Slider1", 
+    Callback = function(Value)
+        espLib.options.boxesTransparency = Value
+    end,
+})
+local boxesColor = Tab:CreateColorPicker({
+    Name = "Out Of ViewArrows OutlineColor",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "Out Of ViewArrowsColor", 
+    Callback = function(Value)
+       espLib.options.outOfViewArrowsOutlineColorr = Value
+    end
+})
+local boxesColorr = Tab:CreateColorPicker({
+    Name = "BoxesColor",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "boxesColor", 
+    Callback = function(Value)
+       espLib.options.boxesColor = Value
+    end
+})
+
+local boxFillColor = Tab:CreateColorPicker({
+    Name = "BoxFillColor",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "BoxFillColor", 
+    Callback = function(Value)
+       espLib.options.boxFillColor = Value
+    end
+})
+
+local healthBarsSize = Tab:CreateSlider({
+    Name = "HealthBarsSize",
+    Range = {0, 100},
+    Increment = 10,
+    Suffix = "=>HealthBarsSize",
+    CurrentValue = 1,
+    Flag = "Slider1", 
+    Callback = function(Value)
+        espLib.options.healthBarsSize = Value
+    end,
+})
+
+local healthBarsTransparency = Tab:CreateSlider({
+    Name = "HealthBarsTransparency",
+    Range = {0, 100},
+    Increment = 10,
+    Suffix = "=>Health BarsTransparency",
+    CurrentValue = 1,
+    Flag = "Slider1", 
+    Callback = function(Value)
+        espLib.options.healthBarsTransparency = Value
+    end,
+})
+
+local healthBarsColor = Tab:CreateColorPicker({
+    Name = "HealthBarsColor",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "HealthBarsColor", 
+    Callback = function(Value)
+       espLib.options.healthBarsColor = Value
+    end
+})
+local healthTextTransparency = Tab:CreateSlider({
+    Name = "HealthTextTransparency",
+    Range = {0, 100},
+    Increment = 10,
+    Suffix = "=>healthText Transparency",
+    CurrentValue = 1,
+    Flag = "Slider1", 
+    Callback = function(Value)
+        espLib.options.healthTextTransparencyy = Value
+    end,
+})
+local healthTextColor = Tab:CreateColorPicker({
+    Name = "HealthTextColor",
+    Color = Color3.fromRGB(255,255,255),
+    Flag = "HealthTextColor", 
+    Callback = function(Value)
+       espLib.options.healthTextColor = Value
+    end
+})
