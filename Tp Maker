@@ -1,1 +1,119 @@
+local plr = game:GetService("Players").LocalPlayer
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
 
+Window = Library:Create({
+	Name = "Tp Maker",
+	Footer = "By Awaken#6969",
+	ToggleKey = Enum.KeyCode.RightShift,
+	LoadedCallback = function()
+		Window:TaskBarOnly(false)
+	end,
+	KeySystem = false,
+	Key = "123456",
+	MaxAttempts = 5,
+	DiscordLink = nil,
+})
+
+Window:ChangeTogglekey(Enum.KeyCode.RightShift)
+
+local Tab = Window:Tab({
+	Name = "Main",
+	Icon = "rbxassetid://11396131982",
+	Color = Color3.new(0.474509, 0.474509, 0.474509)
+})
+local Section1 = Tab:Section({
+	Name = "Teleport maker"
+})
+
+Section1:Button({
+    Name = "Copy Current CFrame",
+    Callback = function()
+        setclipboard(tostring(plr.Character.HumanoidRootPart.CFrame))
+        Library:Notify({
+            Name = "Copied Current CFrame:",
+            Text = tostring(plr.Character.HumanoidRootPart.CFrame),
+            Icon = "rbxassetid://11401835376",
+            Duration = 3
+        })
+    end
+})
+
+Section1:Button({
+	Name = "Tp Current CFrame Script",
+	Callback = function()
+        setclipboard([[
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(]].. tostring(plr.Character.HumanoidRootPart.Position) ..[[)
+        ]])        
+		Library:Notify({
+			Name = "Make Tp Script:",
+			Text = "its copied in your clipboard!",
+			Icon = "rbxassetid://11401835376",
+			Duration = 3
+		})
+	end
+})
+
+Section1:Slider({
+	Name = "Tween Speed",
+	Max = 10,
+	Min = 1,
+	Default = 1,
+	Callback = function(Number)
+		tweenspeed = Number
+	end
+})
+
+Section1:Button({
+	Name = "Tween Current CFrame Script",
+	Callback = function()
+        setclipboard(
+            [[tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(]].. tostring(tweenspeed) ..[[, Enum.EasingStyle.Linear))]]..[[
+            tweenService:Create(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, tweenInfo, {CFrame = CFrame.new(]] ..tostring(plr.Character.HumanoidRootPart.Position) ..[[)}):Play()
+        ]])
+		Library:Notify({
+			Name = "Make Tp Script:",
+			Text = "its copied in your clipboard!",
+			Icon = "rbxassetid://11401835376",
+			Duration = 3
+		})
+	end
+})
+
+local Tab = Window:Tab({
+	Name = "Others",
+	Icon = "rbxassetid://11476626403",
+	Color = Color3.new(0.474509, 0.474509, 0.474509)
+})
+
+local Section = Tab:Section({
+	Name = "Miscs"
+})
+
+local Button = Section:Button({
+	Name = "Destroy library",
+	Callback = function()
+		Library:Destroy()
+	end
+})
+
+local Button = Section:Button({
+	Name = "Hide UI",
+	Callback = function()
+		Window:Toggled(false)
+
+		task.wait(3)
+
+		Window:Toggled(true)
+	end
+})
+
+local Button = Section:Button({
+	Name = "Task Bar Only",
+	Callback = function()
+		Window:TaskBarOnly(true)
+
+		task.wait(3)
+
+		Window:TaskBarOnly(false)
+	end
+})
