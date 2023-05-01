@@ -1,1 +1,140 @@
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Loco-CTO/UI-Library/main/VisionLibV2/source.lua'))()
 
+Window = Library:Create({
+	Name = "Awaken#6969 MiscRelease",
+	Footer = "By Awaken#6969 MiscRelease",
+	ToggleKey = Enum.KeyCode.RightShift,
+	LoadedCallback = function()
+		Window:TaskBarOnly(false)
+	end,
+	KeySystem = false,
+	Key = "123456",
+	MaxAttempts = 5,
+	DiscordLink = nil,
+})
+
+Window:ChangeTogglekey(Enum.KeyCode.RightShift)
+
+local Tab = Window:Tab({
+	Name = "Main",
+	Icon = "rbxassetid://11396131982",
+	Color = Color3.new(0.474509, 0.474509, 0.474509)
+})
+
+local Section1 = Tab:Section({
+	Name = "Awaken#6969 MiscRelease"
+})
+
+
+Section1:Button({
+	Name = "Teleport Maker",
+	Callback = function()
+		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Tp%20Maker")()
+		Library:Notify({
+			Name = "Script:",
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Tp%20Maker")()),
+			Icon = "rbxassetid://11401835376",
+			Duration = 3
+		})
+	end
+})
+
+Section1:Button({
+	Name = "Spectate Players",
+	Callback = function()
+		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Spectate%20player")()
+		Library:Notify({
+			Name = "Script:",
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Spectate%20player")()),
+			Icon = "rbxassetid://11401835376",
+			Duration = 3
+		})
+	end
+})
+
+Section1:Button({
+	Name = "Fariy Tail: Magic Era",
+	Callback = function()
+		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/FairyTailMagic%20Era")()
+		Library:Notify({
+			Name = "Script:",
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/FairyTailMagic%20Era")()),
+			Icon = "rbxassetid://11401835376",
+			Duration = 3
+		})
+	end
+})
+
+Section1:Button({
+	Name = "Miami:Flodida",
+	Callback = function()
+		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Miami%20Flodrida")()
+		Library:Notify({
+			Name = "Script:",
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Miami%20Flodrida")()),
+			Icon = "rbxassetid://11401835376",
+			Duration = 3
+		})
+	end
+})
+
+Section1:Button({
+	Name = "Ninja Legends",
+	Callback = function()
+		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Ninja%20Legends")()
+		Library:Notify({
+			Name = "Script:",
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Ninja%20Legends")()),
+			Icon = "rbxassetid://11401835376",
+			Duration = 3
+		})
+	end
+})
+
+Section1:Button({
+	Name = "Universal Esp By sirius but in gui by me",
+	Callback = function()
+		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Esp%20universal")()
+		Library:Notify({
+			Name = "Script:",
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Esp%20universal")()),
+			Icon = "rbxassetid://11401835376",
+			Duration = 3
+		})
+	end
+})
+
+local Tab = Window:Tab({
+	Name = "Others",
+	Icon = "rbxassetid://11476626403",
+	Color = Color3.new(0.474509, 0.474509, 0.474509)
+})
+
+local Section = Tab:Section({
+	Name = "Miscs"
+})
+
+local Button = Section:Button({
+	Name = "Destroy library",
+	Callback = function()
+		Library:Destroy()
+	end
+})
+
+local Button = Section:Button({
+	Name = "Hide UI",
+	Callback = function()
+		Window:Toggled(false)
+
+		Window:Toggled(true)
+	end
+})
+
+local Button = Section:Button({
+	Name = "Task Bar Only",
+	Callback = function()
+		Window:TaskBarOnly(true)
+
+		Window:TaskBarOnly(false)
+	end
+})
