@@ -32,7 +32,7 @@ Section1:Button({
 		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Tp%20Maker")()
 		Library:Notify({
 			Name = "Script:",
-			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Tp%20Maker")()),
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Tp%20Maker"),
 			Icon = "rbxassetid://11401835376",
 			Duration = 3
 		})
@@ -45,7 +45,7 @@ Section1:Button({
 		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Spectate%20player")()
 		Library:Notify({
 			Name = "Script:",
-			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Spectate%20player")()),
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Spectate%20player"),
 			Icon = "rbxassetid://11401835376",
 			Duration = 3
 		})
@@ -58,7 +58,7 @@ Section1:Button({
 		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/FairyTailMagic%20Era")()
 		Library:Notify({
 			Name = "Script:",
-			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/FairyTailMagic%20Era")()),
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/FairyTailMagic%20Era"),
 			Icon = "rbxassetid://11401835376",
 			Duration = 3
 		})
@@ -71,7 +71,7 @@ Section1:Button({
 		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Miami%20Flodrida")()
 		Library:Notify({
 			Name = "Script:",
-			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Miami%20Flodrida")()),
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Miami%20Flodrida"),
 			Icon = "rbxassetid://11401835376",
 			Duration = 3
 		})
@@ -84,7 +84,7 @@ Section1:Button({
 		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Ninja%20Legends")()
 		Library:Notify({
 			Name = "Script:",
-			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Ninja%20Legends")()),
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Ninja%20Legends"),
 			Icon = "rbxassetid://11401835376",
 			Duration = 3
 		})
@@ -97,7 +97,7 @@ Section1:Button({
 		loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Esp%20universal")()
 		Library:Notify({
 			Name = "Script:",
-			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard(loadstring(game:HttpGet"https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Esp%20universal")()),
+			Text = "Script you ran is open source, script copied to your clipboard"..setclipboard("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Esp%20universal"),
 			Icon = "rbxassetid://11401835376",
 			Duration = 3
 		})
