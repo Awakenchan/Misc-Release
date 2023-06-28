@@ -87,14 +87,6 @@ do
         return NewInstance
     end
     --
-    Utility.CLCheck = function()
-        repeat task.wait() until iswindowactive()
-        do
-            InputHandle:CaptureFocus() task.wait() keypress(0x4E) task.wait() keyrelease(0x4E) InputHandle:ReleaseFocus()
-            Library.Input.Caplock = InputHandle.Text == "N" and true or false
-            InputHandle:Destroy()
-        end
-    end
     --
     Utility.Loop = function(Delay, Call)
         local Callback = typeof(Call) == "function" and Call or function() end
@@ -497,7 +489,6 @@ do
         Utility.RemoveDrawing(WindowOutlineBorder)
         Utility.RemoveDrawing(WindowTopline)
         Utility.RemoveDrawing(WindowFrame)
-        Utility.RemoveDrawing(WindowTitle)
         Utility.RemoveDrawing(WindowText)
         Utility.RemoveDrawing(SliderOutline)
         Utility.RemoveDrawing(SliderInline)
