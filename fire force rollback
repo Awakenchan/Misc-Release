@@ -1,10 +1,4 @@
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
-local codes = {
-    'MOBILEISHERE',
-    '5MILLIONVISITS',
-    '25KLIKES',
-    '3MILLIONVISITS', 
-}  
 local ohString1 = "InBackpack"
 local ohString2 = "\255"
 local ohString3 = "Nil"
@@ -57,18 +51,32 @@ Dupe.Button({
 	Text = "Redeem codes",
 	Callback = function()
         local Success, Error = pcall(function()
-        for _, code in pairs(codes) do
             local args = {
                [1] = "Codes",
-               [2] = codes
+               [2] = 'MOBILEISHERE'
            }
            
            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SettingsEvent"):FireServer(unpack(args))
+           local args2 = {
+            [1] = "Codes",
+            [2] = '5MILLIONVISITS'
+           }
+        
+          game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SettingsEvent"):FireServer(unpack(args2))
+          local args3 = {
+            [1] = "Codes",
+            [2] = '25KLIKES'
+          }
+        
+          game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SettingsEvent"):FireServer(unpack(args3))
+          local args3 = {
+            [1] = "Codes",
+            [2] = '3MILLIONVISITS'
+          }
+        
+          game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SettingsEvent"):FireServer(unpack(args3))
            task.wait(0.5)
         end
        end)
-       if not Success then
-         warn(Error)
-       end
 	end,
 })
