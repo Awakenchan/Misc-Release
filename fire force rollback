@@ -1,4 +1,19 @@
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+local codes = {
+    'MOBILEISHERE',
+    '5MILLIONVISITS',
+    'SNICKERDOODLE',
+   '25KLIKES',
+    'OOPSIEDAISY', 
+    '3MILLIONVISITS', 
+    '20KLIKES' ,
+    '15KLIKES' ,
+    '10KLIKES',
+    'Sorry4Bugs', 
+    'Colors4You',
+}
+    
+
 local ohString1 = "InBackpack"
 local ohString2 = "\255"
 local ohString3 = "Nil"
@@ -46,4 +61,17 @@ Dupe.Toggle({
         end
 	end,
 	Enabled = false
+})
+Dupe.Button({
+	Text = "Redeem codes",
+	Callback = function()
+        for _, code in pairs(codes) do
+            local args = {
+               [1] = "Codes",
+               [2] = codes
+           }
+           
+           game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SettingsEvent"):FireServer(unpack(args))
+        end
+	end,
 })
