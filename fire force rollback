@@ -3,17 +3,10 @@ local codes = {
     'MOBILEISHERE',
     '5MILLIONVISITS',
     'SNICKERDOODLE',
-   '25KLIKES',
+    '25KLIKES',
     'OOPSIEDAISY', 
     '3MILLIONVISITS', 
-    '20KLIKES' ,
-    '15KLIKES' ,
-    '10KLIKES',
-    'Sorry4Bugs', 
-    'Colors4You',
-}
-    
-
+}  
 local ohString1 = "InBackpack"
 local ohString2 = "\255"
 local ohString3 = "Nil"
@@ -65,6 +58,7 @@ Dupe.Toggle({
 Dupe.Button({
 	Text = "Redeem codes",
 	Callback = function()
+        local Success, Error = pcall(function()
         for _, code in pairs(codes) do
             local args = {
                [1] = "Codes",
@@ -73,5 +67,9 @@ Dupe.Button({
            
            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SettingsEvent"):FireServer(unpack(args))
         end
+       end)
+       if not Success then
+         warn(Error)
+       end
 	end,
 })
