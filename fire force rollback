@@ -1,0 +1,49 @@
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+local ohString1 = "InBackpack"
+local ohString2 = "\255"
+local ohString3 = "Nil"
+local ohInstance4 = game:GetService("Players").LocalPlayer.Backpack
+local ohTable5 = {
+    ["Number"] = 2,
+    ["InBackpack"] = false
+}
+local ts = game:GetService("TeleportService")
+local p = game:GetService("Players").LocalPlayer
+local X = Material.Load({
+	Title = "awakenkn",
+	Style = 3,
+	SizeX = 400,
+	SizeY = 400,
+	Theme = "Dark",
+})
+local Dupe = X.New({
+	Title = "Data rollback"
+})
+Dupe.Toggle({
+	Text = "Data rollback",
+	Callback = function(value)
+        getgenv().dupe = value
+        while getgenv().dupe do task.wait()
+            for i = 1,399 do
+                game:GetService("ReplicatedStorage").Events.BackpackSwapEvent:FireServer(ohString1, ohString2, ohString3, ohInstance4, ohTable5)
+                warn("hi")
+            end
+        end
+	end,
+	Enabled = false
+})
+Dupe.Toggle({
+	Text = "Data rollback | but auto rejoin",
+	Callback = function(value)
+        getgenv().dupe = value
+        while getgenv().dupe do task.wait()
+            for i = 1,399 do
+                game:GetService("ReplicatedStorage").Events.BackpackSwapEvent:FireServer(ohString1, ohString2, ohString3, ohInstance4, ohTable5)
+                warn("hi")
+                ts:Teleport(game.PlaceId, p)
+            end
+            ts:Teleport(game.PlaceId, p)
+        end
+	end,
+	Enabled = false
+})
