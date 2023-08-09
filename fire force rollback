@@ -2,9 +2,7 @@ local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinl
 local codes = {
     'MOBILEISHERE',
     '5MILLIONVISITS',
-    'SNICKERDOODLE',
     '25KLIKES',
-    'OOPSIEDAISY', 
     '3MILLIONVISITS', 
 }  
 local ohString1 = "InBackpack"
@@ -66,6 +64,7 @@ Dupe.Button({
            }
            
            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SettingsEvent"):FireServer(unpack(args))
+           task.wait(0.5)
         end
        end)
        if not Success then
