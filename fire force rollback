@@ -50,7 +50,6 @@ Dupe.Toggle({
 Dupe.Button({
 	Text = "Redeem codes",
 	Callback = function()
-        local Success, Error = pcall(function()
             local args = {
                [1] = "Codes",
                [2] = 'MOBILEISHERE'
@@ -75,8 +74,5 @@ Dupe.Button({
           }
         
           game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SettingsEvent"):FireServer(unpack(args3))
-           task.wait(0.5)
-        end
-       end)
 	end,
 })
