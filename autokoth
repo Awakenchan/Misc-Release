@@ -1,0 +1,78 @@
+game:GetService("Players").localPlayer.PlayerScripts.AntiFreeze.Disabled = true
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
+local X = Material.Load({
+	Title = "auto Koth",
+	Style = 3,
+	SizeX = 400,
+	SizeY = 400,
+	Theme = "Dark",
+})
+
+local Main = X.New({
+	Title = "Main"
+})
+Main.Toggle({
+	Text = "Auto Koth",
+	Callback = function(value)
+        getgenv().autokoth = value
+        if getgenv().autokoth then
+            Notification.new("info", "Info:", "Started auto koth")
+        end
+        while getgenv().autokoth do task.wait()
+            game.Players.localPlayer.Character.Humanoid.Sit = true
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-0.31983643770217896, 57.99966049194336, 3.03733229637146)
+        end
+	end,
+	Enabled = false
+})
+Main.Toggle({
+	Text = "Auto Koth v2",
+	Callback = function(value)
+        getgenv().autokoth2 = value
+        if getgenv().autokot2 then
+            Notification.new("info", "Info:", "Started auto koth")
+        end
+        while getgenv().autokoth2 do task.wait()
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1.9484055042266846, 54.63951110839844, 1.5236668586730957)
+        end
+	end,
+	Enabled = false
+})
+Main.TextField({
+	Text = "enter webhook",
+	Callback = function(text)
+        urltext = text
+        print(text)
+	end,
+})
+Main.Toggle({
+	Text = "time webhook notification",
+	Callback = function(value)
+        getgenv().noti = value
+        while getgenv().noti do task.wait(5)
+            local url = urltext
+            local data = {
+                ["content"] = "@everyone",
+                ["embeds"] = {
+                   {
+             
+                      ["author"] = {
+                         ["name"] = "Auto koth by Awaken",
+                         ["url"] = "https://roblox.com",
+                      },
+             
+                      ["description"] = 'Auto koth time: '..game:GetService("Players").localPlayer.leaderstats.Time.Value,
+                      ["type"] = "rich",
+                   }
+                }
+            }
+            local newdata = game:GetService("HttpService"):JSONEncode(data)
+            local headers = {["content-type"] = "application/json"}
+            request = http_request or request or HttpPost or syn.request
+            local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+            request(abcdef)
+        end
+	end,
+	Enabled = false
+})
