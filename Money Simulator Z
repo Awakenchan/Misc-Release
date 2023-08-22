@@ -71,7 +71,8 @@ AutoBuyM:OnChanged(function(value)
     while getgenv().Autoupp do task.wait()        
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("BuyMoreMachines"):FireServer(unpack(BuyMoreMachines))        
     end
-end)-----------------Config Farm TAB---------------------------------------
+end)
+-----------------Config Farm TAB---------------------------------------
 local configpre = Tabs.Config:AddToggle("configpre", {Title = "Auto Prestige", Default = false })
 configpre:OnChanged(function(value)
     getgenv().Prestige = value
@@ -87,13 +88,6 @@ AutoBuyFactroywall:OnChanged(function(value)
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("FactoryUpgrade"):FireServer(unpack(FactoryUpgradeWalls))        
     end
 end)
-Tabs.Config:AddButton({
-    Title = "Upgrade Factory Walls | Manual",
-    Description = "If you dont make it auto pressing this will buy upgrade once.",
-    Callback = function()
-        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("FactoryUpgrade"):FireServer(unpack(FactoryUpgradeWalls))
-    end
-})
 local AutoBuyFactroyLenght = Tabs.Config:AddToggle("AutoBuyFactroyLenght", {Title = "Auto Upgrade Factroy Lenght", Default = false })
 AutoBuyFactroyLenght:OnChanged(function(value)
     getgenv().Autoupgradewall = value
@@ -101,13 +95,6 @@ AutoBuyFactroyLenght:OnChanged(function(value)
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("FactoryUpgrade"):FireServer(unpack(FactoryUpgradeLenght))   
     end
 end)
-Tabs.Config:AddButton({
-    Title = "Upgrade Factory Lenght | Manual",
-    Description = "If you dont make it auto pressing this will buy upgrade once.",
-    Callback = function()
-        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("FactoryUpgrade"):FireServer(unpack(FactoryUpgradeLenght)) 
-    end
-})
 local AutoBuyFactroySurface = Tabs.Config:AddToggle("AutoBuyFactroySurface", {Title = "Auto Upgrade Factroy Surface", Default = false })
 AutoBuyFactroySurface:OnChanged(function(value)
     getgenv().AutoBuyFactroySurface = value
@@ -120,6 +107,20 @@ Tabs.Config:AddButton({
     Description = "If you dont make it auto pressing this will buy upgrade once.",
     Callback = function()
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("FactoryUpgrade"):FireServer(unpack(FactoryUpgradeSurface)) 
+    end
+})
+Tabs.Config:AddButton({
+    Title = "Upgrade Factory Walls | Manual",
+    Description = "If you dont make it auto pressing this will buy upgrade once.",
+    Callback = function()
+        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("FactoryUpgrade"):FireServer(unpack(FactoryUpgradeWalls))
+    end
+})
+Tabs.Config:AddButton({
+    Title = "Upgrade Factory Lenght | Manual",
+    Description = "If you dont make it auto pressing this will buy upgrade once.",
+    Callback = function()
+        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("FactoryUpgrade"):FireServer(unpack(FactoryUpgradeLenght)) 
     end
 })
 -------------------------------End of script insides----------------------------
