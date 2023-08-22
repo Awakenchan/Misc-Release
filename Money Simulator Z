@@ -124,6 +124,15 @@ AutoCollectGems:OnChanged(function(value)
         if game:GetService("Workspace").Factory.Gems:FindFirstChild('Gem4') then
             game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Factory.Gems.Gem4.CFrame
             game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))    
+        elseif game:GetService("Workspace").Factory.Gems:FindFirstChild('Gem1') then
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Factory.Gems.Gem1.CFrame
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))    
+        elseif game:GetService("Workspace").Factory.Gems:FindFirstChild('Gem2') then
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Factory.Gems.Gem2.CFrame
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))   
+        elseif game:GetService("Workspace").Factory.Gems:FindFirstChild('Gem3') then
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Factory.Gems.Gem3.CFrame
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))   
         else
             Fluent:Notify({
                 Title = "Success:",
