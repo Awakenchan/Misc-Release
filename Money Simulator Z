@@ -67,7 +67,7 @@ local Genfast = Tabs.Farm:AddToggle("Genfast", {Title = "Generate Faster Auto", 
 Genfast:OnChanged(function(value)
     getgenv().genfast = value
     while getgenv().genfast do task.wait()
-    game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("GenerateFaster"):FireServer()
+     game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("GenerateFaster"):FireServer()
     end
 end)
 local upgrade = Tabs.Farm:AddToggle("upgrade", {Title = "Auto Upgrade Machine", Default = false })
@@ -81,7 +81,7 @@ local AutoBuyM = Tabs.Farm:AddToggle("AutoBuyM", {Title = "Auto Buy Machine's", 
 AutoBuyM:OnChanged(function(value)
     getgenv().Autoupp = value
     while getgenv().Autoupp do task.wait()        
-        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("BuyMoreMachines"):FireServer(unpack(BuyMoreMachines))        
+        game:GetService("ReplicatedStorage").Events.BuyMoreMachines:FireServer(unpack(BuyMoreMachines))        
     end
 end)
 local Autoboostgem = Tabs.Farm:AddToggle("Autoboostgem", {Title = "Auto Boost Gems", Default = false })
