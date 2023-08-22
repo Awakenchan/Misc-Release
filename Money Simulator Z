@@ -104,8 +104,8 @@ AutoCollectGems:OnChanged(function(value)
             game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))    
         else
             Fluent:Notify({
-                Title = "Error:",
-                Content = 'Could not find Gems',
+                Title = "Success:",
+                Content = 'Collected all Gems, waiting to respawn.',
                 Duration = 4
             })
             task.wait(2)
