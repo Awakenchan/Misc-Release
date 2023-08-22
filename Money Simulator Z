@@ -65,7 +65,7 @@ upgrade:OnChanged(function(value)
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UpgradeMachine"):FireServer(unpack(UpgradeMachine))
     end
 end)
-local AutoBuyM = Tabs.Farm:AddToggle("AutoBuyM", {Title = "AutoBuy Machine's", Default = false })
+local AutoBuyM = Tabs.Farm:AddToggle("AutoBuyM", {Title = "Auto Buy Machine's", Default = false })
 AutoBuyM:OnChanged(function(value)
     getgenv().Autoupp = value
     while getgenv().Autoupp do task.wait()        
