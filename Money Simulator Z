@@ -52,7 +52,7 @@ local BuyMoreMachinesUpgrade = {
     [2] = 1,
     [3] = false
 }
-local  BuyMachineUpgrade2 = {
+local Upgrade2 = {
     [1] = 2,
     [2] = 1,
     [3] = false
@@ -93,7 +93,8 @@ upgrade:OnChanged(function(value)
     getgenv().upgrade = value
     while getgenv().upgrade do task.wait()
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UpgradeMachine"):FireServer(unpack(UpgradeMachine))
-        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UpgradeMachine"):FireServer(unpack(BuyMachineUpgrade2))
+        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UpgradeMachine"):FireServer(unpack(Upgrade2))
+        
     end
 end)
 local AutoBuyM = Tabs.Farm:AddToggle("AutoBuyM", {Title = "Auto Buy Machine's", Default = false })
