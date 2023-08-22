@@ -84,6 +84,13 @@ AutoBuyM:OnChanged(function(value)
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("BuyMoreMachines"):FireServer(unpack(BuyMoreMachines))        
     end
 end)
+local Autoboostgem = Tabs.Farm:AddToggle("Autoboostgem", {Title = "Auto Boost Gems", Default = false })
+Autoboostgem:OnChanged(function(value)
+    getgenv().Autoboostgem = value
+    while getgenv().Autoboostgem do task.wait()        
+        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("BoostGem"):FireServer()       
+    end
+end)
 -----------------Config Farm TAB---------------------------------------
 local configpre = Tabs.Config:AddToggle("configpre", {Title = "Auto Prestige", Default = false })
 configpre:OnChanged(function(value)
