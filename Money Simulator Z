@@ -95,6 +95,10 @@ Autoboostgem:OnChanged(function(value)
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("BoostGem"):FireServer()       
     end
 end)
+Tabs.Farm:AddParagraph({
+    Title = "awakenkn",
+    Content = "Wanted to clear some thing about collect gems, you see if there are no gems it will still say 'Success' because not to confuse people saying error could not find gems i added this. \n if u dont have gems so dont worry it isnt a glitch.! "
+})
 local AutoCollectGems = Tabs.Farm:AddToggle("AutoCollectGems", {Title = "Auto Collect Gems", Default = false })
 AutoCollectGems:OnChanged(function(value)
     getgenv().AutoCollectGems = value
