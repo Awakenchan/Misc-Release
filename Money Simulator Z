@@ -137,7 +137,7 @@ AutoCollectGems:OnChanged(function(value)
             Fluent:Notify({
                 Title = "Success:",
                 Content = 'Collected all Gems, waiting to respawn.',
-                Duration = 4
+                Duration = 2
             })
             task.wait(2)
         end
