@@ -39,6 +39,10 @@ local lvlperk3 = {
 local lvlperk4 = {
     [1] = 4
 }
+local CollectGems = {
+    [1] = 1,
+    [2] = false
+}
 ----------------𝐒𝐜𝐫𝐢𝐩𝐭 𝐈𝐧𝐬𝐢𝐝𝐞𝐬-----------------------------
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
@@ -91,6 +95,14 @@ Autoboostgem:OnChanged(function(value)
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("BoostGem"):FireServer()       
     end
 end)
+local AutoCollectGems = Tabs.Farm:AddToggle("AutoCollectGems", {Title = "Auto Collect Gems", Default = false })
+AutoCollectGems:OnChanged(function(value)
+    getgenv().AutoCollectGems = value
+    while getgenv().AutoCollectGems do task.wait()        
+        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))       
+    end
+end)
+
 -----------------Config Farm TAB---------------------------------------
 local configpre = Tabs.Config:AddToggle("configpre", {Title = "Auto Prestige", Default = false })
 configpre:OnChanged(function(value)
