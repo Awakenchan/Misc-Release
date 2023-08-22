@@ -98,8 +98,18 @@ end)
 local AutoCollectGems = Tabs.Farm:AddToggle("AutoCollectGems", {Title = "Auto Collect Gems", Default = false })
 AutoCollectGems:OnChanged(function(value)
     getgenv().AutoCollectGems = value
-    while getgenv().AutoCollectGems do task.wait()        
-        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))       
+    while getgenv().AutoCollectGems do task.wait()    
+        if game:GetService("Workspace").Factory.Gems:FindFirstChild('Gem4') then
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Factory.Gems.Gem4.CFrame
+            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))    
+        else
+            Fluent:Notify({
+                Title = "Error:",
+                Content = 'Could not find Gems',
+                Duration = 4
+            })
+            task.wait(10)
+        end
     end
 end)
 
