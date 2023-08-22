@@ -75,11 +75,9 @@ end)-----------------Config Farm TAB---------------------------------------
 local configpre = Tabs.Config:AddToggle("configpre", {Title = "Auto Prestige", Default = false })
 configpre:OnChanged(function(value)
     getgenv().Prestige = value
-    if getgenv().Prestige == true then task.wait(0.4)
-        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("BuyMachine"):FireServer(unpack(Afterprestige))
-    end
     while getgenv().Prestige do task.wait(0.6)
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("Prestige"):FireServer()   
+        game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("BuyMachine"):FireServer(unpack(Afterprestige))
     end
 end)
 local AutoBuyFactroywall = Tabs.Config:AddToggle("AutoBuyFactroywall", {Title = "Auto Upgrade Factory wall's", Default = false })
