@@ -113,33 +113,22 @@ Autoboostgem:OnChanged(function(value)
         game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("BoostGem"):FireServer()       
     end
 end)
-Tabs.Farm:AddParagraph({
-    Title = "awakenkn",
-    Content = "Wanted to clear some thing about collect gems, you see if there are no gems it will still say 'Success' because not to confuse people saying error could not find gems i added this. \n if u dont have gems so dont worry it isnt a glitch.! "
-})
+
 local AutoCollectGems = Tabs.Farm:AddToggle("AutoCollectGems", {Title = "Auto Collect Gems", Default = false })
 AutoCollectGems:OnChanged(function(value)
     getgenv().AutoCollectGems = value
     while getgenv().AutoCollectGems do task.wait()    
-        if game:GetService("Workspace").Factory.Gems:FindFirstChild('Gem4') then
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Factory.Gems.Gem4.CFrame
-            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))    
-        elseif game:GetService("Workspace").Factory.Gems:FindFirstChild('Gem1') then
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Factory.Gems.Gem1.CFrame
-            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))    
-        elseif game:GetService("Workspace").Factory.Gems:FindFirstChild('Gem2') then
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Factory.Gems.Gem2.CFrame
-            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))   
-        elseif game:GetService("Workspace").Factory.Gems:FindFirstChild('Gem3') then
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Factory.Gems.Gem3.CFrame
-            game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("CollectGem"):FireServer(unpack(CollectGems))   
-        else
-            Fluent:Notify({
-                Title = "Success:",
-                Content = 'Collected all Gems, waiting to respawn.',
-                Duration = 2
-            })
-            task.wait(2)
+        for i,v in pairs(game:GetService("Workspace").Factory.Gems:GetChildren()) do
+            if v:IsA("MeshPart") then
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+            else
+                Fluent:Notify({
+                    Title = "Information:",
+                    Content = 'Gems havent spawned yet, gems not found.',
+                    Duration = 2
+                })
+                task.wait(2)
+            end
         end
     end
 end)
