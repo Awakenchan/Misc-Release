@@ -112,51 +112,60 @@ uIStroke4.Color = Color3.fromRGB(255, 255, 255)
 uIStroke4.Thickness = 1.5
 uIStroke4.Transparency = 0.9
 uIStroke4.Parent = notificationWindow
+
+local scrollNotification = Instance.new("ScrollingFrame")
+scrollNotification.Name = "ScrollNotification"
+scrollNotification.AutomaticCanvasSize = Enum.AutomaticSize.X
+scrollNotification.CanvasSize = UDim2.new()
+scrollNotification.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+scrollNotification.ScrollBarThickness = 0
+scrollNotification.ScrollingDirection = Enum.ScrollingDirection.X
+scrollNotification.Active = true
+scrollNotification.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+scrollNotification.BackgroundTransparency = 1
+scrollNotification.BorderColor3 = Color3.fromRGB(0, 0, 0)
+scrollNotification.BorderSizePixel = 0
+scrollNotification.Size = UDim2.new(1.19, -70, 1, 0)
+ScrollNotification.TweenPosition(
+    UDim2.new(0.9, -256,0.973, -74), 
+    Enum.EasingDirection.Out, 
+    Enum.EasingStyle.Quad, 0.2, 
+    false
+)
+
+local frame = Instance.new("Frame")
+frame.Name = "Frame"
+frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+frame.BackgroundTransparency = 1
+frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+frame.BorderSizePixel = 0
+frame.Position = UDim2.fromScale(0, 0.19)
+frame.Size = UDim2.fromOffset(44, 45)
+local imageLabel = Instance.new("ImageLabel")
+imageLabel.Name = "ImageLabel"
+imageLabel.Image = "rbxassetid://14404156927"
+imageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+imageLabel.BackgroundTransparency = 1
+imageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+imageLabel.BorderSizePixel = 0
+imageLabel.Position = UDim2.fromOffset(299, 26)
+imageLabel.Size = UDim2.new(1, -16, 1, -16)
+imageLabel.Parent = frame
+
+frame.Parent = scrollNotification
+
+local uIPadding = Instance.new("UIPadding")
+uIPadding.Name = "UIPadding"
+uIPadding.PaddingBottom = UDim.new(0, 10)
+uIPadding.PaddingLeft = UDim.new(0, 10)
+uIPadding.PaddingRight = UDim.new(0, 10)
+uIPadding.PaddingTop = UDim.new(0, 10)
+uIPadding.Parent = scrollNotification  
+scrollNotification.Parent = notificationWindow
+notificationWindow.Parent = notificationGui
+
 local Notification = {}
 function Notification:CreateNotification(TittleText,ContentText)  
-    local scrollNotification = Instance.new("ScrollingFrame")
-    scrollNotification.Name = "ScrollNotification"
-    scrollNotification.AutomaticCanvasSize = Enum.AutomaticSize.X
-    scrollNotification.CanvasSize = UDim2.new()
-    scrollNotification.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
-    scrollNotification.ScrollBarThickness = 0
-    scrollNotification.ScrollingDirection = Enum.ScrollingDirection.X
-    scrollNotification.Active = true
-    scrollNotification.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    scrollNotification.BackgroundTransparency = 1
-    scrollNotification.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    scrollNotification.BorderSizePixel = 0
-    scrollNotification.Size = UDim2.new(1.19, -70, 1, 0)
-    ScrollNotification.TweenPosition(UDim2.new(0.9, -256,0.973, -74), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, false)
-    
-    local frame = Instance.new("Frame")
-    frame.Name = "Frame"
-    frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    frame.BackgroundTransparency = 1
-    frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    frame.BorderSizePixel = 0
-    frame.Position = UDim2.fromScale(0, 0.19)
-    frame.Size = UDim2.fromOffset(44, 45)
-    local imageLabel = Instance.new("ImageLabel")
-    imageLabel.Name = "ImageLabel"
-    imageLabel.Image = "rbxassetid://14404156927"
-    imageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    imageLabel.BackgroundTransparency = 1
-    imageLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    imageLabel.BorderSizePixel = 0
-    imageLabel.Position = UDim2.fromOffset(299, 26)
-    imageLabel.Size = UDim2.new(1, -16, 1, -16)
-    imageLabel.Parent = frame
-    
-    frame.Parent = scrollNotification
-    
-    local uIPadding = Instance.new("UIPadding")
-    uIPadding.Name = "UIPadding"
-    uIPadding.PaddingBottom = UDim.new(0, 10)
-    uIPadding.PaddingLeft = UDim.new(0, 10)
-    uIPadding.PaddingRight = UDim.new(0, 10)
-    uIPadding.PaddingTop = UDim.new(0, 10)
-    uIPadding.Parent = scrollNotification  
     local tittle = Instance.new("TextLabel")
     tittle.Name = "Tittle"
     tittle.FontFace = Font.new(
@@ -195,9 +204,6 @@ function Notification:CreateNotification(TittleText,ContentText)
     description.Position = UDim2.fromOffset(9, 11)
     description.Size = UDim2.new(5.59, -40, 0.489, 22)
     description.Parent = frame
-    scrollNotification.Parent = notificationWindow
-    
-    notificationWindow.Parent = notificationGui
 end
 return Notification;
 end
