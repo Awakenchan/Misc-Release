@@ -126,7 +126,7 @@ scrollNotification.BackgroundTransparency = 1
 scrollNotification.BorderColor3 = Color3.fromRGB(0, 0, 0)
 scrollNotification.BorderSizePixel = 0
 scrollNotification.Size = UDim2.new(1.19, -70, 1, 0)
-ScrollNotification.TweenPosition(
+ScrollNotification:TweenPosition(
     UDim2.new(0.9, -256,0.973, -74), 
     Enum.EasingDirection.Out, 
     Enum.EasingStyle.Quad, 
