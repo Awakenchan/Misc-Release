@@ -135,30 +135,6 @@ frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
 frame.BorderSizePixel = 0
 frame.Position = UDim2.fromScale(0, 0.19)
 frame.Size = UDim2.fromOffset(44, 45)
-local scrollNotification = Instance.new("ScrollingFrame")
-scrollNotification.Name = "ScrollNotification"
-scrollNotification.AutomaticCanvasSize = Enum.AutomaticSize.X
-scrollNotification.CanvasSize = UDim2.new()
-scrollNotification.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
-scrollNotification.ScrollBarThickness = 0
-scrollNotification.ScrollingDirection = Enum.ScrollingDirection.X
-scrollNotification.Active = true
-scrollNotification.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-scrollNotification.BackgroundTransparency = 1
-scrollNotification.BorderColor3 = Color3.fromRGB(0, 0, 0)
-scrollNotification.BorderSizePixel = 0
-scrollNotification.Size = UDim2.new(1.19, -70, 1, 0)
-
-local frame = Instance.new("Frame")
-frame.Name = "Frame"
-frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-frame.BackgroundTransparency = 1
-frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-frame.BorderSizePixel = 0
-frame.Position = UDim2.fromScale(0, 0.19)
-frame.Size = UDim2.fromOffset(44, 45)
-scrollNotification.Parent = notificationWindow
-notificationWindow.Parent = notificationGui
 local imageLabel = Instance.new("ImageLabel")
 imageLabel.Name = "ImageLabel"
 imageLabel.Image = "rbxassetid://14404156927"
@@ -179,49 +155,51 @@ uIPadding.PaddingLeft = UDim.new(0, 10)
 uIPadding.PaddingRight = UDim.new(0, 10)
 uIPadding.PaddingTop = UDim.new(0, 10)
 uIPadding.Parent = scrollNotification
-local localScript = Instance.new("LocalScript")
-localScript.Name = "LocalScript"
-localScript.Parent = scrollNotification
+
+scrollNotification.Parent = notificationWindow
+
+notificationWindow.Parent = notificationGui
+
 local Notification = {}
-function Notification:CreateNotification(Tittle, Description)    
-    local tittle = Instance.new("TextLabel")
-    tittle.Name = "Tittle"
-    tittle.FontFace = Font.new(
-      "rbxasset://fonts/families/Ubuntu.json",
-      Enum.FontWeight.Bold,
-      Enum.FontStyle.Normal
-    )
-    tittle.Text = Tittle
-    tittle.TextColor3 = Color3.fromRGB(255, 255, 255)
-    tittle.TextSize = 16
-    tittle.TextXAlignment = Enum.TextXAlignment.Left
-    tittle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    tittle.BackgroundTransparency = 1
-    tittle.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    tittle.BorderSizePixel = 0
-    tittle.Position = UDim2.fromOffset(2, -24)
-    tittle.Size = UDim2.new(2.3, -40, 0.295, 22)
-    tittle.Parent = frame
-    
-    local description = Instance.new("TextLabel")
-    description.Name = "Description"
-    description.FontFace = Font.new(
-      "rbxasset://fonts/families/Ubuntu.json",
-      Enum.FontWeight.Bold,
-      Enum.FontStyle.Normal
-    )
-    description.Text = Description
-    description.TextColor3 = Color3.fromRGB(255, 255, 255)
-    description.TextSize = 16
-    description.TextWrapped = true
-    description.TextXAlignment = Enum.TextXAlignment.Left
-    description.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    description.BackgroundTransparency = 1
-    description.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    description.BorderSizePixel = 0
-    description.Position = UDim2.fromOffset(9, 11)
-    description.Size = UDim2.new(5.59, -40, 0.489, 22)
-    description.Parent = frame
+function Notification:CreateNotification(ContentText, TittleText)
+  local content = Instance.new("TextLabel")
+  content.Name = "Content"
+  content.FontFace = Font.new(
+    "rbxasset://fonts/families/Ubuntu.json",
+    Enum.FontWeight.Bold,
+    Enum.FontStyle.Normal
+  )
+  content.Text = ContentText
+  content.TextColor3 = Color3.fromRGB(255, 255, 255)
+  content.TextSize = 16
+  content.TextXAlignment = Enum.TextXAlignment.Left
+  content.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+  content.BackgroundTransparency = 1
+  content.BorderColor3 = Color3.fromRGB(0, 0, 0)
+  content.BorderSizePixel = 0
+  content.Position = UDim2.fromOffset(19, 19)
+  content.Size = UDim2.new(2.3, -40, 0.295, 22)
+  content.Parent = frame
+  
+  local tittle = Instance.new("TextLabel")
+  tittle.Name = "Tittle"
+  tittle.FontFace = Font.new(
+    "rbxasset://fonts/families/Ubuntu.json",
+    Enum.FontWeight.Bold,
+    Enum.FontStyle.Normal
+  )
+  tittle.Text = TittleText
+  tittle.TextColor3 = Color3.fromRGB(255, 255, 255)
+  tittle.TextSize = 16
+  tittle.TextXAlignment = Enum.TextXAlignment.Left
+  tittle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+  tittle.BackgroundTransparency = 1
+  tittle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+  tittle.BorderSizePixel = 0
+  tittle.Position = UDim2.fromOffset(0, -20)
+  tittle.Size = UDim2.new(3.16, -40, 0.318, 22)
+  tittle.Parent = frame
+  
 end
 return Notification;
 end
