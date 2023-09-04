@@ -161,7 +161,7 @@ scrollNotification.Parent = notificationWindow
 notificationWindow.Parent = notificationGui
 
 local Notification = {}
-function Notification:CreateNotification(TittleText, ContentText)
+function Notification:CreateNotification(TittleText,ContentText)
   local tittle = Instance.new("TextLabel")
   tittle.Name = "Tittle"
   tittle.FontFace = Font.new(
