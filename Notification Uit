@@ -129,7 +129,8 @@ scrollNotification.Size = UDim2.new(1.19, -70, 1, 0)
 ScrollNotification.TweenPosition(
     UDim2.new(0.9, -256,0.973, -74), 
     Enum.EasingDirection.Out, 
-    Enum.EasingStyle.Quad, 0.5, 
+    Enum.EasingStyle.Quad, 
+    0.5, 
     false
 )
 
