@@ -163,16 +163,13 @@ notificationWindow.Parent = notificationGui
 local Notification = {}
 function Notification:CreateNotification(TittleText, ContentText)
   local tittle = Instance.new("TextLabel")
-  local content = Instance.new("TextLabel")
-  local TittleText = tittle.Text
-  local ContentText = content.Text
   tittle.Name = "Tittle"
   tittle.FontFace = Font.new(
     "rbxasset://fonts/families/Ubuntu.json",
     Enum.FontWeight.Bold,
     Enum.FontStyle.Normal
   )
-  tittle.Text = ''
+  tittle.Text = TittleText
   tittle.TextColor3 = Color3.fromRGB(255, 255, 255)
   tittle.TextSize = 16
   tittle.TextXAlignment = Enum.TextXAlignment.Left
@@ -183,14 +180,14 @@ function Notification:CreateNotification(TittleText, ContentText)
   tittle.Position = UDim2.fromOffset(0, -20)
   tittle.Size = UDim2.new(3.16, -40, 0.318, 22)
   tittle.Parent = frame
-
+  local content = Instance.new("TextLabel")
   content.Name = "Content"
   content.FontFace = Font.new(
     "rbxasset://fonts/families/Ubuntu.json",
     Enum.FontWeight.Bold,
     Enum.FontStyle.Normal
   )
-  content.Text = ''
+  content.Text = ContentText
   content.TextColor3 = Color3.fromRGB(255, 255, 255)
   content.TextSize = 16
   content.TextXAlignment = Enum.TextXAlignment.Left
