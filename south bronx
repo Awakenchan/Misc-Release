@@ -1,0 +1,182 @@
+local Success, Error = pcall(function()
+----------------𝐕𝐚𝐫𝐢𝐚𝐛𝐥𝐞𝐬-----------------------------
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local workspace = game.Workspace
+local playerTags = {}
+local player = game:GetService("Players").localPlayer
+local client = Players.LocalPlayer
+local humanoid = client.Character and client.Character:FindFirstChild('Humanoid')
+local vim = game:service("VirtualInputManager")
+local camera = workspace.CurrentCamera
+local cf = camera.CFrame
+local Name = game.Players.LocalPlayer.Name
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
+local spoofedValues = {
+    ['WalkSpeed'] = 16,
+    ['JumpPower'] = 0,
+}
+----------------𝗕𝘆𝗽𝗮𝘀𝘀-----------------------------
+--Walk speed is not mine i think i found it on v3rm was testing on erlc credits to the gu who made it
+local old2;
+old2 = hookmetamethod(game, '__index', function(...)
+    local i,p = ...
+    if (i == humanoid and spoofedValues[p]) then
+        return spoofedValues[p]
+    end
+    return old2(...)
+end)
+client.CharacterAdded:Connect(function(char)
+    humanoid = char:WaitForChild('Humanoid', 10)
+end)
+
+----------------𝐒𝐜𝐫𝐢𝐩𝐭 𝐈𝐧𝐬𝐢𝐝𝐞𝐬-----------------------------
+local X = Material.Load({
+	Title = "awakenkn hub",
+	Style = 3,
+	SizeX = 400,
+	SizeY = 400,
+	Theme = "Dark",
+})
+
+local Main = X.New({
+	Title = "Main"
+})
+
+Main.Toggle({
+	Text = "Enable rest button",
+	Callback = function(value)
+        getgenv().resetbutton = value
+        while getgenv().resetbutton do task.wait()
+            pcall(function()
+                player.PlayerGui.DisableResetButton.Disabled = true
+                game:GetService("StarterGui"):SetCore("ResetButtonCallback", true)
+            end)
+        end
+	end,
+	Enabled = false
+})
+Main.Slider({
+	Text = "WalkSpeed",
+	Callback = function(value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+	end,
+	Min = 16,
+	Max = 400,
+	Def = 16
+})
+Main.Slider({
+	Text = "JumpPower",
+	Callback = function(value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+	end,
+	Min = 50,
+	Max = 100,
+	Def = 50
+})
+Main.Dropdown({
+	Text = "Teleports",
+	Callback = function(Sel)
+		if Sel == 'Gun shop 1' then
+            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-231.15609741210938, 21.887718200683594, -326.1847229003906)
+		elseif Sel == "Gun shop 2" then 
+			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-464.143798828125, 3.924633026123047, 373.7803649902344)
+			local notiffoodcrop = Notification.new("info", "Success:", "Safe Teleport.") 
+			notiffoodcrop:deleteTimeout(3)
+		elseif Sel == "Gun Shop | Bronx Fire arm" then 
+			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(232.84957885742188, 3.8621387481689453, -197.55747985839844)
+			local notifbrnox = Notification.new("info", "Success:", "Safe Teleport.") 
+			notifbrnox:deleteTimeout(3)
+		elseif Sel == 'Jims market' then
+			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-77.38333129882812, -179.00283813476562, -57.52591323852539)
+			local notifjim = Notification.new("info", "Success:", "Move outside the door.") 
+			notifjim:deleteTimeout(3)
+        elseif Sel == "Food Corp" then 
+			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(361.6743469238281, 3.487136125564575, -340.982421875)
+			local notiffoodcrop = Notification.new("info", "Success:", "Safe Teleport.") 
+			notiffoodcrop:deleteTimeout(3)
+		end
+	end,
+	Options = {
+		'Gun shop 1',
+		'Gun shop 2',
+		'Gun Shop | Bronx Fire arm',
+		'Jims market',
+		'Food Corp'
+	},
+	Menu = {
+		Information = function(self)
+			X.Banner({
+				Text = "Teleports to selected area"
+			})
+		end
+	}
+})
+tweenService, tweenInfo = game:GetService("TweenService"), TweenInfo.new(6, Enum.EasingStyle.Linear)
+local TweenToTrashCan = tweenService:Create(
+	game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart, 
+	tweenInfo, 
+	{CFrame = CFrame.new(727.055419921875, 4.46819543838501, 215.2823028564453)}
+)
+
+local AutoFarm = X.New({
+	Title = "AutoFarm"
+})
+AutoFarm.Toggle({
+	Text = "Teleport to quest",
+	Callback = function(value)
+        getgenv().tpquest = value
+        while getgenv().tpquest do task.wait()
+			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(715.9993286132812, 3.537199020385742, 164.883544921875)
+        end
+	end,
+	Enabled = false
+})
+AutoFarm.Toggle({
+	Text = "Trash Bag farm",
+	Callback = function(value)
+        getgenv().Trashbagfarm = value
+		if getgenv().Trashbagfarm == false then
+			TweenToTrashCan:Cancel()
+			TweenToTrashCan:Destroy()
+		end
+        while getgenv().Trashbagfarm do task.wait()
+			camera.CFrame = CFrame.new(cf.Position, cf.Position - Vector3.new(1, 0, 0))
+			vim:SendKeyEvent(true, 'O', false, game)
+			task.wait(0.6)
+			vim:SendKeyEvent(false, 'O', false, game)
+			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(699.5364990234375, 7.322690010070801, 168.53787231445312)
+			task.wait(1)
+			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(699.5364990234375, 7.322690010070801, 168.53787231445312)
+			task.wait(0.2)
+			vim:SendKeyEvent(true, 'E', false, game)
+			task.wait(0.6)
+			vim:SendKeyEvent(false, 'E', false, game)
+			wait(10)
+			if game.Players.LocalPlayer.Backpack:FindFirstChild("TrashBag") then
+				local Success2, Error2 = pcall(function()
+				 game.Players.LocalPlayer.Backpack["TrashBag"].Parent = game.Players.LocalPlayer.Character
+				end)
+				TweenToTrashCan:Play()
+				task.wait(5)
+			else
+				if not Success2 then
+					Notification.new("error", "Error Heading", "Cant Find the bag") 
+				end
+			end
+			task.wait(1)
+			vim:SendKeyEvent(true, 'E', false, game)
+			task.wait(0.6)
+			vim:SendKeyEvent(false, 'E', false, game)
+        end
+	end,
+	Enabled = false
+})
+end)
+if not Success then 
+	print(Error)
+end
+getgenv().SouthBronxBypass = true
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Awakenchan/Bypasses/main/BypassAwaken"))()
