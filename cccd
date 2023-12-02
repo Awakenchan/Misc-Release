@@ -1,0 +1,744 @@
+--[[
+    ALL CREDITS TO awakenkn https://e-z.bio/awaken
+]]
+----------------𝐕𝐚𝐫𝐢𝐚𝐛𝐥𝐞𝐬-----------------------------
+
+getgenv().waitvalue = 70 ---default values
+getgenv().taskValue = 9999 ---default values
+
+local decimals = 2
+local x = os.clock()
+local moneyValue = game:GetService("Players").localPlayer.PlayerGui.Main.Container.Hub.CashFrame.Frame.TextLabel
+local num = string.gsub(moneyValue.Text, "RP.", "")
+num = string.gsub(num, ",", "")
+local oldMoney = tonumber(num)
+local newMoney = 0
+local pname = game.Players.localPlayer.Name
+local cartag = "sCar"
+local vim = game:service("VirtualInputManager")
+local virtualUser = game:GetService('VirtualUser')
+local ConsoleJobId = 'Roblox.GameLauncher.joinGameInstance('..game.PlaceId..', "'..game.JobId..'")'
+local DName = game.Players.LocalPlayer.DisplayName
+local Name = game.Players.LocalPlayer.Name
+local Userid = game.Players.LocalPlayer.UserId
+local PlayerName = game.Players.localPlayer.Name
+local Players = game:GetService("Players")
+local plr = Players.LocalPlayer
+local vu = game:GetService("VirtualUser")
+local PlaceID = game.PlaceId
+local AllIDs = {}
+local foundAnything = ""
+local actualHour = os.date("!*t").hour
+local Deleted = false
+local File = pcall(function()
+AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+end)
+if not File then
+table.insert(AllIDs, actualHour)
+writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+end
+----------------𝐅𝐮𝐧𝐜𝐭𝐢𝐨𝐧𝐬-----------------------------
+game:service'Players'.LocalPlayer.Idled:connect(function()
+VirtualUser:CaptureController()
+VirtualUser:ClickButton2(Vector2.new())
+end)
+for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.Idled)) do
+v:Disable()
+end
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+vu:Button2Down(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+wait(1)
+vu:Button2Up(Vector2.new(0,0),workspace.CurrentCamera.CFrame)
+end)
+local function GetCoffee()
+local args = {
+  [1] = "GetCoffee"
+}
+
+game:GetService("ReplicatedStorage").NetworkContainer.RemoteEvents.JanjiJiwa:FireServer(unpack(args))
+end
+local function Delivery()
+local args = {
+  [1] = "Delivery"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("NetworkContainer"):WaitForChild("RemoteEvents"):WaitForChild("JanjiJiwa"):FireServer(unpack(args))
+end
+local function startcoffee()
+local args = {
+  [1] = "JanjiJiwa"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("NetworkContainer"):WaitForChild("RemoteEvents"):WaitForChild("Job"):FireServer(unpack(args))
+
+end
+local function getofficejob()
+local args = {
+  [1] = "Office"
+}
+game:GetService("ReplicatedStorage"):WaitForChild("NetworkContainer"):WaitForChild("RemoteEvents"):WaitForChild("Job"):FireServer(unpack(args))
+wait(1)
+fireproximityprompt(game:GetService("Workspace").Etc.Job.Office.Starter.Prompt)
+end
+local function gettruckjob()
+local args = {
+  [1] = "Truck"
+}
+game:GetService("ReplicatedStorage"):WaitForChild("NetworkContainer"):WaitForChild("RemoteEvents"):WaitForChild("Job"):FireServer(unpack(args))
+end
+local function claimbox()
+local args = {
+  [1] = "Claim"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("NetworkContainer"):WaitForChild("RemoteEvents"):WaitForChild("Box"):FireServer(unpack(args))
+end
+local function spinbox()
+local args = {
+  [1] = "Buy",
+  [2] = "Limited Box"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("NetworkContainer"):WaitForChild("RemoteEvents"):WaitForChild("Box"):FireServer(unpack(args))
+end
+local function getintruck()
+Fluent:Notify({
+Title = "Information:",
+Content = 'Getting inside the Truck....',
+Duration = 3
+})
+task.wait(3)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Vehicles[pname..cartag].DriveSeat.CFrame
+ task.wait(0.7)
+ Fluent:Notify({
+    Title = "Information:",
+    Content = 'Driver Prompt Fired!',
+    Duration = 2
+})
+fireproximityprompt(game:GetService("Workspace").Vehicles[pname..cartag].DriveSeat.PromptDriveSeat)
+if game:GetService("Workspace").Vehicles[pname..cartag]:FindFirstChild('Trailer1') then
+  game:GetService("Workspace").Vehicles[pname..cartag]:FindFirstChild('Trailer1'):Destroy()
+else
+  Fluent:Notify({
+    Title = "Information:",
+    Content = 'No truck Trailer found.',
+    Duration = 3
+ })
+end
+wait(3)
+vim:SendKeyEvent(true, 'P', false, game)
+wait(0.2)
+vim:SendKeyEvent(false, 'P', false, game)
+vim:SendKeyEvent(true, 'Q', false, game)
+wait(0.2)
+vim:SendKeyEvent(false, 'Q', false, game)
+end
+local function spawntruck()
+virtualUser:CaptureController()
+game.Workspace.Gravity = 18
+Fluent:Notify({
+Title = "Information:",
+Content = 'Zooming out cam.',
+Duration = 3
+})
+vim:SendKeyEvent(true, 'O', false, game)
+task.wait(0.3)
+vim:SendKeyEvent(false, 'O', false, game)
+Fluent:Notify({
+Title = "Information:",
+Content = 'Truck job can take up to 8mins per 10tps.',
+Duration = 3
+})
+task.wait(1)
+Fluent:Notify({
+Title = "Information:",
+Content = 'Getting job.',
+Duration = 2
+})
+gettruckjob()
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-21797.646484375, 1042.0279541015625, -26799.79296875)
+task.wait(1)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-21797.646484375, 1042.0279541015625, -26799.79296875)
+task.wait(1)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-21797.646484375, 1042.0279541015625, -26799.79296875)
+task.wait(1)
+fireproximityprompt(game:GetService("Workspace").Etc.Job.Truck.Starter.Prompt)
+Fluent:Notify({
+Title = "Information:",
+Content = 'Starting Job.',
+Duration = 5
+})
+wait(2)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-21870.0234375, 1042.126220703125, -26873.8125)
+Fluent:Notify({
+Title = "Information:",
+Content = 'Spawning truck.',
+Duration = 5
+})
+vim:SendKeyEvent(false, 'F', false, game)
+task.wait(0.7)
+vim:SendKeyEvent(true, 'F', false, game)
+Fluent:Notify({
+Title = "Information:",
+Content = 'Doing backgroud process.',
+Duration = 5
+})
+task.wait(5)
+if not game:GetService("Workspace").Vehicles:FindFirstChild(pname..cartag) then
+  Fluent:Notify({
+    Title = "Information:",
+    Content = 'Re trying truck spawn.',
+    Duration = 5
+   })
+   vim:SendKeyEvent(true, 'O', false, game)
+   task.wait(0.3)
+   vim:SendKeyEvent(false, 'O', false, game)
+  spawntruck()
+else
+  Fluent:Notify({
+    Title = "Information:",
+    Content = 'Passed Truck spawn check!.',
+    Duration = 5
+   })
+end
+vim:SendKeyEvent(true, 'I', false, game)
+task.wait(0.4)
+vim:SendKeyEvent(false, 'I', false, game)
+getintruck()
+end
+local function admincheck(player)
+if plr ~= player and (player:GetRoleInGroup(10884667) == 'Staff' or player:GetRoleInGroup(10884667) == 'Developer') then
+  game.Players.LocalPlayer:Kick('Admin has join the server')
+else
+  warn('no admin found.')
+end
+end
+function TPReturner()
+local Site;
+if foundAnything == "" then
+    Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+else
+    Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+end
+local ID = ""
+if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+    foundAnything = Site.nextPageCursor
+end
+local num = 0;
+for i,v in pairs(Site.data) do
+    local Possible = true
+    ID = tostring(v.id)
+    if tonumber(v.maxPlayers) > tonumber(v.playing) then
+        for _,Existing in pairs(AllIDs) do
+            if num ~= 0 then
+                if ID == tostring(Existing) then
+                    Possible = false
+                end
+            else
+                if tonumber(actualHour) ~= tonumber(Existing) then
+                    local delFile = pcall(function()
+                        delfile("NotSameServers.json")
+                        AllIDs = {}
+                        table.insert(AllIDs, actualHour)
+                    end)
+                end
+            end
+            num = num + 1
+        end
+        if Possible == true then
+            table.insert(AllIDs, ID)
+            wait()
+            pcall(function()
+                writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                wait()
+                game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+            end)
+            wait(4)
+        end
+    end
+end
+end
+function Teleport()
+while wait() do
+    pcall(function()
+        TPReturner()
+        if foundAnything ~= "" then
+            TPReturner()
+        end
+    end)
+end
+end
+local ts = game:GetService("TeleportService")
+local p = game:GetService("Players").LocalPlayer
+----------------𝐒𝐜𝐫𝐢𝐩𝐭 𝐈𝐧𝐬𝐢𝐝𝐞𝐬-----------------------------
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Window = Fluent:CreateWindow({
+Title = "Car Driving Indonesia ",
+SubTitle = "Made with love by awakenkn",
+TabWidth = 160,
+Size = UDim2.fromOffset(580, 460),
+Acrylic = true, -- The blur may be detectable, setting this to false disables blur entirely
+Theme = "Dark"
+})
+local Tabs = {
+Player = Window:AddTab({ Title = "Player", Icon = 'person-standing' }),
+Farm = Window:AddTab({ Title = "Farm", Icon = 'dollar-sign' }),
+Config = Window:AddTab({ Title = "Config Farm", Icon = 'sliders-horizontal' }),
+Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+}
+local Options = Fluent.Options
+do
+---------------------------PLAYER TAB---------------------------------------
+Tabs.Player:AddParagraph({
+Title = "awakenkn",
+Content = "Hey! i dont like cdid community any more bunch of skids and 10yo ima just keep this open might update later on."
+})
+local Spoofer = Tabs.Player:AddToggle("Spoofer", {Title = "Spoof local player", Default = false })
+Spoofer:OnChanged(function(value)
+local spoof = game.Players.localPlayer
+getgenv().Spoofer = value
+while getgenv().Spoofer do task.wait()
+    game:GetService("Workspace").Lives[spoof.Name].Head.PlayerBillboard.Frame.PlayerName.Text = 'awakenkn'
+    game:GetService("Workspace").Lives[spoof.Name].Head.PlayerBillboard.Frame.PlayerName.TextColor3 = Color3.fromRGB(206, 237, 255)
+    game:GetService("Workspace").Lives[spoof.Name].Head.PlayerBillboard.Frame.JobName.Text = 'awaken hub User'
+    game:GetService("Workspace").Lives[spoof.Name].Head.PlayerBillboard.Frame.JobName.TextColor3 = Color3.fromRGB(206, 237, 255)
+    game:GetService("Players")[spoof.Name].PlayerGui.PhoneUI.HolderHP.Homescreen.ProfileScreen.MainFrame.DisplayName.Text = "awakenknhub buyer"
+    game:GetService("Players")[spoof.Name].PlayerGui.PhoneUI.HolderHP.Homescreen.HouseScreen.WelcomeText.Text = "awakenknhub buyer"
+    game:GetService("Players")[spoof.Name].PlayerGui.PhoneUI.HolderHP.Homescreen.ProfileScreen.MainFrame.MainName.Text = "awakenknhub buyer"
+    game:GetService("Players")[spoof.Name].PlayerGui.PhoneUI.HolderHP.Homescreen.SettingsScreen.WelcomeText.Text = "awakenknhub buyer"
+end
+end)
+Tabs.Player:AddButton({
+Title = "Auto Rejoin On Kick",
+Description = "Smart Ai.",
+Callback = function()
+    game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+        ts:Teleport(game.PlaceId, p)
+        Fluent:Notify({
+            Title = "Information:",
+            Content = 'Detected kick prompt',
+            Duration = 4
+        })
+       print('[=] Rejoining, Detected Kick')
+    end)
+end
+})
+Tabs.Player:AddParagraph({
+Title = "awakenkn",
+Content = "This might not work ! Warning !"
+})
+local Input = Tabs.Player:AddInput("Input", {
+Title = "Enter Private Server Code",
+Default = "Default",
+Placeholder = "awakenkn",
+Numeric = true, 
+Finished = true, 
+Callback = function(Value)
+    code = Value
+end
+})
+Input:OnChanged(function()
+print("PrivateServer Code:", Input.Value)
+end)
+Tabs.Player:AddButton({
+Title = "Auto Rejoin Private Server On Kick",
+Description = "Smart Ai.",
+Callback = function()
+    game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+        Fluent:Notify({
+            Title = "Information:",
+            Content = 'Detected kick prompt',
+            Duration = 4
+        })
+       print('[=] Rejoining, Detected Kick')
+    local privateserver = {
+        [1] = "Join",
+        [2] = code,
+        [3] = "JawaTengah"
+    }
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("NetworkContainer"):WaitForChild("RemoteFunctions"):WaitForChild("PrivateServer"):InvokeServer(unpack(privateserver))
+    end)
+end
+})
+
+local opengui = Tabs.Player:AddDropdown("opengui", {
+Title = "Open Guis",
+Values = {"None","Job change GUI","Upgrade GUI","Trans CDID GUI","BOXSHOP GUI"},
+Multi = false,
+Default = 1,
+})
+opengui:OnChanged(function(Value)
+if Options.opengui.Value == "Job change GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Job.Selection.Model.Prompt)
+    elseif Options.opengui.Value == "Upgrade GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Upgrade.Upgrade.Prompt)
+    elseif Options.opengui.Value == "Trans CDID GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.TransCDID.Sentul.Prompt)
+    elseif Options.opengui.Value == "BOXSHOP GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.NPC.BOXSHOP.ProximityPrompt)
+end
+end)
+
+local dealshipgui = Tabs.Player:AddDropdown("dealshipgui", {
+Title = "Open Dealship Guis",
+Values = {"None","Suzuki Showroom GUI","Toyota Showroom GUI","Premium Showroom GUI","Otnas Showroom GUI","Nissan Showroom GUI","Mitsubishi Showroom GUI","MercedesBenz Showroom GUI","Mazda Showroom GUI","Lexus Showroom GUI","Komersial Showroom GUI","KIA Showroom GUI","Hyundai Showroom GUI","Sumber Jaya Showroom GUI","Daihatsu Showroom GUI","Audi Showroom GUI","BMW Showroom GUI","Bandung Showroom GUI"},
+Multi = false,
+Default = 1,
+})
+dealshipgui:OnChanged(function(Value)
+if Options.dealshipgui.Value == "Suzuki Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Suzuki.Prompt)
+elseif Options.dealshipgui.Value == "Toyota Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Toyota.Prompt)
+elseif Options.dealshipgui.Value == "Premium Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Premium.Prompt)
+elseif Options.dealshipgui.Value == "Otnas Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Otnas.Prompt)
+elseif Options.dealshipgui.Value == "Nissan Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Nissan.Prompt)
+elseif Options.dealshipgui.Value == "Mitsubishi Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Mitsubishi.Prompt)
+elseif Options.dealshipgui.Value == "MercedesBenz Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.MercedesBenz.Prompt)
+elseif Options.dealshipgui.Value == "Mazda Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Mazda.Prompt)
+elseif Options.dealshipgui.Value == "Lexus Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Lexus.Prompt)
+elseif Options.dealshipgui.Value == "Komersial Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Komersial.Prompt)
+elseif Options.dealshipgui.Value == "KIA Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.KIA.Prompt)
+elseif Options.dealshipgui.Value == "Hyundai Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Hyundai.Prompt)
+elseif Options.dealshipgui.Value == "Sumber Jaya Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership["77"].Prompt)
+elseif Options.dealshipgui.Value == "Audi Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Audi.Prompt)
+elseif Options.dealshipgui.Value == "BMW Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.BMW.Prompt)
+elseif Options.dealshipgui.Value == "Bandung Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Bandung.Prompt)
+elseif Options.dealshipgui.Value == "Daihatsu Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Daihatsu.Prompt)
+elseif Options.dealshipgui.Value == "Honda Showroom GUI" then
+    fireproximityprompt(game:GetService("Workspace").Etc.Dealership.Honda.Prompt)
+end
+end)
+
+local boxsnipe = Tabs.Player:AddToggle("boxsnipe", {Title = "Box sniper", Default = false })
+boxsnipe:OnChanged(function(value)
+getgenv().boxsnipe = value
+if getgenv().boxsnipe then
+claimbox()
+end
+while getgenv().boxsnipe do task.wait()
+spinbox()
+task.wait(5)
+end
+end)
+---------------------------FARM TAB---------------------------------------
+local CafeFarm = Tabs.Farm:AddToggle("CafeFarm", {Title = "Cafe Farm", Default = false })
+CafeFarm:OnChanged(function(value)
+getgenv().farmlegit = value
+if getgenv().farmlegit == true then
+startcoffee()
+end
+while getgenv().farmlegit do task.wait()
+GetCoffee()
+wait(0.3)
+Delivery()
+end
+end)
+Tabs.Farm:AddParagraph({
+Title = "awakenkn",
+Content = "Only use Truck Farm on central Java."
+})
+local Toggle = Tabs.Farm:AddToggle("farm", {Title = "TruckFarm", Default = false })
+Toggle:OnChanged(function(value)
+getgenv().truckfarm = value
+while getgenv().truckfarm do task.wait()
+spawntruck()
+virtualUser:SetKeyDown('0x77')
+vim:SendKeyEvent(true, 'W', false, game)
+Fluent:Notify({
+Title = "Information:",
+Content = 'Checking if truck is bugged',
+Duration = 4
+})
+task.wait(6)
+local text = game:GetService("Players").localPlayer.PlayerGui["A-Chassis Interface"].Speedo.MobileSupport.Frame.Speed.Text
+if tonumber(text) ~= 0 then
+Fluent:Notify({
+Title = "Information:",
+Content = 'Truck not bugged',
+Duration = 4
+})
+virtualUser:SetKeyUp('0x77')
+vim:SendKeyEvent(false, 'W', false, game)
+wait(1)
+Fluent:Notify({
+Title = "Information:",
+Content = 'Starting Teleport process',
+Duration = 4
+})
+if game:GetService("Workspace").Vehicles:FindFirstChild(pname..cartag) then  
+for i = 1,tonumber(getgenv().taskValue) do task.wait(tonumber(getgenv().waitvalue))
+    game.Workspace.Gravity = 1
+    local getwaypoint = game:GetService("Workspace").Etc.Waypoint.Waypoint.Position
+    virtualUser:SetKeyDown('0x77')
+    vim:SendKeyEvent(true, 'W', false, game)
+    game:GetService("Workspace").Vehicles[pname..cartag]:SetPrimaryPartCFrame(CFrame.new(getwaypoint))
+    Fluent:Notify({
+       Title = "Information:",
+       Content = 'Truck teleport Done!',
+       Duration = 4
+   })
+    wait(3)
+    virtualUser:SetKeyUp('0x77')
+    vim:SendKeyEvent(false, 'W', false, game)
+    game.Workspace.Gravity = 200
+end
+end
+vim:SendKeyEvent(true, 32, false, game)
+task.wait(0.2)
+vim:SendKeyEvent(false, 32, false, game)
+task.wait(3)
+Fluent:Notify({
+Title = "Information:",
+Content = 'Turning off jumps etc!',
+Duration = 4
+})
+game:GetService("Workspace").Vehicles[pname..cartag]:Destroy()
+elseif tonumber(text) == 0 then
+vim:SendKeyEvent(true, 32, false, game)
+task.wait(0.2)
+vim:SendKeyEvent(false, 32, false, game)
+vim:SendKeyEvent(false, 'W', false, game)
+virtualUser:SetKeyUp('0x77')
+task.wait(0.2)
+Fluent:Notify({
+Title = "Information:",
+Content = 'Truck was bugged redoing old process.',
+Duration = 4
+})
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Etc.Job.Truck.Starter.WorldPivot
+end
+end
+end)  
+local OfficeFarm = Tabs.Farm:AddToggle("OfficeFarm", {Title = "Office Farm", Default = false })
+OfficeFarm:OnChanged(function(value)
+local button = game:GetService("Players").localPlayer.PlayerGui.Job.Components.Container.Office.Frame.SubmitButton
+local events = {"MouseButton1Click", "MouseButton1Down", "Activated"}
+getgenv().Officefarm = value
+if getgenv().Officefarm then
+task.spawn(getofficejob)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Etc.Job.Office.Starter.WorldPivot
+task.wait(0.6)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Etc.Job.Office.Starter.WorldPivot
+task.wait(1)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Etc.Job.Office.Starter.WorldPivot
+task.wait(1)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Etc.Job.Office.Starter.WorldPivot
+task.wait(1)
+game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Etc.Job.Office.Starter.WorldPivot
+fireproximityprompt(game:GetService("Workspace").Etc.Job.Office.Starter.Prompt)
+end
+while getgenv().Officefarm do task.wait()
+str = game.Players.localPlayer.PlayerGui.Job.Components.Container.Office.Frame.Question.Text
+str = str:gsub("=", "")
+str = str:gsub(" ", "")
+if string.find(str, "+") then
+local first_num = tonumber(string.sub(str, 1, string.find(str, "+")-1))
+local second_num = tonumber(string.sub(str, string.find(str, "+")+1))
+result = first_num + second_num
+elseif string.find(str, "-") then
+local first_num = tonumber(string.sub(str, 1, string.find(str, "-")-1))
+local second_num = tonumber(string.sub(str, string.find(str, "-")+1))
+result = first_num - second_num
+end
+game.Players.localPlayer.PlayerGui.Job.Components.Container.Office.Frame.TextBox.Text = tostring(result)
+task.wait(0.7)
+for i,v in pairs(events) do
+for i,v in pairs(getconnections(button[v])) do
+v:Fire()
+end
+end
+end
+end)
+local flagfarm = Tabs.Farm:AddToggle("flagfarm", {Title = "Flag Farm", Default = false })
+flagfarm:OnChanged(function(value)
+getgenv().flagfarms = value
+while getgenv().flagfarms do task.wait()
+    if game:GetService("Workspace").Asset.Event.Flag:FindFirstChild('IndonesiaFlag') then
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Asset.Event.Flag.IndonesiaFlag.Union.CFrame
+       for i = 1,5 do 
+        fireproximityprompt(game:GetService("Workspace").Asset.Event.Flag.IndonesiaFlag.ProximityPrompt)
+       end
+       task.wait(1)
+    elseif getgenv().flagfarms3 == true then
+        Fluent:Notify({
+            Title = "Information:",
+            Content = 'Failed to locate flags in this server, Server hopping.',
+            Duration = 5
+        })
+           print('not spawned')
+           print('Server hopping')
+        task.wait(4)
+        Teleport()
+        task.wait(50)
+    else
+        Fluent:Notify({
+            Title = "Information:",
+            Content = 'Flags havent spawned in this server yet, will be retrying after 15sec',
+            Duration = 5
+        })
+        task.wait(15)
+    end
+end
+end)
+---------------------------CONFIG TAB---------------------------
+moneyValue:GetPropertyChangedSignal("Text"):Connect(function() 
+local num = string.gsub(moneyValue.Text, "RP.", "")
+num = string.gsub(num, ",", "")
+newMoney = tonumber(num) - oldMoney
+end)
+local function sendMoneyLog()
+local url = thereurl or "default"
+local data = {
+["content"] = "",
+["username"] = "awakenkn",
+["avatar_url"] = "https://cdn.discordapp.com/attachments/1129303008950362203/1131670531503042680/icegif-796.gif",
+["embeds"] = {
+{
+  ["color"] = 8163759,
+  ["author"] = {
+     ["name"] = "awakenkn Hub",
+     ["url"] = "",
+  },
+  ["footer"] = {
+     ["text"] = "by awakenkn | best cdid script!",
+  },
+  ["description"] = ("**Truck Farm Money Earned: %s"):format(newMoney)..'**',
+  ["type"] = "rich",
+}
+},
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+local headers = {
+["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost
+local moneylog = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(moneylog)
+end
+local enterwebhook = Tabs.Config:AddInput("enterwebhook", {
+Title = "Enter Webhook",
+Default = "https://discord.com/api/webhooks/1212112121212121/",
+Placeholder = "https://discord.com/api/webhooks/1212112121212121/",
+Numeric = false, -- Only allows numbers
+Finished = true, -- Only calls callback when you press enter
+Callback = function(value)
+  thereurl = value
+end
+})
+enterwebhook:OnChanged(function(value)
+thereurl = value
+end)
+local TruckfarmCounter = Tabs.Config:AddToggle("TruckfarmCounter", {Title = "Truck Farm Counter", Default = false })
+TruckfarmCounter:OnChanged(function(value)
+local moneyValue = game:GetService("Players").localPlayer.PlayerGui.Main.Container.Hub.CashFrame.Frame.TextLabel
+getgenv().webhookTime = timeva --default
+moneyValue:GetPropertyChangedSignal("Text"):Connect(function() -- updating the money
+local num = string.gsub(moneyValue.Text, "RP.", "")
+num = string.gsub(num, ",", "")
+newMoney = tonumber(num) - oldMoney
+end)
+task.spawn(function()
+while task.wait(getgenv().webhookTime) do
+sendMoneyLog()
+end
+end)
+end)
+local Waitvalueforcounter = Tabs.Config:AddInput("Waitvalueforcounter", {
+Title = "Wait value for counter",
+Default = "1 or 2 or 3",
+Placeholder = "1",
+Numeric = true, -- Only allows numbers
+Finished = true, -- Only calls callback when you press enter
+Callback = function(value)
+  thereurl = value
+end
+})
+
+Waitvalueforcounter:OnChanged(function(value)
+timeva = value
+end)
+local flagconfig2 = Tabs.Config:AddToggle("flagconfig2", {Title = "Server hop when no flags", Default = false })
+flagconfig2:OnChanged(function(value)
+getgenv().flagfarms3 = value
+end)
+local flagconfig = Tabs.Config:AddToggle("flagconfig", {Title = "Auto Open Flag box", Default = false })
+flagconfig:OnChanged(function(value)
+getgenv().flagfarms2 = value
+while getgenv().flagfarms2 do task.wait()
+    game:GetService("ReplicatedStorage"):WaitForChild("NetworkContainer"):WaitForChild("RemoteEvents"):WaitForChild("BoxEvent"):FireServer()
+end
+end)
+
+local TruckFarmTeleportAmmount = Tabs.Config:AddInput("TruckFarmTeleportAmmount", {
+Title = "Truck Farm Teleport Ammount",
+Default = "Recommended 9999 or 50",
+Placeholder = "9999",
+Numeric = true, -- Only allows numbers
+Finished = true, -- Only calls callback when you press enter
+Callback = function(value)
+    getgenv().taskValue = value---default values
+end
+})
+
+TruckFarmTeleportAmmount:OnChanged(function(value)
+print( getgenv().taskValue)
+end)
+
+local TruckFarmTeleportWaitValue = Tabs.Config:AddInput("TruckFarmTeleportWaitValue", {
+Title = "Truck Farm Teleport Wait Value",
+Default = "Recommended 70",
+Placeholder = "70",
+Numeric = true, -- Only allows numbers
+Finished = true, -- Only calls callback when you press enter
+Callback = function(value)
+    getgenv().waitvalue = value
+end
+})
+
+TruckFarmTeleportWaitValue:OnChanged(function(value)
+print(getgenv().waitvalue)
+end)
+
+---------------------------End of script insides----------------------------
+end
+SaveManager:SetLibrary(Fluent)
+InterfaceManager:SetLibrary(Fluent)
+SaveManager:IgnoreThemeSettings()
+SaveManager:SetIgnoreIndexes({})
+InterfaceManager:SetFolder("FluentScriptHub")
+SaveManager:SetFolder("FluentScriptHub/specific-game")
+InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+SaveManager:BuildConfigSection(Tabs.Settings)
+Window:SelectTab(1)
+SaveManager:LoadAutoloadConfig()
+local t = (string.format("%."..tostring(decimals).."f", os.clock() - x))
+Fluent:Notify({
+Title = "Script loaded in:",
+Content = ''..t.." Seconds",
+Duration = 4
+})
+Players.PlayerAdded:Connect(function(newPlayer)
+admincheck(newPlayer)
+end)
+for i, v in next, Players:GetPlayers() do
+admincheck(v)
+end
