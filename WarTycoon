@@ -107,6 +107,7 @@ local function moveAndSend(cframe, key)
     vim:SendKeyEvent(true, key, false, game)
     task.wait(1.5)
     vim:SendKeyEvent(false, key, false, game)
+    task.wait(5)
 end 
 local actions = {
     {CFrame.new(69.41250610351562, 105.25658416748047, 3436.249267578125), 'E'},
