@@ -209,7 +209,8 @@ local autobarrel = Tabs.Farm:AddToggle("autobarrel", {Title = "[Non-Legit]: Auto
 autobarrel:OnChanged(function(value)
     getgenv().AutoBarrel = value
     while getgenv().AutoBarrel do task.wait()
-        for _, action in ipairs(actions) do
+        for _, action in ipairs(actions) do 
+            task.wait(3)
             moveAndSend(action[1], action[2])
         end
     end
