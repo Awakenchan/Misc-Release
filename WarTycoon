@@ -1,38 +1,44 @@
-warn("// Loading script...")
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Awakenchan/Awaken-UI-s/main/Notification%20Ui"))() 
+-- // Loading script...
+local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Awakenchan/Awaken-UI-s/main/Notification%20Ui"))()
 local awakenNotification = library:CreateWindow()
+local clonef = clonefunction
+local cwrap = clonef(coroutine.wrap)
 local Player = game:GetService("Players")
 local LocalPlayer = Player.LocalPlayer
 local PlayerName = LocalPlayer.Name
 local vim = game:service("VirtualInputManager")
-local TycoonName 
+
+local TycoonName
 local cango
+
+-- Find the player's tycoon
 for _, tycoon in pairs(game:GetService("Workspace").Tycoon.Tycoons:GetChildren()) do
     if tycoon:FindFirstChild("Owner") and tostring(tycoon.Owner.Value) == PlayerName then
-        TycoonName = tycoon.Name 
+        TycoonName = tycoon.Name
         warn('// Found player tycoon! '.. TycoonName)
         break
     end
 end
-local Success, failed = pcall(function()
+
+-- Check if the player has a tycoon
 local PlayerTycoon = game:GetService("Workspace").Tycoon.Tycoons[TycoonName]
-end)
-if not Success then
-    warn("// failed to find player tycoon please make sure your loaded in & have tycoon!")
+if not PlayerTycoon then
+    warn("// Failed to find player tycoon. Make sure you're loaded in and have a tycoon!")
     awakenNotification:CreateNotification(
-     'Error:',
-     "Failed to find player tycoon please make sure your loaded in & have tycoon!",
-     14404156927,
-     4
+        'Error:',
+        "Failed to find player tycoon. Make sure you're loaded in and have a tycoon!",
+        14404156927,
+        4
     )
     return
 end
-local PlayerTycoon = game:GetService("Workspace").Tycoon.Tycoons[TycoonName]
-warn("// Loading Functions....")
+
+-- Loading Functions....
 getgenv().ButtonPressAmmount = 1
 getgenv().WaitBeforeCollect = 0
 getgenv().WaitAfterCollect = 0.6
 getgenv().IgnoreRebirthButtons = false
+
 local partsToIgnore = {
     "Javelin Giver",
     "AWP Giver",
@@ -75,6 +81,11 @@ local partsToIgnore = {
     "Vietnam River Boat",
     "KSG 12 Giver",
     "PP19 Bizon Giver",
+    'Fairmile',
+    'USS Douglas',
+    'PG-02',
+    "LAV-AD",
+    "Super Stallion",
 }
 local RebirthButtons = {
     "Boats [3 Rebirths]",
@@ -87,6 +98,7 @@ local RebirthButtons = {
     "Missile Silo Start",
     "Easter Egg [10 Rebirths]",
 }
+
 local collectorPosition = PlayerTycoon.Essentials["Oil Collector"].Collector.Display.Part.CFrame.Position
 local success, part = pcall(function()
     return PlayerTycoon.Essentials["Oil Collector"].Collector.Display.Part
@@ -97,6 +109,7 @@ if success and part then
 else
     warn("Oil Collector part not found.")
 end
+
 local function moveAndSend(cframe, key)
     LocalPlayer.Character.HumanoidRootPart.CFrame = cframe
     task.wait(1.5)
@@ -109,6 +122,7 @@ local function moveAndSend(cframe, key)
     vim:SendKeyEvent(false, key, false, game)
     task.wait(5)
 end 
+
 local actions = {
     {CFrame.new(69.41250610351562, 105.25658416748047, 3436.249267578125), 'E'},
     {CFrame.new(collectorPosition), 'E'},
@@ -119,6 +133,20 @@ local actions = {
     {CFrame.new(-14.359360694885254, 49.34040069580078, 700.2596435546875), 'E'},
     {CFrame.new(collectorPosition), 'E'},
 }
+
+local loop = cwrap(function()  
+    getgenv().okbro = true
+    while getgenv().okbro do task.wait()
+        for i, gamepassName in pairs(partsToIgnore) do
+            local gamepass = PlayerTycoon.UnpurchasedButtons:FindFirstChild(gamepassName)
+            if gamepass then
+                gamepass:Destroy()
+            end
+        end
+    end
+end)
+task.spawn(loop)
+
 warn("// Functions Loaded!")
 ----------------𝐒𝐜𝐫𝐢𝐩𝐭 𝐈𝐧𝐬𝐢𝐝𝐞𝐬-----------------------------
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
@@ -140,6 +168,13 @@ local Tabs = {
 local Options = Fluent.Options
 do
 ---------------------------FARM TAB---------------------------------------
+local antiafk = Tabs.Farm:AddToggle("antiafk", {Title = "Anti-Afk", Default = false })
+antiafk:OnChanged(function(value)
+    getgenv().antiafk = value
+    while getgenv().antiafk do task.wait()
+        game:GetService("VirtualUser"):ClickButton1(Vector2.new(710,534,0))
+    end
+end)
 local AutoPlay = Tabs.Farm:AddToggle("AutoPlay", {Title = "[Function Based]: Auto-Play", Default = false })
 AutoPlay:OnChanged(function(value)
     getgenv().AutoPlay = value
@@ -300,16 +335,3 @@ end)
 end
 SaveManager:SetLibrary(Fluent)InterfaceManager:SetLibrary(Fluent)SaveManager:IgnoreThemeSettings()SaveManager:SetIgnoreIndexes({})InterfaceManager:SetFolder("awakenkn")SaveManager:SetFolder("awakenkn/WarTycoon")InterfaceManager:BuildInterfaceSection(Tabs.Settings)SaveManager:BuildConfigSection(Tabs.Settings)Window:SelectTab(1)SaveManager:LoadAutoloadConfig()
 warn("// script Loaded!")
-task.spawn(function()
-    getgenv().okbro = true
-while getgenv().okbro do task.wait()
-    game:GetService("VirtualUser"):ClickButton1(Vector2.new(710,534,0))
-    for i, gamepassName in pairs(partsToIgnore) do
-        local gamepass = PlayerTycoon.UnpurchasedButtons:FindFirstChild(gamepassName)
-        if gamepass then
-            gamepass:Destroy()
-        end
-    end
-    task.wait(10)
-end
-end)
