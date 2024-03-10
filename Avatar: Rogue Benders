@@ -1,0 +1,99 @@
+getgenv().medfarm = nil
+local vim = game:GetService("VirtualInputManager")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local PlayerGui = LocalPlayer.PlayerGui
+local KeySpamGui = PlayerGui:WaitForChild("Key Spam")
+local PlayerName = LocalPlayer.Name
+local button
+local textLabel
+local keycodename
+local keynum
+KeySpamGui.DescendantAdded:Connect(function(descendant)
+    task.wait(0.1)
+    if descendant:IsA("ImageLabel") then
+        keycodename = descendant.Name:sub(4):gsub("^%s*(.-)%s*$", "%1")
+        for _, child in pairs(descendant:GetChildren()) do
+            if child:IsA("TextButton") then
+                button = child
+            elseif child:IsA("TextLabel") then
+                 textLabel = child
+            end
+        end
+        if button and textLabel then
+            keynum = textLabel.Text:sub(3):gsub("^%s*(.-)%s*$", "%1")
+            while getgenv().medfarm do task.wait()
+                for i = 1,tonumber(keynum) do
+                    vim:SendKeyEvent(true,keycodename, false, game)
+                    vim:SendKeyEvent(false, keycodename, false, game)
+                end
+                button = nil
+                textLabel = nil
+                keycodename = nil
+                keynum = nil
+            end
+        end
+    end
+end)
+workspace.NPC.Crate.Crate.HoldDuration = 0
+workspace.Lives[PlayerName].Scripts["New Systems"]["Char Manager"].Disabled = true
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+local X = Material.Load({
+	Title = "awakenkn | Avatar: Rogue Benders",
+	Style = 3,
+	SizeX = 500,
+	SizeY = 400,
+	Theme = "Dark",
+})
+
+local Main = X.New({
+	Title = "Main"
+})
+Main.Slider({
+	Text = "WalkSpeed",
+	Callback = function(value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = value
+	end,
+	Min = 16,
+	Max = 500,
+	Def = 16
+})
+Main.Slider({
+	Text = "JumpPower",
+	Callback = function(value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = value
+	end,
+	Min = 50,
+	Max = 500,
+	Def = 50
+})
+Main.Toggle({
+	Text = "Auto meditate",
+	Callback = function(value)
+        getgenv().medfarm = value
+	end,
+	Enabled = false
+})
+Main.Toggle({
+	Text = "[Air Type]: Auto Farm Crate",
+	Callback = function(value)
+       getgenv().crateair = value
+       while getgenv().crateair do task.wait()
+        fireclickdetector( workspace.NPC.Quests.Air["Air Transfer"].Click)
+        local args = {
+            [1] = "Positive",
+            [2] = game:GetService("Players").LocalPlayer
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("Dialogue"):FireServer(unpack(args))
+        task.wait(0.2)
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2926.830078125, 237.08807373046875, -883.2296752929688)
+        vim:SendKeyEvent(true,'E', false, game)
+        task.wait(0.1)
+        vim:SendKeyEvent(false, 'E', false, game)
+        fireclickdetector( workspace.NPC.Quests.Air.Temzin.Click)
+        task.wait(0.6)
+       end
+	end,
+	Enabled = false
+})
