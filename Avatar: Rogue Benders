@@ -35,7 +35,7 @@ KeySpamGui.DescendantAdded:Connect(function(descendant)
         end
     end
 end)
-workspace.NPC.Crate.Crate.HoldDuration = 0
+workspace.Map.Crate.Crate.HoldDuration = 0
 workspace.Lives[PlayerName].Scripts["New Systems"]["Char Manager"].Disabled = true
 local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
 local X = Material.Load({
@@ -87,7 +87,7 @@ Main.Toggle({
         
         game:GetService("ReplicatedStorage"):WaitForChild("RemoteEvents"):WaitForChild("Dialogue"):FireServer(unpack(args))
         task.wait(0.2)
-        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2926.830078125, 237.08807373046875, -883.2296752929688)
+        game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1857.22363, 47.6710625, -9591.5293, -0.771637321, 0, 0.636063278, 0, 1, 0, -0.636063278, 0, -0.771637321)
         vim:SendKeyEvent(true,'E', false, game)
         task.wait(0.1)
         vim:SendKeyEvent(false, 'E', false, game)
