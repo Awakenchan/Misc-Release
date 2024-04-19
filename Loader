@@ -172,25 +172,4 @@ function loader:addGame(NewName,ImageId,unloadonpress,func)
 		func()
 	end)
 end
-local loaders = {
-    [14413475235] = "https://api.luarmor.net/files/v3/loaders/a5d547b2097d4a72d29d8007dfaed6ee.lua",
-    [13643807539] = "https://api.luarmor.net/files/v3/loaders/a5d547b2097d4a72d29d8007dfaed6ee.lua",
-    [9874911474] = "https://api.luarmor.net/files/v3/loaders/44b142b498a61a7d2784b31dc80cc83e.lua",
-}
-loader:addGame("SB","rbxassetid://17209801156",true,function()
-    local currentPlaceId = game.PlaceId
-    if loaders[currentPlaceId] then
-        loadstring(game:HttpGet(loaders[currentPlaceId]))()
-    else
-        loader:InvalidPlaceId()
-    end
-end)
-loader:addGame("TB2","rbxassetid://17209814531",true,function()
-    local currentPlaceId = game.PlaceId
-    if loaders[currentPlaceId] then
-        loadstring(game:HttpGet(loaders[currentPlaceId]))()
-    else
-        loader:InvalidPlaceId()
-    end
-end)
 return loader
