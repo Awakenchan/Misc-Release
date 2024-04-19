@@ -1,3 +1,4 @@
+local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/linoria'))()
 local loader = {}
 local KyaWare = Instance.new("ScreenGui")
 local Games = Instance.new("Frame")
@@ -22,12 +23,91 @@ UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 local HoverSound = Instance.new("Sound",game.Workspace)
 HoverSound.SoundId = "rbxassetid://626181985"
+function loader:createshadow(parent)
+local shadow = Instance.new("Folder")
+shadow.Name = "Shadow"
+shadow.Parent = parent
+local shadowFrame = Instance.new("Frame")
+shadowFrame.Name = "ShadowFrame"
+shadowFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+shadowFrame.BackgroundTransparency = 1
+shadowFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+shadowFrame.BorderSizePixel = 0
+shadowFrame.Size = UDim2.fromScale(1, 1)
+local uICorner = Instance.new("UICorner")
+uICorner.Name = "UICorner"
+uICorner.CornerRadius = UDim.new(0, 4)
+uICorner.Parent = shadowFrame
+local uIStroke = Instance.new("UIStroke")
+uIStroke.Name = "UIStroke"
+uIStroke.Color = Color3.fromRGB(200, 200, 240)
+uIStroke.Thickness = 2
+uIStroke.Transparency = 0.95
+uIStroke.Parent = shadowFrame
+shadowFrame.Parent = shadow
+local shadowFrame1 = Instance.new("Frame")
+shadowFrame1.Name = "ShadowFrame"
+shadowFrame1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+shadowFrame1.BackgroundTransparency = 1
+shadowFrame1.BorderColor3 = Color3.fromRGB(0, 0, 0)
+shadowFrame1.BorderSizePixel = 0
+shadowFrame1.Size = UDim2.fromScale(1, 1)
+local uICorner1 = Instance.new("UICorner")
+uICorner1.Name = "UICorner"
+uICorner1.CornerRadius = UDim.new(0, 4)
+uICorner1.Parent = shadowFrame1
+local uIStroke1 = Instance.new("UIStroke")
+uIStroke1.Name = "UIStroke"
+uIStroke1.Color = Color3.fromRGB(200, 200, 240)
+uIStroke1.Thickness = 3
+uIStroke1.Transparency = 0.95
+uIStroke1.Parent = shadowFrame1
+shadowFrame1.Parent = shadow
+local shadowFrame2 = Instance.new("Frame")
+shadowFrame2.Name = "ShadowFrame"
+shadowFrame2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+shadowFrame2.BackgroundTransparency = 1
+shadowFrame2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+shadowFrame2.BorderSizePixel = 0
+shadowFrame2.Size = UDim2.fromScale(1, 1)
+local uICorner2 = Instance.new("UICorner")
+uICorner2.Name = "UICorner"
+uICorner2.CornerRadius = UDim.new(0, 4)
+uICorner2.Parent = shadowFrame2
+local uIStroke2 = Instance.new("UIStroke")
+uIStroke2.Name = "UIStroke"
+uIStroke2.Color = Color3.fromRGB(200, 200, 240)
+uIStroke2.Thickness = 7
+uIStroke2.Transparency = 0.95
+uIStroke2.Parent = shadowFrame2
+shadowFrame2.Parent = shadow
+local shadowFrame3 = Instance.new("Frame")
+shadowFrame3.Name = "ShadowFrame"
+shadowFrame3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+shadowFrame3.BackgroundTransparency = 1
+shadowFrame3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+shadowFrame3.BorderSizePixel = 0
+shadowFrame3.Size = UDim2.fromScale(1, 1)
+local uICorner3 = Instance.new("UICorner")
+uICorner3.Name = "UICorner"
+uICorner3.CornerRadius = UDim.new(0, 4)
+uICorner3.Parent = shadowFrame3
+local uIStroke3 = Instance.new("UIStroke")
+uIStroke3.Name = "UIStroke"
+uIStroke3.Color = Color3.fromRGB(200, 200, 240)
+uIStroke3.Thickness = 5
+uIStroke3.Transparency = 0.95
+uIStroke3.Parent = shadowFrame3
+shadowFrame3.Parent = shadow
+end
+function loader:InvalidPlaceId()
+    Library:Notify("[Error]: Invalid PlaceId", 5)
+end
 function loader:addGame(NewName,ImageId,unloadonpress,func)	
 	local Option = Instance.new("ImageButton")
 	local TextLabel = Instance.new("TextLabel")
 	local UICorner_2 = Instance.new("UICorner")
-	local GameName = Instance.new("Frame")
-	
+	local GameName = Instance.new("Frame")	
 	Option.Name = "Option"
 	Option.Parent = Games
 	Option.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -37,6 +117,7 @@ function loader:addGame(NewName,ImageId,unloadonpress,func)
 	Option.Size = UDim2.new(0, 64, 0, 297)
 	Option.Image = ImageId
 	Option.ScaleType = Enum.ScaleType.Crop
+    loader:createshadow(Option)
 
 	local UICorner = Instance.new("UICorner")
 	UICorner.Parent = Option
@@ -91,4 +172,25 @@ function loader:addGame(NewName,ImageId,unloadonpress,func)
 		func()
 	end)
 end
+local loaders = {
+    [14413475235] = "https://api.luarmor.net/files/v3/loaders/a5d547b2097d4a72d29d8007dfaed6ee.lua",
+    [13643807539] = "https://api.luarmor.net/files/v3/loaders/a5d547b2097d4a72d29d8007dfaed6ee.lua",
+    [9874911474] = "https://api.luarmor.net/files/v3/loaders/44b142b498a61a7d2784b31dc80cc83e.lua",
+}
+loader:addGame("SB","rbxassetid://17209801156",true,function()
+    local currentPlaceId = game.PlaceId
+    if loaders[currentPlaceId] then
+        loadstring(game:HttpGet(loaders[currentPlaceId]))()
+    else
+        loader:InvalidPlaceId()
+    end
+end)
+loader:addGame("TB2","rbxassetid://17209814531",true,function()
+    local currentPlaceId = game.PlaceId
+    if loaders[currentPlaceId] then
+        loadstring(game:HttpGet(loaders[currentPlaceId]))()
+    else
+        loader:InvalidPlaceId()
+    end
+end)
 return loader
