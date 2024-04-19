@@ -1,87 +1,94 @@
-function Loading()
-    rconsoleprint("\n Loading in process please wait ")
-end
-spawn(Loading)
-task.wait(0.8)
-function updatecheck()
-    if game.PlaceId == 2534724415 then
-     if game.PlaceVersion ~= 2265 then 
-        game.Players.LocalPlayer:Kick("\n For more information report to https://discord.gg/3dPPvsVAy4 or Awaken#6969 & lobox920#9889 ") 
-         rconsoleprint("\n  ","Game Updated, New version is " ..game.PlaceVersion.." Please report that to owners")
-        wait(0.2)
-        game:Shutdown()
-       elseif game.PlaceVersion == 2265 then
-        rconsoleprint("\n  Altrix Hub : ".."Script Updated, Current Game Version:"..game.PlaceVersion)
-        rconsoleprint("\n  Altrix Hub : " .. " Welcome "..game:GetService("Players").LocalPlayer.Name.."Make sure you give your feedback in discord")
-      end
-    elseif game.PlaceId == 9210611498 then
-     if game.PlaceVersion ~= 6468 then 
-        game.Players.LocalPlayer:Kick("\n For more information report to https://discord.gg/3dPPvsVAy4 or Awaken#6969 & lobox920#9889 ") 
-        rconsoleprint("\n  ","Game Updated, New version is "..game.PlaceVersion.."Please report that to owners")
-        wait(0.2)
-        game:Shutdown()
-     elseif game.PlaceVersion == 6468 then
-        rconsoleprint("\n  Altrix Hub :".." Script Updated, Current Game Version: "..game.PlaceVersion)
-        rconsoleprint("\n  Altrix Hub :" .. " Welcome "..game:GetService("Players").LocalPlayer.Name.."Make sure you give your feedback in discord")
-      end
-    end
-end
-spawn(updatecheck)
-task.wait(0.8)
-if game.PlaceId == 2534724415 then
-    local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+local loader = {}
+local KyaWare = Instance.new("ScreenGui")
+local Games = Instance.new("Frame")
+local UIListLayout = Instance.new("UIListLayout")
+KyaWare.Name = "Kya-Ware"
+KyaWare.Parent = game.CoreGui
+KyaWare.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Games.Name = "Games"
+Games.Parent = KyaWare
+Games.AnchorPoint = Vector2.new(0.5, 0.5)
+Games.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Games.BackgroundTransparency = 1.000
+Games.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Games.BorderSizePixel = 0
+Games.Position = UDim2.new(0.5, 0, 0.5, 0)
+Games.Size = UDim2.new(0, 550, 0, 313)
+UIListLayout.Parent = Games
+UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIListLayout.Padding = UDim.new(0,5,0,0)
+UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIListLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+local HoverSound = Instance.new("Sound",game.Workspace)
+HoverSound.SoundId = "rbxassetid://626181985"
+function loader:addGame(NewName,ImageId,unloadonpress,func)	
+	local Option = Instance.new("ImageButton")
+	local TextLabel = Instance.new("TextLabel")
+	local UICorner_2 = Instance.new("UICorner")
+	local GameName = Instance.new("Frame")
+	
+	Option.Name = "Option"
+	Option.Parent = Games
+	Option.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Option.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Option.BorderSizePixel = 0
+	Option.Position = UDim2.new(0.467272729, 0, 0.025559105, 0)
+	Option.Size = UDim2.new(0, 64, 0, 297)
+	Option.Image = ImageId
+	Option.ScaleType = Enum.ScaleType.Crop
 
-    local Window = Rayfield:CreateWindow({
-        Name = "Altraxs Hub",
-        LoadingTitle = "Getting Scripts",
-        LoadingSubtitle = "by Awaken#6969 & Lobox920#9889",
-        ConfigurationSaving = {
-           Enabled = true,
-           FolderName = nil, 
-           FileName = "Altraxs Hub"
-        },
-        Discord = {
-           Enabled = true,
-           Invite = "https://discord.gg/3dPPvsVAy4", 
-           RememberJoins = true 
-        },
-    KeySystem = true, 
-    KeySettings = {
-       Title = "Altraxs Hub",
-       Subtitle = "Key System",
-       Note = "Join the discord https://discord.gg/3dPPvsVAy4 For KEY",
-       FileName = "SiriusKey", 
-       SaveKey = true,
-       GrabKeyFromSite = false, 
-       Key = "yes"
-    }   
-  })
-elseif game.PlaceId == 9210611498 then
-    local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
-    local Window = Rayfield:CreateWindow({
-        Name = "Altraxs Hub",
-        LoadingTitle = "Getting Scripts",
-        LoadingSubtitle = "by Awaken#6969 & Lobox920#9889",
-        ConfigurationSaving = {
-           Enabled = true,
-           FolderName = nil, 
-           FileName = "Altraxs Hub"
-        },
-        Discord = {
-           Enabled = true,
-           Invite = "https://discord.gg/3dPPvsVAy4", 
-           RememberJoins = true 
-        },
-        KeySystem = true, 
-        KeySettings = {
-        Title = "Altraxs Hub",
-        Subtitle = "Key System",
-        Note = "Join the discord https://discord.gg/3dPPvsVAy4 For KEY",
-        FileName = "SiriusKey", 
-        SaveKey = true,
-        GrabKeyFromSite = false, 
-        Key = "yes"
-    }   
-  })
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Awakenchan/Misc-Release/main/Miami%20Flodrida", true))()
+	local UICorner = Instance.new("UICorner")
+	UICorner.Parent = Option
+
+	GameName.Name = "GameName"
+	GameName.Parent = Option
+	GameName.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+	GameName.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	GameName.BorderSizePixel = 0
+	GameName.Position = UDim2.new(0.0441579819, 0, 0.888888896, 0)
+	GameName.Size = UDim2.new(0, 58, 0, 59)
+
+	UICorner_2.CornerRadius = UDim.new(0, 99)
+	UICorner_2.Parent = GameName
+
+	TextLabel.Parent = GameName
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Position = UDim2.new(-1.2241379, 0, 0.0677966103, 0)
+	TextLabel.Size = UDim2.new(0, 200, 0, 50)
+	TextLabel.Font = Enum.Font.Ubuntu
+	TextLabel.Text = NewName
+	TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.TextSize = 14.000
+	
+	local OpenTween1 = game:GetService("TweenService"):Create(
+		Option,
+		TweenInfo.new(0.35,Enum.EasingStyle.Linear),
+		{Size = UDim2.new(0, 523,0, 297)}
+	)
+	local CloseTween1 = game:GetService("TweenService"):Create(
+		Option,
+		TweenInfo.new(0.35,Enum.EasingStyle.Linear),
+		{Size = UDim2.new(0, 64,0, 297)}
+	)
+	Option.MouseEnter:Connect(function()
+		OpenTween1:Play()
+		HoverSound:Play()
+	end)
+	
+	Option.MouseLeave:Connect(function()
+		CloseTween1:Play()
+	end)
+	
+	Option.MouseButton1Up:Connect(function()
+        if unloadonpress == true then
+			KyaWare:Destroy()
+		end
+
+		func()
+	end)
 end
+return loader
