@@ -73,7 +73,7 @@ LegitMain:AddToggle{
                     end
                 end
             else
-                Library:Notify("[awakenkn]: can push up without going in push up mode", 10, "success")
+                Library:Notify("[awakenkn]: cant push up without going in push up mode", 10, "success")
                 return
             end
         end
