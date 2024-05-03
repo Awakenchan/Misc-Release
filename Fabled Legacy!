@@ -1,0 +1,167 @@
+getgenv().autoDungeon = false;
+getgenv().Distance = 5;
+getgenv().underCum = false;
+local _PS = game:GetService("Players")
+local _LocalP = _PS.LocalPlayer
+local _CH = _LocalP.character
+local function teleportToNPC(distance)
+    if getgenv().autoDungeon then
+		_CH.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+        for _, npcName in ipairs(workspace.Enemies:GetChildren()) do
+            if npcName:IsA("Model") then
+                local npc = workspace.Enemies:FindFirstChild(npcName.Name)
+                if npc then
+                    local npcPosition = npc.HumanoidRootPart.Position
+                    local playerPosition = _LocalP.Character and _LocalP.Character.PrimaryPart and _LocalP.Character.PrimaryPart.Position
+                    if playerPosition then
+                        local direction = (npcPosition - playerPosition).unit
+                        _LocalP.Character:SetPrimaryPartCFrame(CFrame.new(npcPosition - direction * distance))
+                    end
+                end
+            end
+        end
+    end
+end
+local function start()
+    return game:GetService("ReplicatedStorage"):WaitForChild("StartDungeon"):FireServer()
+end
+local originalPosition
+if _LocalP.Character then
+    originalPosition = _LocalP.Character.PrimaryPart.Position
+end
+game:GetService("RunService").RenderStepped:Connect(function()
+    if getgenv().autodoge and _LocalP.Character then
+        local playerCharacter = _LocalP.Character
+        local playerPosition = playerCharacter.PrimaryPart.Position
+        local indicator = workspace:FindFirstChild("Indicator")
+        
+        if indicator then
+            local indicatorPosition = indicator.Position
+            local distance = (indicatorPosition - playerPosition).magnitude
+            
+            if distance < 15 then
+                local awayVector = (playerPosition - indicatorPosition).unit * 100
+                local cango = 1
+                repeat 
+                    cango = cango + 1
+                 playerCharacter:SetPrimaryPartCFrame(CFrame.new(playerPosition + awayVector))
+                until cango >= 10
+                wait(1)
+                cango = 0
+                playerCharacter:SetPrimaryPartCFrame(CFrame.new(originalPosition))
+            end
+        end
+    end
+end)
+for _,v in pairs(getconnections(game:GetService("ScriptContext").Error)) do
+    v:Disable()
+end
+
+for _,v in pairs(getconnections(game:GetService("LogService").MessageOut)) do
+    v:Disable()
+end
+warn("// Loading script...")
+----------------𝐒𝐜𝐫𝐢𝐩𝐭 𝐈𝐧𝐬𝐢𝐝𝐞𝐬-----------------------------
+local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+local Window = Fluent:CreateWindow({
+    Title = "Femboy: Boys make the best girls",
+    SubTitle = "Made with love by awakenkn",
+    TabWidth = 160,
+    Size = UDim2.fromOffset(580, 460),
+    Acrylic = true, 
+    Theme = "Dark"
+})
+local Tabs = {
+    Player = Window:AddTab({ Title = "Player", Icon = 'person-standing' }),
+    Farm = Window:AddTab({ Title = "Farm", Icon = 'dollar-sign' }),
+    FarmConfig = Window:AddTab({ Title = "FarmConfig", Icon = 'file-cog'}),
+    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+}
+local Options = Fluent.Options
+do
+local WalkSpeed = Tabs.Player:AddSlider("WalkSpeed", {
+    Title = "[LocalPlayer]: WalkSpeed",
+    Description = "Modify local player Walkspeed.",
+    Default = 16,
+    Min = 16,
+    Max = 1000,
+    Rounding = 1,
+    Callback = function(Value)
+        game:GetService("Players").LocalPlayer.Character:FindFirstChild("Humanoid").WalkSpeed = Value
+    end
+})
+Tabs.Player:AddButton({
+    Title = "Fast Reset",
+    Description = "Resets you faster.",
+    Callback = function()
+        Window:Dialog({
+            Title = "Yes",
+            Content = "Are you sure you want to reset your character?",
+            Buttons = {
+                {
+                    Title = "Yes",
+                    Callback = function()
+                        game.Players.LocalPlayer.Character.Humanoid.Health = 0
+                    end
+                },
+                {
+                    Title = "No",
+                    Callback = function()
+                        print("Cancelled the dialog.")
+                    end
+                }
+            }
+        })
+    end
+})
+---------------------------FARM TAB---------------------------------------
+local AutoDungeon = Tabs.Farm:AddToggle("AutoDungeon", {Title = "Auto Dungeon", Default = false })
+AutoDungeon:OnChanged(function(value)
+    getgenv().autoDungeon = value
+    if getgenv().autoDungeon then
+        start()
+    end
+    while getgenv().autoDungeon do task.wait()
+        teleportToNPC(getgenv().Distance)
+        game:GetService("ReplicatedStorage"):WaitForChild("Swing"):FireServer()
+    end
+end)
+---------------------------FARM CONFIG TAB---------------------------------------
+Tabs.FarmConfig:AddSlider("Distance", {
+    Title = "[Farm]: Distance",
+    Description = "Distance between npc.",
+    Default = 5,
+    Min = 1,
+    Max = 10,
+    Rounding = 1,
+    Callback = function(Value)
+        getgenv().Distance = Value
+    end
+})
+local FarmMethod = Tabs.FarmConfig:AddDropdown("Methods", {
+    Title = "Select Farm Method",
+    Values = {'Doge Attacks'},
+    Multi = false,
+    Default = nil,
+})
+FarmMethod:OnChanged(function(Value)
+    if Value ~= nil then
+        if Value == "Doge Attacks" then
+         getgenv().autodoge = Value
+        end
+    end
+end)
+end
+SaveManager:SetLibrary(Fluent)
+InterfaceManager:SetLibrary(Fluent)
+SaveManager:IgnoreThemeSettings()
+SaveManager:SetIgnoreIndexes({})
+InterfaceManager:SetFolder("awakenkn")
+SaveManager:SetFolder("awakenkn/Fabled Legacy!")
+InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+SaveManager:BuildConfigSection(Tabs.Settings)
+Window:SelectTab(1)
+SaveManager:LoadAutoloadConfig()
+warn("// script Loaded!")  
