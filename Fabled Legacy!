@@ -9,6 +9,7 @@ local function teleportToNPC(distance)
 		_CH.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
         for _, npcName in ipairs(workspace.Enemies:GetChildren()) do
             if npcName:IsA("Model") then
+                task.wait(0.2)
                 local npc = workspace.Enemies:FindFirstChild(npcName.Name)
                 if npc then
                     local npcPosition = npc.HumanoidRootPart.Position
@@ -18,6 +19,8 @@ local function teleportToNPC(distance)
                         _LocalP.Character:SetPrimaryPartCFrame(CFrame.new(npcPosition - direction * distance))
                     end
                 end
+            else
+                task.wait()
             end
         end
     end
@@ -128,6 +131,21 @@ AutoDungeon:OnChanged(function(value)
         game:GetService("ReplicatedStorage"):WaitForChild("Swing"):FireServer()
     end
 end)
+local AutoSpell= Tabs.Farm:AddToggle("AutoSpeel", {Title = "Auto-Use-Spell", Default = false })
+AutoSpell:OnChanged(function(value)
+    getgenv().autospeel = value
+    while getgenv().autospeel do task.wait()
+        local args = {
+            [1] = "Q"
+        }
+        local args2 = {
+            [1] = "E"
+        }
+        game:GetService("ReplicatedStorage"):WaitForChild("useSpell"):FireServer(unpack(args))
+        game:GetService("ReplicatedStorage"):WaitForChild("useSpell"):FireServer(unpack(args2))
+    end
+end)
+
 ---------------------------FARM CONFIG TAB---------------------------------------
 Tabs.FarmConfig:AddSlider("Distance", {
     Title = "[Farm]: Distance",
@@ -142,7 +160,7 @@ Tabs.FarmConfig:AddSlider("Distance", {
 })
 local FarmMethod = Tabs.FarmConfig:AddDropdown("Methods", {
     Title = "Select Farm Method",
-    Values = {'Doge Attacks'},
+    Values = {'Doge Attacks','Normal'},
     Multi = false,
     Default = nil,
 })
@@ -150,6 +168,8 @@ FarmMethod:OnChanged(function(Value)
     if Value ~= nil then
         if Value == "Doge Attacks" then
          getgenv().autodoge = Value
+        elseif Value == "Normal" then
+            getgenv().autodoge = false
         end
     end
 end)
