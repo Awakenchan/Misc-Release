@@ -1,4 +1,4 @@
-
+ 
 if isfile("menu_plex.font") then
 	delfile("menu_plex.font")
 end
@@ -312,7 +312,6 @@ local Camera = Workspace.Camera;
 local viewportSize = game.Workspace.Camera.ViewportSize;
 local hitmodule = game:GetObjects("rbxassetid://7255773215")[1]; hitmodule.Parent = ReplicatedStorage;
 local Offset = game:GetService("GuiService"):GetGuiInset().Y;
-local Math = loadstring(game:HttpGet("https://raw.githubusercontent.com/f1nobe7650/Lynx/main/Math.lua"))(); 
 local NotifiactionSGui = Instance.new("ScreenGui", game.CoreGui); NotifiactionSGui.Enabled = true
 local NewVector2 = Vector2.new;
 local NewVector3 = Vector3.new;
@@ -358,26 +357,6 @@ local crosshair_tick = 0;
 local buying = false; 
 local PlaceHolderUI = Instance.new("ScreenGui", game.CoreGui);
 PlaceHolderUI.Enabled = false
-local Path = 
-	"https://raw.githubusercontent.com/fortniteisveryepic/assets/main/"
-local images = {
-	["[AK47]"] = game:HttpGet(Path.. "ak.png"),
-	["[AR]"] = game:HttpGet(Path.. "ar.png"),
-	["[AUG]"] = game:HttpGet(Path.. "aug.png"),
-	["[Double-Barrel SG]"] = game:HttpGet(Path.. "db.png"),
-	["[DrumGun]"] = game:HttpGet(Path.. "drumgun.png"),
-	["[Flamethrower]"] = game:HttpGet(Path.. "flame.png"),
-	["[Glock]"] = game:HttpGet(Path.. "glock.png"),
-	["[LMG]"] = game:HttpGet(Path.. "lmg.png"),
-	["[P90]"]= game:HttpGet(Path.. "p90.png"),
-	["[Revolver]"] = game:HttpGet(Path.. "rev.png"),
-	["[SMG]"] = game:HttpGet(Path.. "smg.png"),
-	["[Shotgun]"] = game:HttpGet(Path.. "shotgun.png"),
-	["[SilencerAR]"] = game:HttpGet(Path.. "ar.png"),
-	["[TacticalShotgun]"] = game:HttpGet(Path.. "tac.png"),
-	["[Knife]"] = game:HttpGet(Path.. "knife.png"),
-	["[Rifle]"] = game:HttpGet(Path.. "rifle.png")
-} 
 local Languages = {
     A = {English = "A", Arabic = "أ", Albanian = "A", Japanese = "あ", Spanish = "A", Russian = "А", Chinese = "阿", Urdu = "ا", French = "A", Portuguese = "A", Hindi = "अ"},
     B = {English = "B", Arabic = "ب", Albanian = "B", Japanese = "い", Spanish = "B", Russian = "Б", Chinese = "波", Urdu = "ب", French = "B", Portuguese = "B", Hindi = "ब"},
